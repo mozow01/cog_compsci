@@ -1,4 +1,7 @@
 # cog_compsci
+
+[http://webppl.org/](http://webppl.org/)
+
 ## Kockák
 
 1. Három (kettő, négy) kockával dobunk. Mi az elemi események tere? Mi az _eloszlás?_
