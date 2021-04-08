@@ -142,3 +142,31 @@ print(eloszlas);
 
 viz.hist(eloszlas);
 ````
+
+## Binoliális
+
+````javascript
+var dobas = function () {
+  var erme1 = flip(0.5);
+  var erme2 = flip(0.5);
+  var erme3 = flip(0.5);
+  var erme4 = flip(0.5);
+  var erme5 = flip(0.5);
+  return erme1+erme2+erme3+erme4+erme5;
+}
+
+var dist = Enumerate(dobas);
+var kiserlet = repeat(100, dobas);
+
+//print(dist);
+//viz.auto(dist);
+
+print(kiserlet);
+viz.hist(kiserlet);
+````
+
+````javascript
+var b = Binomial({p: 0.4, n: 5})
+
+viz(b)
+````
