@@ -143,7 +143,7 @@ print(eloszlas);
 viz.hist(eloszlas);
 ````
 
-## Binoliális
+## Binomiális
 
 ````javascript
 var dobas = function () {
