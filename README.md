@@ -106,6 +106,10 @@ viz.hist(eloszlas);
 
 ## Kártyák
 
+5. Egy 52 lapos francia kártyapakliból kihúzunk 2 lapot. Mi annak a valószínűsége, hogy a kőr király van a kihúzott lapok között van?
+
+Rendezett modellt nézzünk, határozzuk meg az elemi események terét és a kedvezőt, de utána vizsgáljuk meg a rendezetlen esetben is a számítást.
+
 ````javascript
 var kartya = function () {
   var szin1 = randomInteger(4) + 1;
