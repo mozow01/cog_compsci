@@ -33,11 +33,15 @@ _Rendezett modell._ Ebben az esetben párokhoz rendelünk valószínűséget, ez
 | X= 1           | 0 | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
 | 2           | 1/(51⋅52) | 0 | ... | 1/(51⋅52) | 1/52 |
 | 3           | 1/(51⋅52) | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
-|             | 1/(51⋅52) | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
+|    ...      | 1/(51⋅52) | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
 | 52         | 1/(51⋅52) | 1/(51⋅52) | ... | 0 | 1/52 |
 | marginális P(Y)   |  1/52 |  1/52 | 1/52 | 1/52 |  1  |
 
-Innen a kedvező eset: (X,Y) = (♥K,_ ) vagy (_ ,♥K), így a valószínűség: 1/52 + 1/52 = 1/26. 
+Megj: <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(x_i)%3D%5Csum_%7Bj%3D1%7D%5E%7Bm%7D%20P(x_i%2Cy_j)"> ill. <img src="https://render.githubusercontent.com/render/math?math=P(Y)%3DP(y_j)%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20P(x_i%2Cy_j)">
+
+A kedvező esetek: (X,Y) = (♥K,_ ) vagy (_ ,♥K), így a valószínűség: 1/52 + 1/52 = 1/26. 
+
+Ugyanez webppl-lel:
 
 ````javascript
 var kartya = function () {
@@ -71,6 +75,7 @@ print(eloszlas);
 
 viz.hist(eloszlas);
 ````
+**2.**  
 
 ## Binomiális
 
