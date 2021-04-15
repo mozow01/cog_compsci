@@ -125,5 +125,17 @@ var b = Binomial({p: 0.4, n: 5})
 viz(b)
 ````
 
+Adott egy n elemű sokaság és az, hogy ebből egy tetszőleges elem p valószínűséggel teljesít valamilyen A tulajdonságot. Annak a valószínűsége, hogy ebből az n elemből pontosan k db teljesíti az A tulajdonságot, 
+
+<img src="https://render.githubusercontent.com/render/math?math=P(X%3Dk)%3D%7Bn%20%5Cchoose%20k%7D%20p%5Ek(1-p)%5E%7Bn-k%7D%20">
+
+ahol az X valószínűségi változó nem más, mint ,,azon elemek száma, amik teljesítik az A tulajdonságot''.
+
+A 3. példa adataival tehát: A: rosszul lesz, p=0.02, n = 30. A keresett valószínűségű esemény, hogy 0 vagy 1 érettségiző lesz rosszul a 30 főből, azaz ,,X = 0 vagy X=1'' ezek kizárják egymást, ezért a valószínűség az összeg lesz: 
+
+<img src="https://render.githubusercontent.com/render/math?math=P(%2C%2CX%3D0%5C%3Bor%5C%3BX%3D1'')%3DP(X%3D0)%2BP(X%3D1)%3D%7B30%20%5Cchoose%200%7D%20p%5E0(1-p)%5E%7B30-0%7D%2B%7B30%20%5Cchoose%201%7D%20p%5E1(1-p)%5E%7B30-1%7D%3D%20(1-p)%5E%7B30%7D%2B30%20p(1-p)%5E%7B29%7D">
+
+Ez pedig **0.879454,** tehát elég valószínű, hogy legfeljebb csak 1 gyerek betegszik meg. A komplementer esemény valószínűsége, azaz, hogy legalább 2 gyerek beteg lesz, pici, de nem lehanyagolható: 1-0.879454 = 0.120546.
+
 ## Monty Hall- (vos Savant-) paradoxon
 
