@@ -135,7 +135,17 @@ A 3. példa adataival tehát: A: rosszul lesz, p=0.02, n = 30. A keresett valós
 
 <img src="https://render.githubusercontent.com/render/math?math=P(%2C%2CX%3D0%5C%3Bor%5C%3BX%3D1'')%3DP(X%3D0)%2BP(X%3D1)%3D%7B30%20%5Cchoose%200%7D%20p%5E0(1-p)%5E%7B30-0%7D%2B%7B30%20%5Cchoose%201%7D%20p%5E1(1-p)%5E%7B30-1%7D%3D%20(1-p)%5E%7B30%7D%2B30%20p(1-p)%5E%7B29%7D">
 
-Ez pedig **0.879454,** tehát elég valószínű, hogy legfeljebb csak 1 gyerek betegszik meg. A komplementer esemény valószínűsége, azaz, hogy legalább 2 gyerek beteg lesz, pici, de nem lehanyagolható: 1-0.879454 = 0.120546.
+Ez pedig **0.879454,** tehát elég valószínű, hogy legfeljebb csak 1 gyerek betegszik meg. A komplementer esemény valószínűsége, azaz, hogy legalább 2 gyerek beteg lesz, pici, de nem elhanyagolható: 1 - 0.879454 = 0.120546.
 
 ## Monty Hall- (vos Savant-) paradoxon
+
+Adott 3 csukott ajtó mögött egy-egy nyeremény: 1 autó és 1-1 plűsskecske. Monty, a showman magkét minket arra, hogy tippeljük meg, hol az autó (ha eltaláljuk, a miénk lesz). Amikor ez megtörtént, akkor Monty kinyit egy ajtót, éspedig szigorúan azok közül, amelyek mögött egy kecske van és nem mutattunk rá. Majd felteszi újra a kérdést: hol az autó. Érdemes-e megmásítanunk a döntésünket?
+
+🐑 🐑 🏎
+🚪 🚪 🚪
+🕺 👋
+
+A feladatot a joint valószínűség módszerével oldjuk meg.
+
+
 
