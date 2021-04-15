@@ -1,8 +1,43 @@
+## Kolmogorov-axiómák
+
+(Ω, Σ, P) valószínűségi mező, ha Ω nemüres (elemi események tere), Σ egy σ-algebra (eseménytér), és
+1. P : Σ → ℝ, P(A) ≧ 0
+2. P(Ω)=1, P(∅)=0
+3. ha A, B ∊ Σ egymást _kizáró események_ (A ⋂ B = ∅), akkor P(A ⋃ B) = P(A) + P(B).
+
+További fontos szabályok:
+
+4. _Komplementer-szabály_: P(comp(A)) = 1-P(A)
+
+5. Független események: P(A ⋂ B) = P(A) ⋅ P(B)
+
+6. Logikai szita:  P(A+B) = P(A) + P(B) - P(AB). (néha unió: +, metszet: ⋅)
+
+Eloszlásnak azt nevezzük, ahogy megadjuk P-t. Ez sokféle lehet, de pl. véges esetben az elemi események felsorolása, végtelen esetben sűrűsűg vagy kumulatív eloszlásfüggvénnyel (később).
+
 ## Kártyák
 
-5. Egy 52 lapos francia kártyapakliból kihúzunk 2 lapot. Mi annak a valószínűsége, hogy a kőr király van a kihúzott lapok között van?
+**1.** Egy 52 lapos francia kártyapakliból kihúzunk 2 lapot. Mi annak a valószínűsége, hogy a kőr király van a kihúzott lapok között van?
 
-Rendezett modellt nézzünk, határozzuk meg az elemi események terét és a kedvezőt, de utána vizsgáljuk meg a rendezetlen esetben is a számítást.
+_Rendezetlen modell._ Összes eset: <img src="https://render.githubusercontent.com/render/math?math=52%20%5Cchoose%202">
+
+Kedvező esetek: nincsenek a helyek (húzások) megülönböztetve. De szorzás, mert függetlenül választunk az egyetlen kőr király és a többi közül: 
+<img src="https://render.githubusercontent.com/render/math?math=%7B1%20%5Cchoose%201%7D%7B51%20%5Cchoose%201%7D">
+
+Tehát: <img src="https://render.githubusercontent.com/render/math?math=P%3D%5Cdfrac%7B%7B1%20%5Cchoose%201%7D%7B51%20%5Cchoose%201%7D%7D%7B%7B52%20%5Cchoose%202%7D%7D">
+
+_Rendezett modell._ Ebben az esetben párokhoz rendelünk valószínűséget, ezt **joint** vagy **többváltozós eloszlásnak** nevezzük. Z = (X,Y), ahol X, Y a két külön kártya eloszlása, amik azonban vészesen _összefüggenek_, mert nem tesszük vissza a kártyát.
+
+|   P(X,Y)   | Y=1 | 2 | ... | 52 | marginális P(X) |
+| --- | --- | --- | --- | --- | --- | 
+| X= 1           | 0 | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
+| 2           | 1/(51⋅52) | 0 | ... | 1/(51⋅52) | 1/52 |
+| 3           | 1/(51⋅52) | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
+|             | 1/(51⋅52) | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
+| 52         | 1/(51⋅52) | 1/(51⋅52) | ... | 1/(51⋅52) | 1/52 |
+| marginális P(Y)   |  1/52 |  1/52 | 1/52 | 1/52 |  1  |
+
+Innen a kedvező eset: (X,Y) = (♥K,_ ) vagy (_ ,♥K), így a valószínűség: 1/52 + 1/52 = 1/26. 
 
 ````javascript
 var kartya = function () {
