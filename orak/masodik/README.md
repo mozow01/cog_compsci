@@ -139,7 +139,7 @@ Ez pedig **0.879454,** tehát elég valószínű, hogy legfeljebb csak 1 gyerek 
 
 ## Monty Hall- (vos Savant-) paradoxon
 
-Adott 3 csukott ajtó mögött egy-egy nyeremény: 1 autó és 1-1 plűsskecske. Monty, a showman magkét minket arra, hogy tippeljük meg, hol az autó (ha eltaláljuk, a miénk lesz). Amikor ez megtörtént, akkor Monty kinyit egy ajtót, éspedig szigorúan azok közül, amelyek mögött egy kecske van és nem mutattunk rá. Majd felteszi újra a kérdést: hol az autó. Érdemes-e megmásítanunk a döntésünket?
+Adott 3 csukott ajtó mögött egy-egy nyeremény: 1 autó és 1-1 plüsskecske. Monty, a showman magkét minket arra, hogy tippeljük meg, hol az autó (ha eltaláljuk, a miénk lesz). Amikor ez megtörtént, akkor Monty kinyit egy ajtót, éspedig szigorúan azok közül, amelyek mögött egy kecske van és nem mutattunk rá. Majd felteszi újra a kérdést: hol az autó. Érdemes-e megmásítanunk a döntésünket?
 
 🐑 🐑 🏎
 
