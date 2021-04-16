@@ -153,7 +153,7 @@ A feladatot a joint eloszlás feltérképezésével oldjuk meg.
 |      | Z=1 | Z=2 | Z=3 | Z=1 | Z=2 | Z=3 | Z=1 | Z=2 | Z=3 |     | 
 | X=1  | 0   | 1/18| 1/18| 0   | 0   | 1/9 | 0   | 1/9 |   0 | 1/3 | 
 | X=2  | 0   |  0  |1/9  | 1/18   | 0   |  1/18  | 1/9 | 0 |   0 |  1/3| 
-| X=3  | 0   | 1/9 |  0 | 0   | 0   | 1/9 | 1/18 | 0  |   1/18 |  1/3 | 
+| X=3  | 0   | 1/9 |  0 | 1/9   | 0   | 0 | 1/18 | 0  |   1/18 |  1/3 | 
 | P(Y) | 0   | 1/3 | 0   | 0   | 1/3 | 0   | 0   | 1/3 |   0 |   1  | 
 
 Először számoljuk ki egy esetben, mi annak az esélye, hogy ugyanazon ajtó mögött van a nyeremény, ahol az autó van. Pl.: P(X=1 és Y=1) = 1/9. Persze ezt mindhárom esetben ki tudjuk számolni, és az eredmény:
@@ -170,7 +170,7 @@ Marilyn vos Savant egy szellemes példán mutatta be, hogy miért messze jobb v�
 
                     ✨
 
-  📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀
+    📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀
 
 Most Marilyn pontosan kettő kivételével az összes kagylót elveszi. Az igaz erre a kettőre, hogy közte van az is, amire mutattam, és az is, ahol a gyöngy van. 
 
