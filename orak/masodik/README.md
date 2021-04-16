@@ -156,8 +156,28 @@ A feladatot a joint eloszlás feltérképezésével oldjuk meg.
 | X=3  | 0   | 1/9 |  0 | 0   | 0   | 1/9 | 1/18 | 0  |   1/18 |  1/3 | 
 | P(Y) | 0   | 1/3 | 0   | 0   | 1/3 | 0   | 0   | 1/3 |   0 |   1  | 
 
+Először számoljuk ki egy esetben, mi annak az esélye, hogy ugyanazon ajtó mögött van a nyeremény, ahol az autó van. Pl.: P(X=1 és Y=1) = 1/9. Persze ezt mindhárom esetben ki tudjuk számolni, és az eredmény:
+
+P(X=Y) = 1/3
+
+Ez annak az esélye, hogy elsőre eltaláljuk a kedvező ajtót (ez világos is). annak a valószínűsége, hogy nem a választottunk mögött van az autó:
+
+P(X=/=Y) = 1 - 1/3 = 2/3
+
+De mivel Monty kinyitja a megmaradó kettő közül azt az ajtót, ami mögött nincs autó ezért utólag behatárolja azt az _két_ ajtót, ami mögött az autó van. Nyilván eredetileg nem bökhettünk volna rá két ajtóra, amelyek persze kétszer annyi valószínűséggel rejtik az autót. De most, hogy ebből a kettőből mutatott Monty egy rossz ajtót, már érvényesíthetjük a P(X=/=Y) = 2/3 valószínűségű nyerést egyetlen ajtóra való rámutatással. Ami persze nem jelenti, hogy ott is lesz autó, de kétszer akkora eséllyel lesz ott, mint nem. 
+
+Marilyn vos Savant egy szellemes példán mutatta be, hogy miért messze érdesebb váltani. Az érvelése analógiás és a következő. Lefordítunk 1000 kagylót egy parkolóban és az egyik alá rejt Marilyn egy gyöngyöt. Rámutatunk az egyikra azzal, hogy ott van a gyöngy. Találatot ezzel 1/1000 eséllyel érünk el. 
+
+                    ✨
+
+📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀
+
+Most Marilyn pontosan kettő kivételével az össze kagylót elveszi. Az igaz erre a kettőre, hogy közte van az is, amire mutatta, és az is, ahol a gyöngy van. 
+
+                    ✨
+  
+    📀               📀
 
 
 
-
-
+Érdemes-e váltani? Természetesen, hiszen így 999/1000 az esélye, hogy azalatt van a gyöngy, amire nem szavaztunk. Gyakorlatilag Marilyn megmutatta, hogy hol a gyöngy és 1000-ből 1-szer lesz csak nem a másik kagyló alatt. 
