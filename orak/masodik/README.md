@@ -170,7 +170,7 @@ Marilyn vos Savant egy szellemes példán mutatta be, hogy miért messze jobb v�
 
                     ✨
 
-📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀
+  📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀📀
 
 Most Marilyn pontosan kettő kivételével az összes kagylót elveszi. Az igaz erre a kettőre, hogy közte van az is, amire mutattam, és az is, ahol a gyöngy van. 
 
