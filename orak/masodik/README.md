@@ -93,7 +93,7 @@ viz.hist(eloszlas);
 
 **3.** Egy iskolában 1000 gyerek tanul és a kompetenciamérésen mindig ugyanaz a 10 gyerek lesz rosszul. A termekbe sorsolják a diákokat. Mi annak a valószínűsége, hogy a Földszint VI-ban kompetenciázó 20 diákból legfeljebb három rosál be (ezek közül)?
 
-**3.** Sokéves átlagban p = 0.02 valószínűséggel lesz egy érettségiző az írásbelin rosszul. Mi annak a valószínűsége, hogy a Wass Albert Gimnázium 30 fős 12. C. osztályában legfeljebb 1 ember lesz rosszul.
+**3.** Sokéves átlagban p = 0.02 valószínűséggel lesz egy érettségiző az írásbelin rosszul. Mi annak a valószínűsége, hogy a Soroksári Wass Albert Két-tannyelvű Gimnázium 30 fős 12. C. osztályában legfeljebb 1 ember lesz rosszul.
 
 (Cinkelt és cinkeletlen érmék.)
 
