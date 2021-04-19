@@ -53,15 +53,15 @@ A fenti egy speciális esete, amikor a joint eloszlásban olyan feltételt fogal
 
 <img src="https://render.githubusercontent.com/render/math?math=P(Y%3Dy_j%7CX%3Dx_i)%20%3D%20%5Cdfrac%7BP(Y%3Dy_j%5Cwedge%20X%3Dx_i)%7D%7BP(X%3Dx_i)%7D">
 
-Ezt az előző órai jelöléssel még így is írhatjuk:
+A joint előző órai jelölésével, mivel <img src="https://render.githubusercontent.com/render/math?math=P(x_i%2Cy_j%5C%3B)%3DP(X%3Dx_i%5Cwedge%20Y%3Dy_j)">, ezért ezt még így is írhatjuk:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(Y%3Dy_j%5C%3B%7C%5C%3BX%3Dx_i)%20%3D%20%5Cdfrac%7BP(x_i%2Cy_j%5C%3B)%7D%7BP(X%3Dx_i)%7D">
 
-Ez a menőző (borzasztó, túl kompakt) jelöléssel így írható:
+Ill. a menőző (borzasztó, túl kompakt) jelöléssel:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(Y%7CX)%20%3D%20%5Cdfrac%7BP(X%2CY%5C%3B)%7D%7BP(X)%7D">
 
-hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(X%3Dx_i)%20%3D%5Csum_j%20P(x_i%2Cy_j)"> a marginális eloszlás.
+hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(X%3Dx_i)%20%3D%5Csum_j%20P(x_i%2Cy_j)"> a **marginális eloszlás.**
 
 
 
