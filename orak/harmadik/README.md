@@ -8,7 +8,7 @@ A klasszikus valószínűségszámítási példákat jellemzően a rendezett n-e
 
 Ekkor leszűkítjük az elemi események terét a feltételre az A eseményt teljesítő elemi részeseményekre, azaz innentől nem omega, hanem A az összes elemi események tere:
 
-<img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%20%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%20%5Cdfrac%7BP(B)%7D%7BP(A)%7D%2C%20%5Cquad%5Cquad%20P(A)%5Cneq%200">
+<img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
 
 (P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
 
@@ -43,12 +43,25 @@ Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne
 
 P(az első hatos|van adobások köztött hatos) = 1/91 vagy ((1/216) / (1/91)).
 
-A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az értékét tudjuk, sőt, vannak olyan tárgyalások is (Rényi), amelyekben nem a feltételes valószínűség az alapfogalom. Éppen ezért a definíciót néha így írják és **szorzattörvénynek** nevezik (a "törvény" szón persze a matematikusok nevetnek...):
+A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az értékét tudjuk, sőt, vannak olyan tárgyalások is (Rényi), amelyekben nem a feltételes valószínűség az alapfogalom. Éppen ezért a definíciót néha így írják és **szorzattörvénynek** nevezik (a "törvény" szón persze a matematikusok nevetnek... :)
 
-<img src="https://render.githubusercontent.com/render/math?math=P(B)%3DP(B%7CA)%5Ccdot%20P(A)%5Cquad%20%5Cquad%20%5Cmathrm%7Bill.%7D%20%5Cquad%20%5Cquad%20P(A)%3DP(A%7CB)%5Ccdot%20P(B)">
+<img src="https://render.githubusercontent.com/render/math?math=P(A%5Ccap%20B)%3DP(B%7CA)%5Ccdot%20P(A)%5Cquad%20%5Cquad%20%5Cmathrm%7Bill.%7D%20%5Cquad%20%5Cquad%20P(B%5Ccap%20A)%3DP(A%7CB)%5Ccdot%20P(B)">
 
+### Feltételes valószínűségi eloszlásnál joint eloszlásnál
 
+A fenti egy speciális esete, amikor a joint eloszlásban olyan feltételt fogalmazunk meg, ami azt mondja, hogy az egyik változó rögzített értékű:
 
+<img src="https://render.githubusercontent.com/render/math?math=P(Y%3Dy_j%7CX%3Dx_i)%20%3D%20%5Cdfrac%7BP(Y%3Dy_j%5Cwedge%20X%3Dx_i)%7D%7BP(X%3Dx_i)%7D">
+
+Ezt az előző órai jelöléssel még így is írhatjuk:
+
+<img src="https://render.githubusercontent.com/render/math?math=P(Y%3Dy_j%5C%3B%7C%5C%3BX%3Dx_i)%20%3D%20%5Cdfrac%7BP(x_i%2Cy_j%5C%3B)%7D%7BP(X%3Dx_i)%7D">
+
+Ez a menőző (borzasztó, túl kompakt) jelöléssel így írható:
+
+<img src="https://render.githubusercontent.com/render/math?math=P(Y%7CX)%20%3D%20%5Cdfrac%7BP(X%2CY%5C%3B)%7D%7BP(X)%7D">
+
+hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(X%3Dx_i)%20%3D%5Csum_j%20P(x_i%2Cy_j)"> a marginális eloszlás.
 
 
 
