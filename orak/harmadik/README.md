@@ -45,7 +45,7 @@ Ezzel gyakorlatilag a feltételes valószínűséget is megértettük, így:
 
 * Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne (egyáltalán) hatos? 
 
-P(az első hatos|van a dobások köztött hatos) = 1/91 vagy ((1/216) / (1/91)).
+P(az első hatos | van a dobások köztött hatos) = 1/91 vagy ((1/216) / (1/91)).
 
 A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az értékét tudjuk, sőt, vannak olyan tárgyalások is (Rényi), amelyekben a feltételes valószínűség az alapfogalom. Éppen ezért a definíciót néha így írják (**szorzattörvénynek** nevezik) (a "törvény" szón persze a matematikusok nevetnek... :)
 
@@ -67,7 +67,7 @@ ill. a menőző (borzasztó, túl kompakt) jelöléssel:
 
 hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(X%3Dx_i)%20%3D%5Csum_j%20P(x_i%2Cy_j)"> a **marginális eloszlás.**
 
-**2.** Ellenőrizzük az előző feladatban, hogy a marginális eloszlások tényleg azok, amiket a ````viz.marginals(eloszlas)```` parancs ad vissza. Világos, hogy a program szerint az (X,Y) joint tér az hogy X = "az első kockával x_i-t dobunk", Y ="a második kockával y_j-t dobunk" és a P(X,Y) az az **eloszlás**, ami nulla, ha X és Y nem hatos, és egyenletes, ha van benne hatos. 
+**2.** Ellenőrizzük az előző feladatban, hogy a marginális eloszlások tényleg azok, amiket a ````viz.marginals(eloszlas)```` parancs ad vissza! Világos, hogy a program szerint az (X,Y) joint tér az, hogy X = "az első kockával x_i-t dobunk", Y ="a második kockával y_j-t dobunk", és a P(X,Y) az az **eloszlás**, ami nulla, ha X és Y nem hatos, és egyenletes, ha van benne hatos. 
 
 ### Binomiális eloszlás, selejtformula
 
@@ -75,9 +75,11 @@ Amikor a kártyapakliba nem tettük vissza a kihúzott kártyalapokat, akkor vis
 
 Ha a populáció óriási és a minta pici, pl. egy egész ország népessége, kontra 20 fő, akkor a mintavételt tekinthetjük akár visszatevésesnek is, mert a 20 ember kiválasztásának hatása az arányokra nézve olyan, mint halottnak a csók. A visszavetés nélküli mintavételezés selejtformulája a binomiális eloszlás formulája.
 
-* Tegyük fel, hogy egy bizonyos _A_ tulajdonság (pl.: a Brexitre szavazott-e/nem-e), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan k  rendelkezik az _A_ tulajdonsággal, 
+* Tegyük fel, hogy egy bizonyos _A_ tulajdonság (pl.: Brexitre szavazott-e/nem-e), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan k  rendelkezik az _A_ tulajdonsággal, 
 
 <img src="https://render.githubusercontent.com/render/math?math=P(X%3Dk)%3D%7Bn%20%5Cchoose%20k%7D%5Ccdot%20p%5Ek%5Ccdot%20(1-p)%5E%7Bn-k%7D">
+
+(Bizonyítás egyszerű, ha valaki szeretné látni, akkor majd kitaláljuk együtt.)
 
 **3.** Számítsuk ki, hogy mi annak a valószínűsége, hogy 3 emberből legalább 1 bliccel a BKV-n, ha a magyarok jegyvásárlási hajlandósága 65%.
 
@@ -86,6 +88,7 @@ var b = Binomial({p: 0.65, n: 3})
 print(b)
 viz(b)
 ````
+
 ## Bayes-tétel jointtal
 
 A Bayes-tétel egy matematikai trivialitás. Ereje abban áll, hogy úgy viselkedik, mint a szélsőértékszámításban a maximum meghatározása a deriváltra felírt egyenletből -- azaz visszafelé. Csak persze mindezt valószínűségi eszközökkel.
@@ -118,31 +121,31 @@ Akármennyire is furcsa, a legfontosabb fogalom a bayes-i analízisben a
 
 **generatív modell**
 
-Ez lényegében egy algoritmus, ami nagy adatmennyiséget generál automatikusan, mégpedig azzal a céllal, hogy úgy viselkednej, mintha ők lennénak a valóságos világból nyert adatok:
+Ez lényegében egy algoritmus, ami nagy adatmennyiséget generál automatikusan, mégpedig azzal a céllal, hogy úgy viselkedjen, mintha ők lennének a valóságos világból nyert adatok:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7Bparameter%7D%20%5Cto%20%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%20%5Cto%20%5Cmathrm%7Bsok%7D%5C%3B%5Cmathrm%7Badatok%7D%20">
 
-Nem akármilyen céllal: pontosan egy ilyen generatív modell írná le, hogy a világban hogyan bukkannak fel mérhető mennyiségek. Gondoljunk bele: nem dobáltunk kockát, mégis képesek voltunk kockadobást szimulálni. Ezek a programok tehát most nem aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának.
+Nem akármilyen céllal: ilyen generatív modell írná le, hogy a világban hogyan bukkannak fel mérhető mennyiségek. Gondoljunk bele: nem dobáltunk kockát, mégis képesek voltunk kockadobást szimulálni programmal. Ezek a programok tehát most nem pusztán aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának. Pont úgy, ahogy a pottyantó gép teszi, ami a binomiális eloszlást modellezi.
 
-Most tehát megfordítjuk a problémát és megpróbálunk visszakövetkeztetni arra, hogy milyen paraméterértékekkel generálódhatott egy adott 
+Most tehát megfordítjuk a problémát és megpróbálunk visszakövetkeztetni arra, milyen paraméterértékekkel generálódhatott egy adott 
 
 **adatsokaság**
 
-A generatív modell még nem elég, mert kell egy ideális világleírás (eloszlássereg, mondjuk beta- vagy binomiális-eloszlás ), amiben gondolkodunk. Ennek a leírásnak a szóbajövő paraméreteit kell meghatároznunk, azaz most végül is konkrét elméletet választunk ki egy elméletsokaságból. Az előzetes, adatok néküli tudást hívjuk úgy, hogy 
+A generatív modell még nem elég, mert kell egy ideális világleírás (eloszlássereg, mondjuk beta- vagy binomiális-eloszlás), amiben gondolkodunk. Ennek a leírásnak a szóbajövő paraméreteit kell meghatároznunk, azaz végül is konkrét elméletet választunk ki egy elméletsokaságból. Az előzetes, adatok néküli tudást hívjuk úgy, hogy 
 
 **prior**
 
 Szedjük össze ezt most formálisan! 
 
-1. Legyenek az X-ek az _elméleti paraméterek_.
+1. Legyen X (vagy X-ek) az _elméleti paraméter_ értékei.
 2. Ezek valószínűségi eloszlása, ahogy mi elképzeljük, a P(X) _marginális_: ez a prior.  
-4. A P( X | Y ) feltételes eloszlás azt írja le, hogyan szóródnak az X paraméterek, amennyiben tudjuk mi az Y adat. Ezt hívják _poszteriori_ eloszlásnak és erre hajtunk: azt szeretnénk tudni, hogy ha kimértük az Y adatokat, akkor milyen paramétereloszlás generálhatta ezt az Y adatot. 
+3. A P( X | Y ) feltételes eloszlás azt írja le, hogyan szóródik az X paraméter, amennyiben tudjuk mi az Y adat. Ezt hívják _poszteriori_ eloszlásnak, és éppen erre hajtunk: azt szeretnénk tudni, hogy ha kimértük az Y adatot, akkor milyen paramétereloszlás generálhatott egy ilyen Y-t. 
 
 Gondoljunk bele! Ez nem semmi! 
 
-Arról van szó, hogy ha adott a generatív modell nevű algoritmus, az elméleti paramétereloszlás és az adatok, akkor mi a sok elméleti paraméter közül a modell fizikailag lehetséges paramétereloszlása.
+Arról van szó, hogy ha adott a generatív modell nevű algoritmus, az elméleti paramétereloszlás és az adat, akkor a sok elméleti paraméterérték közül meg tudjuk mondani a modell fizikailag lehetséges paramétereloszlását.
 
-Lássuk hogy megy!
+Lássuk, hogy megy ez!
 
 ### Óvodások
 
