@@ -33,9 +33,9 @@ Ezzel gyakorlatilag a feltételes valószínűséget is megértettük. Pl.:
 
 Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy a van benne (egyáltalán) hatos: 1/91. Azaz leszűkítjük az elemi események terét a feltételre:
 
-<img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%20%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%20%5Cdfrac%7BP(B)%7D%7BP(A)%7D%20">
+<img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%20%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%20%5Cdfrac%7BP(B)%7D%7BP(A)%7D%2C%20%5Cquad%5Cquad%20P(A)%5Cneq%200">
 
-(P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)). Természetesen, ez P(A)=0-ra nem értelmezett.
+(P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
 
 
 
