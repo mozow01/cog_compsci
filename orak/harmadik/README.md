@@ -67,7 +67,7 @@ hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(
 
 ### Binomiális eloszlás, selejtformula
 
-Amikor a kártyapakliba nem tettük vissza kihúzott kártyalapokat, akkor visszatevés nélküli mintavételt alkalmaztunk. Lásd: _mi annak a valószínűsége, hogy 5 kátyából legalább az egyik treff!_
+Amikor a kártyapakliba nem tettük vissza kihúzott kártyalapokat, akkor visszatevés nélküli mintavételt alkalmaztunk. Lásd: _mi annak a valószínűsége, hogy 5 kártyából legalább az egyik treff!_
 
 Ha a populáció óriási és a minta pici, pl. egy egész ország népessége, kontra 20 fő, akkor a mintavételt tekinthetjük akár visszatevésesnek is, mert a 20 ember kiválasztásának hatása az arányokra nézve olyan, mint halottnak a csók. A visszavetés nélküli mintavételezés selejtformulája a binomiális eloszlás formulája.
 
