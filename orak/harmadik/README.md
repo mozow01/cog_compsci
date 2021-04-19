@@ -47,7 +47,7 @@ A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az é
 
 <img src="https://render.githubusercontent.com/render/math?math=P(A%5Ccap%20B)%3DP(B%7CA)%5Ccdot%20P(A)%5Cquad%20%5Cquad%20%5Cmathrm%7Bill.%7D%20%5Cquad%20%5Cquad%20P(B%5Ccap%20A)%3DP(A%7CB)%5Ccdot%20P(B)">
 
-### Feltételes valószínűségi eloszlásnál joint eloszlásnál
+### Joint eloszlások feltételes eloszlása
 
 A fenti egy speciális esete, amikor a joint eloszlásban olyan feltételt fogalmazunk meg, ami azt mondja, hogy az egyik változó rögzített értékű:
 
