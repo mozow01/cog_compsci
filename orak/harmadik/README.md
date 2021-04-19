@@ -12,7 +12,11 @@ Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt te
 
 (P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
 
-**1.** **a)** Mi annak a valószínűsége, hogy három kockával dobva, az eredményben van hatos. **b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
+**1.** 
+
+**a)** Mi annak a valószínűsége, hogy három kockával dobva, az eredményben van hatos. 
+
+**b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
 
 ````javascript
 var kocka_modell = function () {
@@ -37,9 +41,9 @@ viz.hist(eloszlas);
 ````
 Ellenőrzés, komplementer valószínűséggel: P(van hatos) = 1 - (5^3)/(6^3) ~ 0.4213 (= 91/216 ).
 
-Ezzel gyakorlatilag a feltételes valószínűséget is megértettük. Pl.:
+Ezzel gyakorlatilag a feltételes valószínűséget is megértettük, így:
 
-Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne (egyáltalán) hatos? 
+* Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne (egyáltalán) hatos? 
 
 P(az első hatos|van a dobások köztött hatos) = 1/91 vagy ((1/216) / (1/91)).
 
