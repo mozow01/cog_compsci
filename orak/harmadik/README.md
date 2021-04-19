@@ -71,7 +71,7 @@ Amikor a kártyapakliba nem tettük vissza kihúzott kártyalapokat, akkor vissz
 
 Ha a populáció óriási és a minta pici, pl. egy egész ország népessége, kontra 20 fő, akkor a mintavételt tekinthetjük akár visszatevésesnek is, mert a 20 ember kiválasztásának hatása az arányokra nézve olyan, mint halottnak a csók. A visszavetés nélküli mintavételezés selejtformulája a binomiális eloszlás formulája.
 
-Tegyük fel, hogy egy bizonyos A tulajdonság (pl.: a Brexitre szavaztott-e/nem-e), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan **k** rendelkezik az A tulajdonsággal, 
+Tegyük fel, hogy egy bizonyos A tulajdonság (pl.: a Brexitre szavazott-e/nem-e), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan **k** rendelkezik az A tulajdonsággal, 
 
 <img src="https://render.githubusercontent.com/render/math?math=P(X%3Dk)%3D%7Bn%20%5Cchoose%20k%7D%5Ccdot%20p%5Ek%5Ccdot%20(1-p)%5E%7Bn-k%7D">
 
@@ -82,6 +82,10 @@ var b = Binomial({p: 0.65, n: 3})
 print(b)
 viz(b)
 ````
+## Bayes-tétel
+
+
+
 
 
 
