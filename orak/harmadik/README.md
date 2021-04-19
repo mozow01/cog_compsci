@@ -145,13 +145,15 @@ Az általános P(X,Y) eloszlás, ami a
 
 Amit viszont éppen a GM általi generálhatóság miatt ismerni tudunk, az a P( y | X )
 
-**likelyhood** (ez a Bayes-tételben a másik szorzó). 
+**likelihood** (ez a Bayes-tételben a másik szorzó). 
 
-Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X értékeket ad vissza a P(X) eloszlásból, akkor GM ki tudja számolni, milyen X-re áll fenn GM(X)=y a leggyakrabban, ami pont argmax<sub>x</sub>  P( X = x | Y = y ). Tulajdonképpen már készen is lennénk, hiszen ez a _maximum likelyhood_ eljárás. Ám, mivel z GM(X)=y teljesítő X-ek eloszlása megvan, ezért a P( X | Y = y ) adatokon és a Bayes-tételen keresztül a  
+Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X értékeket ad vissza a P(X) eloszlásból, akkor GM ki tudja számolni, milyen X-re áll fenn GM(X)=y a leggyakrabban, ami pont argmax<sub>x</sub>  P( X = x | Y = y ). Tulajdonképpen már készen is lennénk, hiszen ez a _maximum likelihood_ eljárás. Ám, mivel z GM(X)=y teljesítő X-ek eloszlása megvan, ezért a P( X | Y = y ) adatokon és a Bayes-tételen keresztül a  
 
 **posteriori eloszlás**, vagyis a P( Y = y | X ) is megvan, ennek mind várható értékével és szórásával. Ami sokkal több, mint pusztán egy maximumhely. 
 
-> A bayesiánus eljárás tehát a P(X)-nek megfelelő X-eket generálva, elkészíti azoknak az X-eknek az eloszlását, amire GM(X)=y és ebből gyárja le a P( Y = y | X ) poszteriort.
+> A bayesiánus eljárás tehát a P(X) priornak megfelelő X-eket generálva, elkészíti azoknak az X-eknek az eloszlását, amire GM(X)=y, ez a P( X | Y = y ) _likelihood_ és ebből gyárja le a P( Y = y | X ) _poszteriort_ a 
+> P( X | Y ) = P( Y | X ) P (X) / P(y) 
+> Bayest-tétel felhasználásával. Itt P(Y=y) konstans, ezért érvényes a P( X | Y=y ) α P( Y=y | X ) P (X) arányosság, ezért csak normálni kell P( Y=y | X ) P (X)-t. 
 
 ### Óvodások
 
@@ -169,30 +171,7 @@ A BDA elkezdéséhez két adósságunk van. 1. egy (paraméteres) generatív mod
 
 2. A prior eloszlás már határozatlanabb ügy, a legkevésbé okoskodó megoldás az, hogy p-t egy egyenletes eloszlásból származtatjuk, azaz véletlenszerűen adunk neki 0 és 1 között értéket. Ez lesz a _prior._
 
-* _poszteriori képlete:_
-
-Most folyamodunk a Bayes-tételhez, amire hajtunk, az a pszterior eloszlás (milyen paramétereloszlásból származhat az adat?)
-
-P( X | Y ) = P( Y | X ) P (X) / P(y) =  P( Y | X ) P (X) / P(Y),
-
-jelen esetben X = p az random paraméter, Y = 5, az adat:
-
-P( X=p | Y=5 ) = P( Y=5 | X=p ) P (X=p) / P(Y=5)
-
-P (X=p), vagyis a prior adott, P(Y=5) nem adott, de egy p-től független konstans. Vagyis az alábbi két p-től függő függvény egyenesen arányos lesz egymással:
-
-P( X=p | Y=5 ) α P( Y=5 | X=p ) P (X=p).
-
-* _likelyhood:_
-
-Már csak P( Y=5 | X=p )-re van szükségünk. Ezt így határozzuk meg: 
-
-
-
-
-
-
-
+* GM(X) = 5 rekurzívan generálódik
 
 ````javascript
 // observed data
@@ -225,18 +204,3 @@ var posterior = Infer(model);
 
 viz.marginals(posterior)
 ````
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
