@@ -152,7 +152,7 @@ Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X ért�
 **posteriori eloszlás**, vagyis a P( Y = y | X ) is megvan, ennek mind várható értékével és szórásával. Ami sokkal több, mint pusztán egy maximumhely. 
 
 > A bayesiánus eljárás tehát a P(X) priornak megfelelő X-eket generálva, elkészíti azoknak az X-eknek az eloszlását, amire GM(X)=y, ez a P( X | Y = y ) _likelihood_ és ebből gyárja le a P( Y = y | X ) _poszteriort_ a 
-> P( X | Y ) = P( Y | X ) P (X) / P(y) 
+> > P( X | Y ) = P( Y | X ) P (X) / P(y) 
 > Bayest-tétel felhasználásával. Itt P(Y=y) konstans, ezért érvényes a P( X | Y=y ) α P( Y=y | X ) P (X) arányosság, ezért csak normálni kell P( Y=y | X ) P (X)-t. 
 
 ### Óvodások
