@@ -63,6 +63,8 @@ Ill. a menőző (borzasztó, túl kompakt) jelöléssel:
 
 hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(X%3Dx_i)%20%3D%5Csum_j%20P(x_i%2Cy_j)"> a **marginális eloszlás.**
 
+**2.** Ellenőrizzük az előző feladatban, hogy mik a marginális eloszlások, ha az (X,Y) joint tére az hogy X = "az első kockával x_i-t dobunk", Y ="a második kockával y_j-t dobunk" és a P(X,Y) az az **eloszlás**, ami nulla, ha X és Y nem hatos, és egyenletes, ha van benne hatos. 
+
 
 
 
