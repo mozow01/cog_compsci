@@ -12,7 +12,7 @@ Ekkor leszűkítjük az elemi események terét a feltételre az A eseményt tel
 
 (P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
 
-**1.** Mi annak a valószínűsége, hogy három kockával dobva, az eredményben van hatos. Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy a van benne (egyáltalán) hatos.
+**1.** Mi annak a valószínűsége, hogy három kockával dobva, az eredményben van hatos. Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne (egyáltalán) hatos.
 
 ````javascript
 var kocka_modell = function () {
