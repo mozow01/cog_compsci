@@ -106,7 +106,77 @@ Ezoterikus jelöléssel pedig:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cboxed%7BP(%20X%5C%3B%7C%5C%3BY)%3D%5Cdfrac%7BP(%20Y%5C%3B%7C%5C%3BX)%5Ccdot%20P(X)%7D%7BP(Y)%7D%7D">
 
-Ezt nevezte Pierre-Simon de Laplace "inverz valószínségnek".
+Ezt nevezte Pierre-Simon de Laplace "inverz valószínségnek", mert a feltételes és a fordított feltételes valószínűséget kapcsolja össze egy formulával.
+
+### Bayesiánus bestiárium
+
+Akármennyire is furcsa, a legfontosabb fogalom a bayes-i analízisben a 
+
+**generatív modell**
+
+Ez lényegében egy algoritmus, ami nagy adatmennyiséget generál automatikusan, mégpedig azzal a céllal, hogy úgy viselkednej, mintha ők lennénak a valóságos világból nyert adatok:
+
+<img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7Bparameter%7D%20%5Cto%20%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%20%5Cto%20%5Cmathrm%7Bsok%7D%5C%3B%5Cmathrm%7Badatok%7D%20">
+
+Nem akármilyen céllal: pontosan egy ilyen generatív modell írná le, hogy a világban hogyan bukkannak fel mérhető mennyiségek. Gondoljunk bele: nem dobáltunk kockát, mégis képesek voltunk kockadobást szimulálni. Ezek a programok tehát most nem aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának.
+
+Most tehát megfordítjuk a problémát és megpróbálunk visszakövetkeztetni arra, hogy milyen paraméterértékekkel generálódhatott egy adott 
+
+**adatsokaság**
+
+A generatív modell még nem elég, mert kell egy ideális világleírás (eloszlássereg, mondjuk beta- vagy binomiális-eloszlás ), amiben gondolkodunk. Ennek a leírásnak a szóbajövő paraméreteit kell meghatároznunk, azaz most végül is konkrét elméletet választunk ki egy elméletsokaságból. Az előzetes, adatok néküli tudást hívjuk úgy, hogy 
+
+**prior**
+
+Szedjük össze ezt most formálisan! 
+
+1. Legyenek az X-ek az _elméleti paraméterek_.
+2. Ezek valószínűségi eloszlása, ahogy mi elképzeljük, a P(X) _marginális_: ez a prior.  
+4. A P( X | Y ) feltételes eloszlás azt írja le, hogyan szóródnak az X paraméterek, amennyiben tudjuk mi az Y adat. Ezt hívják _poszteriori_ eloszlásnak és erre hajtunk: azt szeretnénk tudni, hogy ha kimértük az Y adatokat, akkor milyen paramétereloszlás generálhatta ezt az Y adatot. 
+
+Gondoljunk bele! Ez nem semmi! 
+
+Arról van szó, hogy ha adott a generatív modell nevű algoritmus, az elméleti paramétereloszlás és az adatok, akkor mi a sok elméleti paraméter közül a modell fizikailag lehetséges paramétereloszlása.
+
+Lássuk hogy megy!
+
+### Óvodások
+
+Tudjuk, hogy az óvodások még nem feltétlenül tudnak különbséget tenni állat és növény között. Jó példa erre a pillangó. Elég magas kompetenciaszint egy kiscsoportostól, ha meg tudja mondani, hogy a pillangó növény vagy másféle élőlény. 20 óvodást kérdeztünk meg arról, hogy a pillangó állat-e. 5 óvodás szerint virág, a többiek szerint valami bogárkaféle...
+
+````javascript
+// observed data
+var k = 5 // number of people who support növény
+var n = 20  // number of people asked
+
+var model = function() {
+
+   // true population proportion who support növény
+   var p = uniform(0, 1);
+
+   // Observed k people support növény
+   // Assuming each person's response is independent of each other
+   observe(Binomial({p : p, n: n}), k);
+
+   // predict what the next n will say
+   var posteriorPredictive = binomial(p, n);
+
+   // recreate model structure, without observe
+   var prior_p = uniform(0, 1);
+   var priorPredictive = binomial(prior_p, n);
+
+   return {
+       prior: prior_p, priorPredictive : priorPredictive,
+       posterior : p, posteriorPredictive : posteriorPredictive
+    };
+}
+
+var posterior = Infer(model);
+
+viz.marginals(posterior)
+````
+
+
 
 
 
