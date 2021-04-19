@@ -115,41 +115,84 @@ Ezoterikus jelöléssel pedig:
 
 Ezt nevezte Pierre-Simon de Laplace "inverz valószínségnek", mert a feltételes és a fordított feltételes valószínűséget kapcsolja össze egy formulával.
 
-### Bayesiánus bestiárium
+**Megjegyzés.** Könnyen el lehet bánni a P(Y) marginálissal, hiszen ez direkt dolgoktól függ:
 
-Akármennyire is furcsa, a legfontosabb fogalom a bayes-i analízisben a 
+<img src="https://render.githubusercontent.com/render/math?math=P(Y)%3DP(Y%3Dy_j)%3D%5Csum_i%20P(x_i%2Cy_j)%3D%5Csum_i%20P(Y%3Dy_j%20%5C%3B%7C%5C%3BX%3Dx_i)%5Ccdot%20P(X%3Dx_i)%3D%5Csum_X%20P(Y%5C%3B%7C%5C%3BX)%5Ccdot%20P(X)">
+
+### Bayesiánus bestiárium
 
 **generatív modell**
 
-Ez lényegében egy algoritmus, ami nagy adatmennyiséget generál automatikusan, mégpedig azzal a céllal, hogy úgy viselkedjen, mintha ők lennének a valóságos világból nyert adatok:
+Ez egy GM algoritmus, ami nagy adatmennyiséget képes generálni automatikusan, mintha ő lenne a valóság, ami adatokat teremt:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7Bparameter%7D%20%5Cto%20%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%20%5Cto%20%5Cmathrm%7Bsok%7D%5C%3B%5Cmathrm%7Badatok%7D%20">
 
-Nem akármilyen céllal: ilyen generatív modell írná le, hogy a világban hogyan bukkannak fel mérhető mennyiségek. Gondoljunk bele: nem dobáltunk kockát, mégis képesek voltunk kockadobást szimulálni programmal. Ezek a programok tehát most nem pusztán aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának. Pont úgy, ahogy a pottyantó gép teszi, ami a binomiális eloszlást modellezi.
+Ilyennel már találkoztunk. Nem dobáltunk kockát, nem húztunk kártyát, a gép elvégezte helyettünk. Képesek voltunk kockadobást, laphúzást szimulálni programmal. Ezek algoritmusok, tehát, most nem pusztán aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának. Pont úgy, ahogy a pottyantó gép teszi, ami a binomiális eloszlást modellezi. A
 
-Most tehát megfordítjuk a problémát és megpróbálunk visszakövetkeztetni arra, milyen paraméterértékekkel generálódhatott egy adott 
+**bayesiánus következtetés:** (és ez a lényeg!) az, hogy megfordítjuk a következtetési láncot és megpróbálunk visszakövetkeztetni arra, hogy a generatív modell milyen bemenetével, a paramétertér milyen
 
-**adatsokaság**
+**paraméterértékeire** (legyen ez X) tud generálódni egy valóságosan mért (tehát nem szimulált) 
 
-A generatív modell még nem elég, mert kell egy ideális világleírás (eloszlássereg, mondjuk beta- vagy binomiális-eloszlás), amiben gondolkodunk. Ennek a leírásnak a szóbajövő paraméreteit kell meghatároznunk, azaz végül is konkrét elméletet választunk ki egy elméletsokaságból. Az előzetes, adatok néküli tudást hívjuk úgy, hogy 
+**adat** (ami az y).
 
-**prior**
+Az adat és a generatív modell még nem elég, mert a paraméterteret is be kell népesíteni paraméterértékekkel és ehhez valami előzetes tudásunknak kell, hogy legyen arról, hogy mit gondolunk erről a térről. Az előzetes, adatok nélküli feltételezett P(X) _marginális eloszlás,_ a  
 
-Szedjük össze ezt most formálisan! 
+**prior eloszlás**.
 
-1. Legyen X (vagy X-ek) az _elméleti paraméter_ értékei.
-2. Ezek valószínűségi eloszlása, ahogy mi elképzeljük, a P(X) _marginális_: ez a prior.  
-3. A P( X | Y ) feltételes eloszlás azt írja le, hogyan szóródik az X paraméter, amennyiben tudjuk mi az Y adat. Ezt hívják _poszteriori_ eloszlásnak, és éppen erre hajtunk: azt szeretnénk tudni, hogy ha kimértük az Y adatot, akkor milyen paramétereloszlás generálhatott egy ilyen Y-t. 
+Az általános P(X,Y) eloszlás, ami a
 
-Gondoljunk bele! Ez nem semmi! 
+**joint eloszlás**, minden Y-ra nem ismert, mert csak néhány Y mért adatot ismerünk (itt most y). 
 
-Arról van szó, hogy ha adott a generatív modell nevű algoritmus, az elméleti paramétereloszlás és az adat, akkor a sok elméleti paraméterérték közül meg tudjuk mondani a modell fizikailag lehetséges paramétereloszlását.
+Amit viszont éppen a GM általi generálhatóság miatt ismerni tudunk, az a P( y | X )
 
-Lássuk, hogy megy ez!
+**likelyhood** (ez a Bayes-tételben a másik szorzó). 
+
+Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X értékeket ad vissza a P(X) eloszlásból, akkor GM ki tudja számolni, milyen X-re áll fenn GM(X)=y a leggyakrabban, ami pont argmax<sub>x</sub>  P( X = x | Y = y ). Tulajdonképpen már készen is lennénk, hiszen ez a _maximum likelyhood_ eljárás. Ám, mivel z GM(X)=y teljesítő X-ek eloszlása megvan, ezért a P( X | Y = y ) adatokon és a Bayes-tételen keresztül a  
+
+**posteriori eloszlás**, vagyis a P( Y = y | X ) is megvan, ennek mind várható értékével és szórásával. Ami sokkal több, mint pusztán egy maximumhely. 
+
+> A bayesiánus eljárás tehát a P(X)-nek megfelelő X-eket generálva, elkészíti azoknak az X-eknek az eloszlását, amire GM(X)=y és ebből gyárja le a P( Y = y | X ) poszteriort.
 
 ### Óvodások
 
-Tudjuk, hogy az óvodások még nem feltétlenül tudnak különbséget tenni állat és növény között. Jó példa erre a pillangó. Elég magas kompetenciaszint egy kiscsoportostól, ha meg tudja mondani, hogy a pillangó növény vagy másféle élőlény. 20 óvodást kérdeztünk meg arról, hogy a pillangó állat-e. 5 óvodás szerint virág, a többiek szerint valami bogárkaféle...
+Tudjuk, hogy az óvodások még nem feltétlenül tudnak különbséget tenni állat és növény között. Jó példa erre a pillangó. Elég magas kompetenciaszint egy kiscsoportostól, ha meg tudja mondani, hogy a pillangó növény vagy másféle élőlény. 20 óvodást kérdeztünk meg arról, hogy a pillangó állat-e. 5 óvodás szerint virág, a többiek szerint valami bogárkaféle. Ismerve az adatot, mi annak az eloszlásnak a várható értéke és 5%-hoz tartozó konfidenciaintervalluma, amelyből ez az adat származhatott? 
+
+**Megoldás.**
+
+A BDA elkezdéséhez két adósságunk van. 1. egy (paraméteres) generatív modell, ami olyan adatokat képes szolgáltatni, amiket az óvodások válaszai tudnának lenni, 2. egy prior eloszlássereg, amiben p megjelenik.
+
+* _modellgyártás:_
+
+1. Nem nehéz megállapítani, hogy mi tud lenni az adatszimuláló algoritmus: _binomiális eloszlással_ van dolgunk, n=20 elemből kell kiválasztani véges sokat (akik virágnak nézik a pillangót), és ezt p valószínűséggel teszik. Ha például súly vagy magassági adat lenne, akkor valószínűleg normáleloszlást választanánk. Meg is van a _generatív modell:_
+
+<img src="https://render.githubusercontent.com/render/math?math=%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%5C%3B%3D%5C%3B%5Cboxed%7B%5Cmathrm%7Bbinomial(p%2C20)%7D%3A%5Cmathrm%7Brandom%7D%5C%3B%5Cmathrm%7Bmintavetel%7D%5Cto%20%5B%5Cbullet%2C%20%5Ccirc%2C%20%5Ccirc%2C%20%5Cbullet%2C%20...%2C%20%5Ccirc%5D%7D">
+
+2. A prior eloszlás már határozatlanabb ügy, a legkevésbé okoskodó megoldás az, hogy p-t egy egyenletes eloszlásból származtatjuk, azaz véletlenszerűen adunk neki 0 és 1 között értéket. Ez lesz a _prior._
+
+* _poszteriori képlete:_
+
+Most folyamodunk a Bayes-tételhez, amire hajtunk, az a pszterior eloszlás (milyen paramétereloszlásból származhat az adat?)
+
+P( X | Y ) = P( Y | X ) P (X) / P(y) =  P( Y | X ) P (X) / P(Y),
+
+jelen esetben X = p az random paraméter, Y = 5, az adat:
+
+P( X=p | Y=5 ) = P( Y=5 | X=p ) P (X=p) / P(Y=5)
+
+P (X=p), vagyis a prior adott, P(Y=5) nem adott, de egy p-től független konstans. Vagyis az alábbi két p-től függő függvény egyenesen arányos lesz egymással:
+
+P( X=p | Y=5 ) α P( Y=5 | X=p ) P (X=p).
+
+* _likelyhood:_
+
+Már csak P( Y=5 | X=p )-re van szükségünk. Ezt így határozzuk meg: 
+
+
+
+
+
+
+
 
 ````javascript
 // observed data
