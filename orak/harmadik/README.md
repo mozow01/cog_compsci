@@ -47,9 +47,9 @@ A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az é
 
 <img src="https://render.githubusercontent.com/render/math?math=P(A%5Ccap%20B)%3DP(B%7CA)%5Ccdot%20P(A)%5Cquad%20%5Cquad%20%5Cmathrm%7Bill.%7D%20%5Cquad%20%5Cquad%20P(B%5Ccap%20A)%3DP(A%7CB)%5Ccdot%20P(B)">
 
-### Joint eloszlások feltételes eloszlása
+### Feltételes eloszlás joint eloszlás esetén
 
-Joint esetén szokásos módon inkább egy új P(Y|X) joint eloszlást definiálnak és csak ezt hívják feltételes valószínűségnek. A kiszámítási formulája:
+Joint esetén, szokásos módon inkább egy új P( Y | X ) joint eloszlást definiálnak és csak ezt hívják feltételes valószínűségnek. A kiszámítási formulája:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(Y%3Dy_j%7CX%3Dx_i)%20%3D%20%5Cdfrac%7BP(Y%3Dy_j%5Cwedge%20X%3Dx_i)%7D%7BP(X%3Dx_i)%7D">
 
@@ -64,6 +64,26 @@ ill. a menőző (borzasztó, túl kompakt) jelöléssel:
 hiszen <img src="https://render.githubusercontent.com/render/math?math=P(X)%3DP(X%3Dx_i)%20%3D%5Csum_j%20P(x_i%2Cy_j)"> a **marginális eloszlás.**
 
 **2.** Ellenőrizzük az előző feladatban, hogy a marginális eloszlások tényleg azok, amiket a ````viz.marginals(eloszlas)```` parancs ad ki. Világos, hogy a "gép" szerint az (X,Y) joint tér az hogy X = "az első kockával x_i-t dobunk", Y ="a második kockával y_j-t dobunk" és a P(X,Y) az az **eloszlás**, ami nulla, ha X és Y nem hatos, és egyenletes, ha van benne hatos. 
+
+### Binomiális eloszlás, selejtformula
+
+Amikor a kártyapakliba nem tettük vissza kihúzott kártyalapokat, akkor visszatevés nélküli mintavételt alkalmaztunk. Lásd: _mi annak a valószínűsége, hogy 5 kátyából legalább az egyik treff!_
+
+Ha a populáció óriási és a minta pici, pl. egy egész ország népessége, kontra 20 fő, akkor a mintavételt tekinthetjük akár visszatevésesnek is, mert a 20 ember kiválasztásának hatása az arányokra nézve olyan, mint halottnak a csók. A visszavetés nélküli mintavételezés selejtformulája a binomiális eloszlás formulája.
+
+Tegyük fel, hogy egy bizonyos A tulajdonság (pl.: a Brexitre szavaztott-e/nem-e), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan **k** rendelkezik az A tulajdonsággal, 
+
+<img src="https://render.githubusercontent.com/render/math?math=P(X%3Dk)%3D%7Bn%20%5Cchoose%20k%7D%5Ccdot%20p%5Ek%5Ccdot%20(1-p)%5E%7Bn-k%7D">
+
+**3.** Számítsuk ki, hogy mi annak a valószínűsége, hogy 3 emberből legalább 1 bliccel a BKV-n, ha a magyarok jegyvásárlási hajlandósága 65%.
+
+````javascript
+var b = Binomial({p: 0.65, n: 3})
+print(b)
+viz(b)
+````
+
+
 
 
 
