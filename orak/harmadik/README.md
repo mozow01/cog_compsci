@@ -129,27 +129,27 @@ Ez egy GM algoritmus, ami nagy adatmennyiséget képes generálni automatikusan,
 
 Ilyennel már találkoztunk. Nem dobáltunk kockát, nem húztunk kártyát, a gép elvégezte helyettünk. Képesek voltunk kockadobást, laphúzást szimulálni programmal. Ezek algoritmusok, tehát, most nem pusztán aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának. Pont úgy, ahogy a pottyantó gép teszi, ami a binomiális eloszlást modellezi. A
 
-**bayesiánus következtetés:** (és ez a lényeg!) az, hogy megfordítjuk a következtetési láncot és megpróbálunk visszakövetkeztetni arra, hogy a generatív modell milyen bemenetével, a paramétertér milyen
+**bayesiánus következtetés:** (és ez a lényeg!) az, hogy megfordítjuk a következtetési láncot és megpróbálunk visszakövetkeztetni arra, hogy a generatív modell milyen bemenetével (legyen ez X), azaz a paramétertér milyen
 
-**paraméterértékeire** (legyen ez X) tud generálódni egy valóságosan mért (tehát nem szimulált) 
+**paraméterértékeire** tud generálódni egy valóságosan mért (tehát nem szimulált) 
 
-**adat** (ami az y).
+**adat** (legyen ez mondjuk y).
 
-Az adat és a generatív modell még nem elég, mert a paraméterteret is be kell népesíteni paraméterértékekkel és ehhez valami előzetes tudásunknak kell, hogy legyen arról, hogy mit gondolunk erről a térről. Az előzetes, adatok nélküli feltételezett P(X) _marginális eloszlás,_ a  
+Az adat és a generatív modell még nem elég, mert a paraméterteret is be kell népesíteni paraméterértékekkel és ehhez valami előzetes tudással kell rendelkeznünk arról, hogy mit gondolunk erről a térről. Ez az adatok nélkül feltételezett P(X) _marginális eloszlás,_ a  
 
 **prior eloszlás**.
 
 Az általános P(X,Y) eloszlás, ami a
 
-**joint eloszlás**, minden Y-ra nem ismert, mert csak néhány Y mért adatot ismerünk (itt most y). 
+**joint eloszlás**, minden Y-ra nem ismert, mert csak néhány Y mért adatot ismerünk (itt most y-t). 
 
-Amit viszont éppen a GM általi generálhatóság miatt ismerni tudunk, az a P( y | X )
+A P( y | X ) feltételes eloszlás, a 
 
-**likelihood** (ez a Bayes-tételben a másik szorzó). 
+**likelihood** (ez a Bayes-tételben a másik szorzó) viszont éppen amiatt _ismert,_ hogy GM generálja szimulált adatokat.  
 
-Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X értékeket ad vissza a P(X) eloszlásból, akkor GM ki tudja számolni, milyen X-re áll fenn GM(X)=y a leggyakrabban, ami pont argmax<sub>x</sub>  P( X = x | Y = y ). Tulajdonképpen már készen is lennénk, hiszen ez a _maximum likelihood_ eljárás. Ám, mivel z GM(X)=y teljesítő X-ek eloszlása megvan, ezért a P( X | Y = y ) adatokon és a Bayes-tételen keresztül a  
+Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X értékeket ad vissza a P(X) prior eloszlásból, akkor egyezerű számítással ellenőrizni tudjuk, hogy fenn GM(X)=y fenn áll-e egy adott X-re. A legnagyobb valószínűségű ilyen X pont az argmax<sub>x</sub>  P( X = x | Y = y ). És ezzel tulajdonképpen már készen is lennén (ez a _maximum likelihood_ eljárás). De, mivel a GM(X)=y egyenlőséget teljesítő X-ek eloszlása megvan, ezért a P( X | Y = y ) adatokon és a Bayes-tételen keresztül már a  
 
-**posteriori eloszlás**, vagyis a P( Y = y | X ) is megvan, ennek mind várható értékével és szórásával. Ami sokkal több, mint pusztán egy maximumhely. 
+**posteriori eloszlás**, vagyis a P( Y = y | X ) is rendelkezésünkre áll, ennek mind várható értékével és szórásával együtt. Ami sokkal több, mint pusztán egy maximumhely, amit a maximum likelihood ad vissza. 
 
 > A **bayesiánus eljárás** tehát 
 > 
@@ -168,7 +168,7 @@ Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X ért�
 > 
 > arányosság, ezért csak 
 > 
-> 4. normálni kell P( Y=y | X ) P (X)-t. 
+> 4. normálni kell P( Y=y | X ) P (X)-t és máris megvan a poszterior, ami tehát azt írja le, hogy milyen az azon fizikailag is paraméterértékek _eloszlása,_ amiből az adtat származhatott. 
 
 ### Óvodások
 
