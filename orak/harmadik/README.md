@@ -149,11 +149,11 @@ A **likelihood függvény** az
 
 <img src="https://render.githubusercontent.com/render/math?math=x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx)">
 
-függvény, rögzített y adatra. Világos, hogy ez nem ugyanaz, mint az 
+függvény, rögzített y adatra és arra használhatjuk, hogy a legjobb paraméterértéket meghatározhatjuk belőle. Világos, hogy ez nem ugyanaz, mint az 
 
 <img src="https://render.githubusercontent.com/render/math?math=y%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx)">
 
-rögzített x-re, ami egy eloszlás. A likelihood maximum feladat az 
+rögzített x-re, ami egy valószínűségi eloszlás és azt mondja meg, hogy milyen predikciót tudunk tenni az adatokra, ha a paraméter értéke x. A likelihood maximum feladat az 
 
 <img src="https://render.githubusercontent.com/render/math?math=x_m%3D%5Cmathrm%7Bargmax%7D(x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx))"> 
 
