@@ -145,13 +145,21 @@ Az adat és a generatív modell még nem elég, mert a paraméterteret is be kel
 
 Az általános P(X,Y) eloszlás általában nem ismert minden Y-ra, mert csak néhány Y mért adatot ismerünk (itt most y-t). 
 
-A **likelihood függvény** az x |---> P( Y = y | X = x )  függvény, rögzített y adatra. Világos, hogy ez nem ugyanaz, mint az y |---> P( Y = y | X = x ) rögzített x-re, ami egy eloszlás. A likelihood maximum feladat az 
+A **likelihood függvény** az 
 
-> x<sub>m</sub> = argmax<sub>x</sub> (x |---> P( Y = y | X = x )) 
+<img src="https://render.githubusercontent.com/render/math?math=x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx)">
 
-érték meghatározása, ami az a paraméterérték, amire a l.f. maximális. Ha megvan az ez az x<sub>m</sub>, akkor az y |---> P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
+függvény, rögzített y adatra. Világos, hogy ez nem ugyanaz, mint az 
 
-Vegyük észre, hogy a likelihood függvény kiszámítható az adatokból! Ha sokszor lefuttajuk az modellt és kidobjuk a GM(x) = y egyenletet nem teljesítő adatokat, akkor feltérképezhető megkereshető lesz az argmax argmax<sub>x</sub> (x |---> P( Y = y | X = x )).
+<img src="https://render.githubusercontent.com/render/math?math=y%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx)">
+
+rögzített x-re, ami egy eloszlás. A likelihood maximum feladat az 
+
+<img src="https://render.githubusercontent.com/render/math?math=x_m%3D%5Cmathrm%7Bargmax%7D(x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx))"> 
+
+érték meghatározása, ami az a paraméterérték, amire a l.f. maximális. Ha megvan ez az x<sub>m</sub>, akkor az y |---> P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
+
+Vegyük észre, hogy a likelihood függvény kiszámítható az adatokból! Ha sokszor lefuttatjuk a modellt és kidobjuk a GM(x) = y egyenletet nem teljesítő adatokat, akkor megkereshető lesz az argmax.
 
 A likelihood maximum módszer azonban semmit sem kezd a priorral, csak a generatív modellről mond valamit (bár arról elég sokat).
 
