@@ -125,9 +125,9 @@ Ezt nevezte Pierre-Simon de Laplace "inverz valószínségnek", mert a P(X|Y) fe
 
 ### Bayesiánus bestiárium
 
-**generatív modell**
+**Generatív modell:**
 
-Ez egy GM algoritmus, ami nagy adatmennyiséget képes generálni automatikusan, mintha ő lenne a valóság, ami adatokat teremt:
+Egy generatív modell olyan GM algoritmus, ami nagy adatmennyiséget képes algoritmikusan generálni. Az algoritmus bemenete a _paraméterek,_ kimenete a _szimulált adat._ Jellemzően pszeudo-random generátor is szerepel benne, amely úgy produkálja az adatokat, hogy azok nagy átlagban egy adott valószínűségi eloszlásnak megfelelőek legyenek. A generatív modell, tehát egy akármilyen bonyolultságú pszeudorandom-generátor program: 
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7Bparameter%7D%20%5Cto%20%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%20%5Cto%20%5Cmathrm%7Bsok%7D%5C%3B%5Cmathrm%7Badatok%7D%20">
 
