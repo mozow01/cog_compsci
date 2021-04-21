@@ -218,8 +218,8 @@ viz(poszterior);
 
 * Készen is volnánk. De vajon ezzel az új paramétereloszlással milyen lehetséges (fizikai) értékek jöhetnek ki (_predikatív poszterior_) és mik voltak a korábbi eloszlás szerinti értékek (_predikatív prior_), azaz milyen volt és milyen lett, az úgy lehetséges adatok eloszlása?
 
-````javascriptvar 
-model = function() {
+````javascript
+var model = function() {
   var p = uniform(0,1);
   observe(Binomial({p : p, n: 20}), 5);
   
@@ -240,7 +240,42 @@ var output =
 viz.marginals(output);
 ````
 
+### Óvodások, folytatás
+
+A maximum likelihood, csak a maximum helyét és értékét mondja meg. De most a teljes posterior eloszlás megvan, ezért ki tudjuk számítani az eloszlás várható értékét és a konfidencia intervallumot is, mondjuk 95%-ra:
+
 ````javascript
+//folyt.
+print(expectation(poszterior));
+expectation(poszterior,function(p){0.23<p && p<0.67})
+````
+
+A másik érdekesség, hogy a priort tekinthetjük variábilisnek, ilyenkor érdemes beta eloszlást választani.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--````javascript
 // mért adat:
 var k = 5 // azok száma, akik szerint a pillangó növény
 var n = 20  // osszes megkérdezett óvodás száma
@@ -270,4 +305,4 @@ var model = function() {
 var posterior = Infer(model);
 
 viz.marginals(posterior)
-````
+````-->
