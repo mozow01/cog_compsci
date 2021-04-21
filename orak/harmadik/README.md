@@ -186,20 +186,72 @@ A BDA elkezdéséhez két adósságunk van. 1. egy (paraméteres) generatív mod
 
 2. A prior eloszlás már határozatlanabb ügy, a legkevésbé okoskodó megoldás az, hogy p-t egy egyenletes eloszlásból származtatjuk, azaz véletlenszerűen adunk neki 0 és 1 között értéket. Ez lesz a _prior._
 
-* GM(X) = 5 rekurzívan generálódik
+* Hogyan generálunk p-t a priorból?
 
 ````javascript
-// observed data
-var k = 5 // number of people who support növény
-var n = 20  // number of people asked
+var prior_szerint_generalt_p = function() {
+  var p = uniform(0,1);   // p egy ilyen valószínűségi változó
+  return p;
+};
+
+var p_eloszlása = 
+    Infer({model: prior_szerint_generalt_p, samples: 1000, method: 'MCMC'});
+viz(p_eloszlása);
+````
+
+* Hogyan választjuk ki a GM(p) = 5 -nek megfelelő paramétereket és mi lesz ezek eloszlása, vagyis a poszterior eloszlás? 
+
+````javascript
+var posterior_p = function() {
+  var p = uniform(0,1);   // p egy ilyen valószínűségi változó
+  observe(Binomial({p : p, n: 20}), 5); // itt választódnak ki az adatnak megfelelő p-k
+  return p;
+};
+
+var poszterior = 
+    Infer({model: posterior_p, samples: 1000, method: 'MCMC'});
+    
+    //Itt végezzük el az eloszlás modellezését mintavételezéssel
+    
+viz(poszterior);
+````
+
+* Készen is volnánk. De vajon ezzel az új paramétereloszlással milyen lehetséges (fizikai) értékek jöhetnek ki (_predikatív poszterior_) és mik voltak a korábbi eloszlás szerinti értékek (_predikatív prior_), azaz milyen volt és milyen lett, az úgy lehetséges adatok eloszlása?
+
+````javascriptvar 
+model = function() {
+  var p = uniform(0,1);
+  observe(Binomial({p : p, n: 20}), 5);
+  
+
+var poszterior_predikativ = binomial(p,20); // ezzel az új p-vel a szimulált adatok
+
+
+var prior_p = uniform(0,1); // érintetlen paraméter
+
+var prior_predikativ = binomial(prior_p,20); // érintetlen paraméterből szimulált adatok
+
+return {prior: prior_p, priorPredictive : prior_predikativ,
+       posterior : p, posteriorPredictive : poszterior_predikativ};
+};
+
+var output = 
+    Infer({model: model, samples: 1000, method: 'rejection'});
+viz.marginals(output);
+````
+
+````javascript
+// mért adat:
+var k = 5 // azok száma, akik szerint a pillangó növény
+var n = 20  // osszes megkérdezett óvodás száma
 
 var model = function() {
+   // négy kimenetet: 
 
-   // true population proportion who support növény
+   // p: mintát vesz a (0,1)-ből egyenletesen:
    var p = uniform(0, 1);
-
-   // Observed k people support növény
-   // Assuming each person's response is independent of each other
+   
+   // ez a függvény azokat a p-ket adja vissza, amikre 
    observe(Binomial({p : p, n: n}), k);
 
    // predict what the next n will say
