@@ -6,7 +6,7 @@ A klasszikus valószínűségszámítási példákat jellemzően a rendezett n-e
 
 ### A feltételes valószínűség
 
-Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt teljesítő elemi részeseményekre, azaz innentől nem omega, hanem A az összes elemi események tere:
+Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt teljesítő elemi részeseményekre, azaz innentől nem Ω, hanem A az összes elemi események tere:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
 
@@ -14,7 +14,7 @@ Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt te
 
 **1.** 
 
-**a)** Mi annak a valószínűsége, hogy három kockával dobva, az eredményben van hatos. 
+**a)** Mi annak a valószínűsége, hogy két kockával dobva, az eredményben van hatos. 
 
 **b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
 
@@ -22,9 +22,8 @@ Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt te
 var kocka_modell = function () {
   var kocka1 = randomInteger(6) + 1;
   var kocka2 = randomInteger(6) + 1;
-  var kocka3 = randomInteger(6) + 1;
-  condition(kocka1 == 6 || (kocka2 == 6 || kocka3 === 6))
-  return [kocka1,kocka2,kocka3];
+  condition(kocka1 == 6 || kocka2 == 6)
+  return [kocka1,kocka2];
 }
 
 var eloszlas = Enumerate(kocka_modell);
@@ -32,20 +31,21 @@ var eloszlas = Enumerate(kocka_modell);
 // Ugyenez valószínűségi következtetéssel is kiszámítható
 // var következtetés = Infer({method: 'enumerate'}, kocka_modell);
 // Ugyanez minételezéssel: 
-// var következtetés = Infer({method: 'enumerate'}, kocka_modell);
-//print(következtetés);
-//viz.hist(következtetés);
+
+var következtetés = Infer({method: 'rejection'}, kocka_modell);
+print(következtetés);
+viz.auto(következtetés);
 
 print(eloszlas);
-viz.hist(eloszlas);
+viz.auto(eloszlas);
 ````
-Ellenőrzés, komplementer valószínűséggel: P(van hatos) = 1 - (5^3)/(6^3) ~ 0.4213 (= 91/216 ).
+Ellenőrzés, komplementer valószínűséggel: P(van hatos) = 1 - (5^2)/(6^2) ~ 0.3056 (= 11/36 ).
 
-Ezzel gyakorlatilag a feltételes valószínűséget is megértettük, így:
+Ezzel gyakorlatilag a **feltételes valószínűséget** is megértettük, így:
 
 * Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne (egyáltalán) hatos? 
 
-P(az első hatos | van a dobások köztött hatos) = 1/91 vagy ((1/216) / (1/91)).
+P(az első hatos | van a dobások között hatos) = 6/11 vagy ((6/36) / (11/36)).
 
 A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az értékét tudjuk, sőt, vannak olyan tárgyalások is (Rényi), amelyekben a feltételes valószínűség az alapfogalom. Éppen ezért a definíciót néha így írják (**szorzattörvénynek** nevezik) (a "törvény" szón persze a matematikusok nevetnek... :)
 
