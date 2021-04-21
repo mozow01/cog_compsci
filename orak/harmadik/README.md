@@ -127,44 +127,40 @@ Ezt nevezte Pierre-Simon de Laplace "inverz valószínségnek", mert a P(X|Y) fe
 
 **Generatív modell:**
 
-Egy generatív modell olyan GM algoritmus, ami nagy adatmennyiséget képes algoritmikusan generálni. Az algoritmus bemenete a _paraméterek,_ kimenete a _szimulált adat._ Jellemzően pszeudo-random generátor is szerepel benne, amely úgy produkálja az adatokat, hogy azok nagy átlagban egy adott valószínűségi eloszlásnak megfelelőek legyenek. A generatív modell, tehát egy akármilyen bonyolultságú pszeudorandom-generátor program: 
+Egy generatív modell olyan GM algoritmus, ami nagy adatmennyiséget képes algoritmikusan generálni. Az algoritmus bemenete a **paraméterek,** kimenete a **szimulált adat.** Jellemzően pszeudo-random generátor is szerepel benne, amely úgy produkálja az adatokat, hogy azok nagy átlagban egy adott valószínűségi eloszlásnak megfelelőek legyenek. A generatív modell, tehát egy akármilyen bonyolultságú pszeudorandom-generátor program: 
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7Bparameter%7D%20%5Cto%20%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%20%5Cto%20%5Cmathrm%7Bsok%7D%5C%3B%5Cmathrm%7Badatok%7D%20">
 
-Ilyennel már találkoztunk. Nem dobáltunk kockát, nem húztunk kártyát, a gép elvégezte helyettünk. Képesek voltunk kockadobást, laphúzást szimulálni programmal. Ezek algoritmusok, tehát, most nem pusztán aritmetikai műveleteket hajtanak végre, hanem véges, de sok olyan adatot produkálnak, amik olyanok, mintha egy adott valószínűségi eloszlásból származnának. Pont úgy, ahogy a pottyantó gép teszi, ami a binomiális eloszlást modellezi. A
+Ilyennel már találkoztunk. Nem dobáltunk kockát, nem húztunk kártyát, a gép elvégezte helyettünk. Képesek voltunk kockadobást, laphúzást szimulálni programmal.
 
-**bayesiánus következtetés:** (és ez a lényeg!) az, hogy megfordítjuk a következtetési láncot és megpróbálunk visszakövetkeztetni arra, hogy a generatív modell milyen bemenetével (legyen ez X), azaz a paramétertér milyen
+**Bayesiánus következtetés:** (lényeg!) Az előbbi program feladatát megfordítjuk: megpróbálunk visszakövetkeztetni arra, hogy egy valóságosan mért (tehát nem szimulált) y **adat** a generatív modell milyen X = x **paraméterértékeire** tud generálódni. 
 
-**paraméterértékeire** tud generálódni egy valóságosan mért (tehát nem szimulált) 
+**Joint eloszlást** kapunk, ha a paratméterek X és a (szimulált vagy prediktált) adatok Y terének szorzatán feltételezünk egy P(X,Y) valószínűségi eloszlást.
 
-**adat** (legyen ez mondjuk y).
+Az adat és a generatív modell még nem elég, mert a paraméterteret is be kell népesíteni paraméterértékekkel és ehhez valami előzetes tudással kell rendelkeznünk arról, hogy mit gondolunk ezek eloszlásáról. Ez a joint eloszlás egy marginális eloszlása, a P(X) **prior eloszlás**.
 
-Az adat és a generatív modell még nem elég, mert a paraméterteret is be kell népesíteni paraméterértékekkel és ehhez valami előzetes tudással kell rendelkeznünk arról, hogy mit gondolunk erről a térről. Ez az adatok nélkül feltételezett P(X) _marginális eloszlás,_ a  
+Az általános P(X,Y) eloszlás általában nem ismert minden Y-ra, mert csak néhány Y mért adatot ismerünk (itt most y-t). 
 
-**prior eloszlás**.
+A **likelihood függvény** az x |---> P( Y = y | X = x )  függvény, rögzített y adatra. Világos, hogy ez nem ugyanaz, mint az y |---> P( Y = y | X = x ) rögzített x-re, ami egy eloszlás. A likelihood maximum feladat az 
 
-Az általános P(X,Y) eloszlás, ami a
+> x<sub>m</sub> = argmax<sub>x</sub> (x |---> P( Y = y | X = x )) 
 
-**joint eloszlás**, minden Y-ra nem ismert, mert csak néhány Y mért adatot ismerünk (itt most y-t). 
+érték meghatározása, ami az a paraméterérték, amire a l.f. maximális. Ha megvan az ez az x<sub>m</sub>, akkor az y |---> P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
 
-A P( y | X ) feltételes eloszlás, a 
+Vegyük észre, hogy a likelihood függvény kiszámítható az adatokból! Ha sokszor lefuttajuk az modellt és kidobjuk a GM(x) = y egyenletet nem teljesítő adatokat, akkor feltérképezhető megkereshető lesz az argmax argmax<sub>x</sub> (x |---> P( Y = y | X = x )).
 
-**likelihood** (ez a Bayes-tételben a másik szorzó) viszont éppen amiatt _ismert,_ hogy GM generálja szimulált adatokat.  
+A likelihood maximum módszer azonban semmit sem kezd a priorral, csak a generatív modellről mond valamit (bár arról elég sokat).
 
-Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X értékeket ad vissza a P(X) prior eloszlásból, akkor egyezerű számítással ellenőrizni tudjuk, hogy fenn GM(X)=y fenn áll-e egy adott X-re. A legnagyobb valószínűségű ilyen X pont az argmax<sub>x</sub>  P( X = x | Y = y ). És ezzel tulajdonképpen már készen is lennén (ez a _maximum likelihood_ eljárás). De, mivel a GM(X)=y egyenlőséget teljesítő X-ek eloszlása megvan, ezért a P( X | Y = y ) adatokon és a Bayes-tételen keresztül már a  
-
-**posteriori eloszlás**, vagyis a P( Y = y | X ) is rendelkezésünkre áll, ennek mind várható értékével és szórásával együtt. Ami sokkal több, mint pusztán egy maximumhely, amit a maximum likelihood ad vissza. 
+A P( X | Y = y ) **posteriori eloszlás** viszont a P(X) prior élesítése a mért adatok alapján, ami a likelihood függvényből és a priorból a Bayes-tételen keresztül már kiszámítható  
 
 > A **bayesiánus eljárás** tehát 
 > 
 > 1. a P(X) priornak megfelelő X-eket generálva
 > 
-> 2. elkészíti azoknak az X-eknek az eloszlását, amire 
+> 2. elkészíti azoknak az X-eknek az eloszlását, amire
 > > GM(X) = y,
 > 
-> ez a P( X | Y = y ) _likelihood_ és 
-> 
-> 3. ebből gyárja le a P( Y = y | X ) _poszteriort_ az 
+> 3. ebből gyárja le a P( X | Y = y ) _poszteriort_ az 
 > > P( X | Y ) = P( Y | X ) P (X) / P(Y) 
 > 
 > Bayest-tétel felhasználásával. Itt P(Y=y) konstans, ezért érvényes a 
@@ -172,7 +168,7 @@ Ha ugyanis adott y, és GM mint algoritmus, továbbá egy eljárás, ami X ért�
 > 
 > arányosság, ezért csak 
 > 
-> 4. normálni kell P( Y=y | X ) P (X)-t és máris megvan a poszterior, ami tehát azt írja le, hogy milyen az azon fizikailag is paraméterértékek _eloszlása,_ amiből az adtat származhatott. 
+> 4. normálni kell az x |----> P( Y=y | X=x ) P (X=x)-t és máris megvan a poszterior, ami tehát azt írja le, hogy milyen az azon fizikailag is paraméterértékek _eloszlása,_ amiből az adtat származhatott. 
 
 ### Óvodások
 
@@ -180,15 +176,15 @@ Tudjuk, hogy az óvodások még nem feltétlenül tudnak különbséget tenni á
 
 **Megoldás.**
 
-A BDA elkezdéséhez két adósságunk van. 1. egy (paraméteres) generatív modell, ami olyan adatokat képes szolgáltatni, amiket az óvodások válaszai tudnának lenni, 2. egy prior eloszlássereg, amiben p megjelenik.
+A BDA elkezdéséhez kell: 1. egy generatív modell, 2. egy prior.
 
 * _modellgyártás:_
 
-1. Nem nehéz megállapítani, hogy mi tud lenni az adatszimuláló algoritmus: _binomiális eloszlással_ van dolgunk, n=20 elemből kell kiválasztani véges sokat (akik virágnak nézik a pillangót), és ezt p valószínűséggel teszik. Ha például súly vagy magassági adat lenne, akkor valószínűleg normáleloszlást választanánk. Meg is van a _generatív modell:_
+1. Az adatszimuláló algoritmus _binomiális eloszlással_ kell, hogy legyen: szimulálni akarjuk az óvodások válaszait robotovodásokkal: n=20 elemből kell kiválasztani véges sokat (akik virágnak nézik a pillangót), és ezt p valószínűséggel teszik. (Ha például súly vagy magassági adat lenne, akkor valószínűleg normáleloszlást választanánk.) 
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cboxed%7B%5Cmathrm%7Bprogram%7D%7D%5C%3B%3D%5C%3B%5Cboxed%7B%5Cmathrm%7Bbinomial(p%2C20)%7D%3A%5Cmathrm%7Brandom%7D%5C%3B%5Cmathrm%7Bmintavetel%7D%5Cto%20%5B%5Cbullet%2C%20%5Ccirc%2C%20%5Ccirc%2C%20%5Cbullet%2C%20...%2C%20%5Ccirc%5D%7D">
 
-2. A prior eloszlás már határozatlanabb ügy, a legkevésbé okoskodó megoldás az, hogy p-t egy egyenletes eloszlásból származtatjuk, azaz véletlenszerűen adunk neki 0 és 1 között értéket. Ez lesz a _prior._
+2. A prior határozatlanabb, az alapfeltevés, hogy p-t egy egyenletes eloszlásból származtatjuk, azaz véletlenszerűen adunk neki 0 és 1 között értéket. Ez lesz a _prior._
 
 * Hogyan generálunk p-t a priorból?
 
@@ -220,7 +216,7 @@ var poszterior =
 viz(poszterior);
 ````
 
-* Készen is volnánk. De vajon ezzel az új paramétereloszlással milyen lehetséges (fizikai) értékek jöhetnek ki (_predikatív poszterior_) és mik voltak a korábbi eloszlás szerinti értékek (_predikatív prior_), azaz milyen volt és milyen lett, az úgy lehetséges adatok eloszlása?
+* Készen is volnánk. De vajon ezzel az új paramétereloszlással milyen lehetséges (fizikai) értékek jöhetnek ki (_prediktív poszterior_) és mik voltak a korábbi eloszlás szerinti értékek (_prediktív prior_), azaz milyen volt és milyen lett, az úgy lehetséges adatok eloszlása?
 
 ````javascript
 var model = function() {
@@ -246,7 +242,7 @@ viz.marginals(output);
 
 ### Óvodások, folytatás
 
-A maximum likelihood, csak a maximum helyét és értékét mondja meg. De most a teljes posterior eloszlás megvan, ezért ki tudjuk számítani az eloszlás várható értékét és a konfidencia intervallumot is, mondjuk 95%-ra:
+A maximum likelihood, pusztán a legjobb paraméterértéket mondja meg. Most a teljes posterior eloszlás megvan, ezért ki tudjuk számítani az eloszlás várható értékét és a konfidencia intervallumot is, mondjuk 95%-ra:
 
 ````javascript
 //folyt.
@@ -255,58 +251,3 @@ expectation(poszterior,function(p){0.23<p && p<0.67})
 ````
 
 A másik érdekesség, hogy a priort tekinthetjük variábilisnek, ilyenkor érdemes beta eloszlást választani.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--````javascript
-// mért adat:
-var k = 5 // azok száma, akik szerint a pillangó növény
-var n = 20  // osszes megkérdezett óvodás száma
-
-var model = function() {
-   // négy kimenetet: 
-
-   // p: mintát vesz a (0,1)-ből egyenletesen:
-   var p = uniform(0, 1);
-   
-   // ez a függvény azokat a p-ket adja vissza, amikre 
-   observe(Binomial({p : p, n: n}), k);
-
-   // predict what the next n will say
-   var posteriorPredictive = binomial(p, n);
-
-   // recreate model structure, without observe
-   var prior_p = uniform(0, 1);
-   var priorPredictive = binomial(prior_p, n);
-
-   return {
-       prior: prior_p, priorPredictive : priorPredictive,
-       posterior : p, posteriorPredictive : posteriorPredictive
-    };
-}
-
-var posterior = Infer(model);
-
-viz.marginals(posterior)
-````-->
