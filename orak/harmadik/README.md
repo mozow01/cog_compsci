@@ -53,7 +53,11 @@ P(az első hatos | van a dobások között hatos) = 6/11 vagy ((6/36) / (11/36))
 
 ### Feltételes eloszlás joint eloszlás esetén
 
-A P(X,Y) := P(X = x<sub>i</sub> , Y = y<sub>j</sub>) := P(X = x<sub>i</sub> ∧ Y = y<sub>j</sub>) **joint eloszlás** esetén, a **feltételes valószínűség** gyakran a fenti egy speciális esete és így definiálják:
+A 
+
+<img src="https://render.githubusercontent.com/render/math?math=P(X%2CY)%3A%3DP(X%3Dx_i%2CY%3Dy_j)%3A%3DP(X%3Dx_i%5Cwedge%20Y%3Dy_j)">
+
+**joint eloszlás** esetén, a **feltételes valószínűség** gyakran a fenti egy speciális esete és így definiálják:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(X%7CY)%3A%3D%20P(X%3Dx_i%5Cmid%20Y%3Dy_i)">
 
