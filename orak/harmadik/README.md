@@ -149,15 +149,15 @@ A **likelihood függvény** az
 
 <img src="https://render.githubusercontent.com/render/math?math=x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx)">
 
-függvény, rögzített y adatra és arra használhatjuk, hogy a legjobb paraméterértéket meghatározhatjuk belőle. Világos, hogy ez nem ugyanaz, mint az 
+függvény, rögzített y adatra és arra használhatjuk, hogy a legjobb paraméterértéket meghatározzuk belőle. Világos, hogy ez nem ugyanaz, mint az 
 
 <img src="https://render.githubusercontent.com/render/math?math=y%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx)">
 
-rögzített x-re, ami egy valószínűségi eloszlás és azt mondja meg, hogy milyen predikciót tudunk tenni az adatokra, ha a paraméter értéke x. A likelihood maximum feladat az 
+rögzített x-re, ami egy valószínűségi eloszlás és azt mondja meg, hogy milyen predikciót tudunk tenni az adatokra, ha a paraméter értéke a rögzített x. A likelihood maximum feladat az 
 
 <img src="https://render.githubusercontent.com/render/math?math=x_m%3D%5Cmathrm%7Bargmax%7D(x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx))"> 
 
-érték meghatározása, ami az a paraméterérték, amire a l.f. maximális. Ha megvan ez az x<sub>m</sub>, akkor az y |---> P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
+érték meghatározása, ami az a paraméterérték, amire a likelihood függvény maximális. Ha megvan ez az x<sub>m</sub>, akkor az y |---> P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
 
 Vegyük észre, hogy a likelihood függvény kiszámítható az adatokból! Ha sokszor lefuttatjuk a modellt és kidobjuk a GM(x) = y egyenletet nem teljesítő adatokat, akkor megkereshető lesz az argmax.
 
