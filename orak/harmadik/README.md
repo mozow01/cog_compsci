@@ -157,7 +157,7 @@ rögzített x-re, ami egy valószínűségi eloszlás és azt mondja meg, hogy m
 
 <img src="https://render.githubusercontent.com/render/math?math=x_m%3D%5Cmathrm%7Bargmax%7D(x%5Cmapsto%20P(Y%3Dy%5Cmid%20X%3Dx))"> 
 
-érték meghatározása, ami az a paraméterérték, amire a likelihood függvény maximális. Ha megvan ez az x<sub>m</sub>, akkor az y |---> P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
+érték meghatározása, ami az a paraméterérték, amire a likelihood függvény maximális. Ha megvan ez az x<sub>m</sub>, akkor az y ↦ P( Y = y | X = x<sub>m</sub> ) függvény az adatokat prediktáló eloszlás. 
 
 Vegyük észre, hogy a likelihood függvény kiszámítható az adatokból! Ha sokszor lefuttatjuk a modellt és kidobjuk a GM(x) = y egyenletet nem teljesítő adatokat, akkor megkereshető lesz az argmax.
 
@@ -180,7 +180,7 @@ A P( X | Y = y ) **posteriori eloszlás** viszont a P(X) prior élesítése a m�
 > 
 > arányosság, ezért csak 
 > 
-> 4. normálni kell az x |----> P( Y=y | X=x ) P (X=x)-t és máris megvan a poszterior, ami tehát azt írja le, hogy milyen az azon fizikailag is paraméterértékek _eloszlása,_ amiből az adtat származhatott. 
+> 4. normálni kell az x ↦ P( Y=y | X=x ) P (X=x)-t és máris megvan a poszterior, ami tehát azt írja le, hogy milyen az azon fizikailag is paraméterértékek _eloszlása,_ amiből az adtat származhatott. 
 
 ### Óvodások
 
