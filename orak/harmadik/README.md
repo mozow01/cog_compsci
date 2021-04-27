@@ -184,7 +184,7 @@ A P( X | Y = y ) **posteriori eloszlás** viszont a P(X) prior élesítése a m�
 
 ### Óvodások
 
-Tudjuk, hogy az óvodások még nem feltétlenül tudnak különbséget tenni állat és növény között. Jó példa erre a pillangó. Elég magas kompetenciaszint egy kiscsoportostól, ha meg tudja mondani, hogy a pillangó növény vagy másféle élőlény. 20 óvodást kérdeztünk meg arról, hogy a pillangó állat-e. 5 óvodás szerint virág, a többiek szerint valami bogárkaféle. Ismerve az adatot, mi annak az eloszlásnak a várható értéke és 5%-hoz tartozó konfidenciaintervalluma, amelyből ez az adat származhatott? 
+Tudjuk, hogy az óvodások még nem feltétlenül tudnak különbséget tenni állat és növény között. Jó példa erre a pillangó. Elég magas kompetenciaszint egy kiscsoportostól, ha meg tudja mondani, hogy a pillangó növény vagy másféle élőlény. 20 óvodást kérdeztünk meg arról, hogy a pillangó állat-e. 5 óvodás szerint virág, a többiek szerint valami bogárkaféle. Ismerve az adatot, mi annak az eloszlásnak a várható értéke és 95%-hoz tartozó hihetőségi intervalluma (credible intervall), amelyből ez az adat származhatott? 
 
 **Megoldás.**
 
@@ -254,7 +254,7 @@ viz.marginals(output);
 
 ### Óvodások, folytatás
 
-A maximum likelihood, pusztán a legjobb paraméterértéket mondja meg. Most a teljes posterior eloszlás megvan, ezért ki tudjuk számítani az eloszlás várható értékét és a konfidencia intervallumot is, mondjuk 95%-ra:
+A maximum likelihood, pusztán a legjobb paraméterértéket mondja meg. Most a teljes posterior eloszlás megvan, ezért ki tudjuk számítani az eloszlás várható értékét és a kredibilitási intervallumot is, mondjuk 95%-ra:
 
 ````javascript
 //folyt.
