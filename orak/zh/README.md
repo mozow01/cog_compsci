@@ -49,11 +49,11 @@ print(eloszlas);
 viz.auto(eloszlas);
 ````
 
-a) Rajzoljuk fel a P(X) = P( X = x<sub>i</sub> ) = ∑<sub>j</sub>P( X = x<sub>i</sub> , Y = y<sub>j</sub> ) marginális eloszlást (vigyázat! ez nem lesz ugyanaz, mint a "marginals" paranccsal ad a webppl!).
+a) Rajzoljuk fel a P(X) = P( X = x<sub>i</sub> ) = ∑<sub>j</sub>P( X = x<sub>i</sub> , Y = y<sub>j</sub> ) marginális eloszlást (vigyázat! ez nem lesz ugyanaz, mint amit a "marginals" parancs ad a webppl!).
 
-b) Számoljuk ki, mint a P( X = 1 vagy X = 2 | Y = 1  ) feltételes valószínűséget!
+b) Számoljuk ki a P( X = 1 vagy X = 2 | Y = 1  ) feltételes valószínűséget!
 
-**3.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyire ízlett a 30 fős csoportnak. (mikor hiányzott valaki, akkor az óvónénik szavaztak helyettük). A három mérési adat: 25, 26, 28 ovisnak ízlett. 
+**3.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyire ízlett a 30 fős csoportnak (mikor hiányzott valaki, akkor az óvónénik szavaztak helyettük). A három mérési adat: 25, 26, 28 ovisnak ízlett. 
 
 a) Tervezzünk generatív modellt az óvodások válaszainak modellezésére. Dogmatikus beta priort feltételezzünk, amely kifejezi, hogy igen ínyükre van ez az étel! 
 
@@ -106,4 +106,5 @@ viz.auto(output);
 print(expectation(output));
 expectation(output,function(p){0.1<p && p<0.31})
 ````
-**4.** A szomszédos óvodába minden második nap a krisnások hordják az ételt, ezért az ottani gyerekek ismerik a tradicionális magyar konyhától eltérő ízvilágot is. A mérés szerint ott 30 óvodásból 15 szerette csak a "Nagyra nőjetek" rántotthúsát. Az M modell legyen az előző feladatbeli, az N modell pedig az, hogy akármilyen uniform p értékkel döntenek a szomszédos óvoda óvodásai. Mennyire (milyen szinten) magyarázza a megfigyelt értéket az N az M-hez képest (vagy fordítva)? Végezzünk Bayes-faktoros elemzést! (Erről lásd az negyedik valszám órát.)
+
+**4.** A szomszédos óvodába minden második nap a krisnások hordják az ételt, ezért az ottani gyerekek ismerik a tradicionális magyar konyhától eltérő ízvilágot. A mérés szerint ott 30 óvodásból 15 szerette csak a "Nagyra nőjetek" rántotthúsát. Az M modell legyen az előző feladatbeli, az N modell pedig az, hogy akármilyen uniform p értékkel döntenek a szomszédos óvoda óvodásai. Mennyire (milyen szinten) magyarázza a megfigyelt értéket az N az M-hez képest (vagy fordítva)? Végezzünk Bayes-faktoros elemzést! (Erről lásd az negyedik valszám órát.)
