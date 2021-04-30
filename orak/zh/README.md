@@ -2,9 +2,9 @@
 
 **1.** Az alábbi program azt a szituációt szimulálja, hogy 5 helyre 2 golyót rakunk le. Módosítsd úgy a programot, hogy 6 helyre 3 golyót rakjon le minden lehetséges módon!
 
-a) Ennek segítségével számítsd ki, hogy mi annak a valószínűsége, hogy ha 6 helyre 3 golyót rakunk le, akkor ebből pontosan kettő az első 4 helyen lesz! (A condition-t kell módosítani a "és" &&, "vagy" ||, illetve összegek segítségével, majd arányt számítani.)
+a) Ennek segítségével számítsd ki, hogy mi annak a valószínűsége, hogy ha 6 helyre 3 golyót rakunk le találomra, akkor ebből pontosan kettő az első 4 helyen lesz! (A condition-t kell módosítani az "és" &&, "vagy" ||, illetve összegek segítségével, majd arányt számítani.)
 
-b) Számítsd ki mi annak a valószínűsége, hogy ha 6 helyre 3 golyót lerakunk, akkor legalább kettő az első 4 helyen lesz!
+b) Számítsd ki mi annak a valószínűsége, hogy ha 6 helyre 3 golyót találomra lerakunk, akkor legalább kettő az első 4 helyen lesz!
 
 ````javascript
 var model = function () {
@@ -24,7 +24,7 @@ print(eloszlas);
 viz.hist(eloszlas);
 ````
 
-**2.** Francia kárlyapakliból kiválogatjuk a figurásokat (bubi, dáma, király, ász). Ez 16 lap. Kihúzunk visszatevés nélkül belőlük két lapot. Az alábbi program azokat az eseteket sorolja fel, amikor teljesül az A = "az egyik lap nem kőr vagy a másik lap nem király" esemény. Ezt tekintsük úgy, mint egy olyan P(X,Y) joint eloszlást, ahol a lyukas helyekhez tartozó valószínűség nulla, a többihez egyenletes.
+**2.** Francia kártyapakliból kiválogatjuk a figurásokat (bubi, dáma, király, ász). Ez 16 lap. Kihúzunk visszatevés nélkül belőlük két lapot. Az alábbi program azokat az eseteket sorolja fel, amikor teljesül az A = "az egyik lap nem kőr vagy a másik lap nem király" esemény. Ezt tekintsük úgy, mint egy olyan P(X,Y) joint eloszlást, ahol a lyukas helyekhez tartozó valószínűség nulla, a többihez egyenletes.
 
 ````javascript
 var kartya = function () {
@@ -53,7 +53,7 @@ a) Rajzoljuk fel a P(X) = P( X = x<sub>i</sub> ) = ∑<sub>j</sub>P( X = x<sub>i
 
 b) Számoljuk ki, mint a P( X = 1 vagy X = 2 | Y = 1  ) feltételes valószínűséget!
 
-**3.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyira ízlett a 30 fős (mikor hiányzott valaki, akkor az óvónénik szavaztak helyettük). A három mérési adat: 25, 26, 28 ovisnak ízlett. 
+**3.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyire ízlett a 30 fős csoportnak. (mikor hiányzott valaki, akkor az óvónénik szavaztak helyettük). A három mérési adat: 25, 26, 28 ovisnak ízlett. 
 
 a) Tervezzünk generatív modellt az óvodások válaszainak modellezésére. Dogmatikus beta priort feltételezzünk, amely kifejezi, hogy igen ínyükre van ez az étel! 
 
