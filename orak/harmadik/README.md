@@ -252,14 +252,4 @@ var output =
 viz.marginals(output);
 ````
 
-### Óvodások, folytatás
-
-A maximum likelihood, pusztán a legjobb paraméterértéket mondja meg. Most a teljes posterior eloszlás megvan, ezért ki tudjuk számítani az eloszlás várható értékét és a kredibilitási intervallumot is, mondjuk 95%-ra:
-
-````javascript
-//folyt.
-print(expectation(poszterior));
-expectation(poszterior,function(p){0.23<p && p<0.67})
-````
-
-A másik érdekesség, hogy a priort tekinthetjük variábilisnek, ilyenkor érdemes beta eloszlást választani.
+Érdemes hangsúlyozni, hogy a modell erősen igazodik az adott jelenséghez. Amikor óvódás valaszokat generálunk, akkor ezt annak a pontos tudatában tesszük, hogy a válaszok egy "sikesességi" (binomiális) mérés eredményei: virág vagy nem virág.  
