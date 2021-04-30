@@ -121,14 +121,15 @@ Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, h
 
 |K|Az M<sub>1</sub> melletti bizonyíték erőssége|
 |---|---|
-|... <1 | M<sub>1</sub> elvetendő|
+|... <1 | Negatív: M<sub>1</sub> elvetendő|
 |1< ... <10<sup>1/2</sup>=3.16|Említeni sem érdemes| 
 |10<sup>1/2</sup>< ... <10|Anekdotikus|
 |10< ... <10<sup>3/2</sup>=31.62|Erős|
 |10<sup>3/2</sup>< ... <100|Nagyon erős|
 |100< ... |Döntő|
 
+A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>)=0.0036 és P(17|M<sub>2</sub>)=0.1007. Innen P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)
 
-P(17|M<sub>1</sub>)=0.0036
+K = 27 > 10
 
-P(17|M<sub>1</sub>)=0.1007
+azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</sub> erősen elvetendő. Tehát az elitgimnáziumi érték nagyon nem vehető olyannak, ami egy véletlenül adódó átlagos gimnáziumi osztály eredménye lehetne.
