@@ -136,7 +136,7 @@ azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</
 
 * A fenti kérdés az absztrakt matematikai jelölések megértésére vonatkozott. Ugyanebben a mérésben a 24 átlagos gimnazista közül 11 mondta, hogy a "hagyományos" matekkal nem volt gondja. A 31 elitgimnazista között ez a szám 19. Mennyire tartható a M<sub>1</sub> (mutatis mutandis)?
 
-Ebben az esetben a legyen M<sub>1</sub> priorja beta(30,55), ami a 11/24 várható értéknek felel meg. Az adatok alapján:
+Ebben az esetben legyen M<sub>1</sub> priorja beta(30,55), ami a 11/24 várható értéknek felel meg. Az adatok alapján:
 
 P(19|M<sub>2</sub>)/P(19|M<sub>1</sub>) = 4.32
 
