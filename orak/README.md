@@ -121,15 +121,23 @@ Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, h
 
 |K|Az M<sub>1</sub> melletti bizonyíték erőssége|
 |---|---|
-|... <1 | Negatív: M<sub>1</sub> elvetendő|
-|1< ... <10<sup>1/2</sup>=3.16|Említeni sem érdemes| 
-|10<sup>1/2</sup>< ... <10|Anekdotikus|
-|10< ... <10<sup>3/2</sup>=31.62|Erős|
-|10<sup>3/2</sup>< ... <100|Nagyon erős|
-|100< ... |Döntő|
+|... < 1 | Negatív: M<sub>1</sub> elvetendő|
+|1 < ... < 10<sup>1/2</sup>=3.16|Anekdotikus (alig érdemes említeni)| 
+|10<sup>1/2</sup> < ... < 10|Gyenge|
+|10 < ... < 10<sup>3/2</sup>=31.62|Erős|
+|10<sup>3/2</sup> < ... < 100|Nagyon erős|
+|100 < ... |Döntő|
 
 A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>)=0.0036 és P(17|M<sub>2</sub>)=0.1007. Innen P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)
 
 K = 27 > 10
 
 azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</sub> erősen elvetendő. Tehát az elitgimnáziumi érték nagyon nem vehető olyannak, ami egy véletlenül adódó átlagos gimnáziumi osztály eredménye lehetne.
+
+* A fenti kérdés az absztrakt matematikai jelölések megértésére vonatkozott. Ugyanebben a mérésben a 24 átlagos gimnazista közül 11 mondta, hogy a "hagyományos" matekkal nem volt gondja. A 31 elitgimnazista között ez a szám 19. Mennyire tartható a M<sub>1</sub> (mutatis mutandis)?
+
+Ebben az esetben a legyen M<sub>1</sub> priorja beta(30,55), ami a 11/24 várható értéknek felel meg. Az adatok alapján:
+
+P(19|M<sub>2</sub>)/P(19|M<sub>1</sub>) = 4.32
+
+azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak elég gyengén, a 3.16 < K < 10. Különbség tehát kimutatható, de már messze nem olyan erősen, mint az előbb.
