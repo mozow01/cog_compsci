@@ -51,7 +51,7 @@ viz.auto(eloszlas);
 
 a) Rajzoljuk fel a P(X) = P( X = x<sub>i</sub> ) = ∑<sub>j</sub>P( X = x<sub>i</sub> , Y = y<sub>j</sub> ) marginális eloszlást (vigyázat! ez nem lesz ugyanaz, mint amit a "marginals" parancs ad a webppl!).
 
-b) Számoljuk ki a P( X = 1 vagy X = 2 | Y = 1  ) feltételes valószínűséget!
+b) Számoljuk ki a P( X = treff király vagy X = treff ász | Y = pikk dáma ) feltételes valószínűséget!
 
 **3.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyire ízlett a 30 fős ovis csoportnak (mikor hiányzott valaki, akkor az óvónénik szavaztak helyettük). A három mérési adat: 25, 26, 28 ovisnak ízlett. 
 
