@@ -236,15 +236,15 @@ var model = function() {
   observe(Binomial({p : p, n: 20}), 5);
   
 
-var poszterior_predikativ = binomial(p,20); // ezzel az új p-vel a szimulált adatok
+var poszterior_prediktiv = binomial(p,20); // ezzel az új p-vel a szimulált adatok
 
 
 var prior_p = uniform(0,1); // érintetlen paraméter
 
-var prior_predikativ = binomial(prior_p,20); // érintetlen paraméterből szimulált adatok
+var prior_prediktiv = binomial(prior_p,20); // érintetlen paraméterből szimulált adatok
 
-return {prior: prior_p, priorPredictive : prior_predikativ,
-       posterior : p, posteriorPredictive : poszterior_predikativ};
+return {prior: prior_p, priorPredictive : prior_prediktiv,
+       posterior : p, posteriorPredictive : poszterior_prediktiv};
 };
 
 var output = 
