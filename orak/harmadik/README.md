@@ -83,7 +83,7 @@ Amikor a kártyapakliba nem tettük vissza a kihúzott kártyalapokat, akkor vis
 
 Ha a populáció óriási a mintához képest, pl. egy egész ország népessége, kontra 20 fő, akkor a mintavételt tekinthetjük akár visszatevésesnek is, mert a 20 ember kiválasztásának hatása az arányokra nézve olyan, mint halottnak a csók. A visszavetés nélküli mintavételezés selejtformulája a binomiális eloszlás formulája.
 
-* Tegyük fel, hogy egy bizonyos _A_ tulajdonság (pl.: Brexitre szavazott-e/nem-e), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan k  rendelkezik az _A_ tulajdonsággal, 
+* Tegyük fel, hogy egy bizonyos _A_ tulajdonság (pl.: "Brexitre szavazott-e/nem-e"), az adott populációban p valszínűséggel teljesül egy emberre. Ekkor annak a valószínűsége, hogy n kiválasztott személyből pontosan k  rendelkezik az _A_ tulajdonsággal, 
 
 <img src="https://render.githubusercontent.com/render/math?math=P(X%3Dk)%3D%7Bn%20%5Cchoose%20k%7D%5Ccdot%20p%5Ek%5Ccdot%20(1-p)%5E%7Bn-k%7D">
 
@@ -121,7 +121,7 @@ Ezoterikus jelöléssel pedig:
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cboxed%7BP(%20X%5C%3B%7C%5C%3BY)%3D%5Cdfrac%7BP(%20Y%5C%3B%7C%5C%3BX)%5Ccdot%20P(X)%7D%7BP(Y)%7D%7D">
 
-Ezt nevezte Pierre-Simon de Laplace "inverz valószínségnek", mert a P(X|Y) feltételes és a fordított feltételes P(Y|X) valószínűséget kapcsolja össze egyetlen formulával.
+Ezt nevezte Pierre-Simon de Laplace "inverz valószínűségnek", mert a P(X|Y) feltételes és a "fordított" feltételes P(Y|X) valószínűséget kapcsolja össze egyetlen formulával.
 
 **Megjegyzés.** Könnyen el lehet bánni a P(Y) marginálissal, hiszen ez direkt dolgoktól függ:
 
