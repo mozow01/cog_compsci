@@ -83,7 +83,7 @@ var simpleModel = function() {
 
 var complexModel = function() {
   
-  var epsilon = uniform(0,0.3);
+  var epsilon = uniform(0,0.3); // HyperPrior
   
   var m = gaussian(16,epsilon);
   
@@ -96,6 +96,7 @@ var complexModel = function() {
   return {
            Prior: Prior, 
            Posterior: m,
+           PosteriorEps: epsilon,
            PosteriorPredictive: PredictivePosterior};
 }
 
