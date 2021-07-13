@@ -89,7 +89,9 @@ var complexModel = function() {
   
   map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
-  var Prior = gaussian(16,0.3);
+  var HyperPrior = uniform(0,0.3);
+  
+  var Prior = gaussian(16,HyperPrior);
   
   var PredictivePosterior = gaussian(m,1);
   
