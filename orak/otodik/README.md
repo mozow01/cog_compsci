@@ -56,3 +56,53 @@ viz.marginals(output_1)
 
 viz.marginals(output_2)
 ````
+## Aranyhal
+
+````javascript
+var simpleModel = function() {
+  
+  var m = uniform(5,17);
+   
+   observe(Gaussian({mu : m, sigma: 1}), 5);
+   observe(Gaussian({mu : m, sigma: 1}), 16);
+   observe(Gaussian({mu : m, sigma: 1}), 17);
+  
+  var Prior = uniform(5,17);
+  
+  var PredictivePosterior = gaussian(m,1);
+  
+  return {
+          Prior: Prior, 
+          Posterior: m,
+          PosteriorPredictive: PredictivePosterior
+         };
+}
+
+var complexModel = function() {
+  
+  var m = gaussian(16,0.3);
+  
+   observe(Gaussian({mu : m, sigma: 1}), 5);
+   observe(Gaussian({mu : m, sigma: 1}), 16);
+   observe(Gaussian({mu : m, sigma: 1}), 17);
+  
+  var Prior = gaussian(16,0.3);
+  
+  var PredictivePosterior = gaussian(m,1);
+  
+  return {
+           Prior: Prior, 
+           Posterior: m,
+           PosteriorPredictive: PredictivePosterior};
+}
+
+var opts = {method: 'SMC', particles: 1000, rejuvSteps: 5}
+
+var output_1 = Infer(opts, simpleModel)
+
+var output_2 = Infer(opts, complexModel)
+
+viz.marginals(output_1)
+
+viz.marginals(output_2)
+````
