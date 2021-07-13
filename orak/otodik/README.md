@@ -1,6 +1,6 @@
 # Példák 
 
-## Különböző óvodás csoportok
+## Binomiális kísérlet; különböző méretű óvodás csoportokra
 
 ````javascript
 var data = [{name: 'napocskas', n:20, k:5},
