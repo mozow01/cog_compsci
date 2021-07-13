@@ -59,13 +59,16 @@ viz.marginals(output_2)
 ## Aranyhal
 
 ````javascript
+var data = [{k: 5},
+            {k: 16},
+            {k: 17}
+           ]
+
 var simpleModel = function() {
   
   var m = uniform(5,17);
    
-   observe(Gaussian({mu : m, sigma: 1}), 5);
-   observe(Gaussian({mu : m, sigma: 1}), 16);
-   observe(Gaussian({mu : m, sigma: 1}), 17);
+  map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
   var Prior = uniform(5,17);
   
@@ -82,9 +85,7 @@ var complexModel = function() {
   
   var m = gaussian(16,0.3);
   
-   observe(Gaussian({mu : m, sigma: 1}), 5);
-   observe(Gaussian({mu : m, sigma: 1}), 16);
-   observe(Gaussian({mu : m, sigma: 1}), 17);
+   map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
   var Prior = gaussian(16,0.3);
   
