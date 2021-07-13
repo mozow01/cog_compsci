@@ -83,9 +83,11 @@ var simpleModel = function() {
 
 var complexModel = function() {
   
-  var m = gaussian(16,0.3);
+  var epsilon = uniform(0,0.3);
   
-   map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
+  var m = gaussian(16,epsilon);
+  
+  map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
   var Prior = gaussian(16,0.3);
   
