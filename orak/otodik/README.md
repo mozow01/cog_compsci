@@ -2,6 +2,8 @@
 
 ## Binomiális kísérlet; különböző méretű óvodás csoportokra
 
+Három csoportban kérdezték meg, hogy a pillangó virág-e, a mért változó értékei a data változó alatt találhatók. A két modellben a priorok a non-informative és a dogmatikus volt. 
+
 ````javascript
 var data = [{name: 'napocskas', n:20, k:5},
             {name: 'holdacskas', n:23, k:8},
@@ -57,6 +59,8 @@ viz.marginals(output_1)
 viz.marginals(output_2)
 ````
 ## Aranyhal
+
+Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g) vagy priorból dolgozzunk-e. Tudjuk, hogy ezen halfajta súlyának átlaga 16 ± 0.3 g, és a normál elszolása szórása 1 közeli. 
 
 ````javascript
 var data = [{k: 5},
