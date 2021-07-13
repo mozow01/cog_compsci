@@ -16,6 +16,8 @@ var simpleModel = function() {
   
   var prior = uniform(0,1);
   
+  // 20 fős csoportokra normálva
+  
   var predictivePosterior = binomial({p: p, n: 20});
   
   var predictivePrior = binomial({p: prior, n: 20});
