@@ -60,17 +60,13 @@ viz.marginals(output_2)
 ````
 ## Aranyhal
 
-Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet, ha több, akkor kevesebbet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g, voltaképpen non-informatív prior) vagy (informatív) priorból dolgozzunk-e. Tudjuk, hogy ezen halfajta súlya normál eloszlást mutat, az átlaga 16 g, ennek az adatnak a szórása 0.2 g ± 0.05 g, továbbá a normál elszolás szórása. 
+Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet, ha több, akkor kevesebbet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g) vagy (informatív) priorból dolgozzunk-e. A komplexebb megközelítéshez tudjuk, hogy ezen halfajta súlya normál eloszlást mutat, az átlaga 16 g, ennek az adatnak a szórása 0.2 g ± 0.05 g, továbbá a normál elszolás szórása. 
 
 ### Megoldás. 
 
 Ha a prior uniform: 
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gaussunif_1.png" width=500>
-
-És egy hülye hierarchikus modell:
-
-
 
 ````javascript
 var data = [{k: 5},
@@ -94,6 +90,23 @@ var simpleModel = function() {
           PosteriorPredictive: PredictivePosterior
          };
 }
+
+var output_1 = Infer(opts, simpleModel)
+
+viz.marginals(output_1)
+````
+
+És egy hülye hierarchikus modell:
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gausshier.png" width=500>
+
+
+
+````javascript
+var data = [{k: 5},
+            {k: 16},
+            {k: 17},
+           ]
 
 var complexModel = function() {
   
@@ -123,11 +136,7 @@ var complexModel = function() {
 
 var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
 
-var output_1 = Infer(opts, simpleModel)
-
 var output_2 = Infer(opts, complexModel)
-
-viz.marginals(output_1)
 
 viz.marginals(output_2)
 ````
