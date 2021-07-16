@@ -95,6 +95,7 @@ var output_1 = Infer(opts, simpleModel)
 
 viz.marginals(output_1)
 ````
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/260332.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/3777e1svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/7e1f19.svg" width=200>
 
 És egy hülye hierarchikus modell:
 
