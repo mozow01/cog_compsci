@@ -64,7 +64,7 @@ Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, 
 
 ### Megoldás. 
 
-Ha a prior uniform: 
+#### Ha a prior uniform: 
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gaussunif_1.png" width=500>
 
@@ -97,10 +97,9 @@ viz.marginals(output_1)
 ````
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/260332.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/3777e1.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/7e1f19.svg" width=200>
 
-És egy hülye hierarchikus modell:
+#### És egy hülye hierarchikus modell:
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gausshier.png" width=500>
-
 
 
 ````javascript
@@ -141,3 +140,9 @@ var output_2 = Infer(opts, complexModel)
 
 viz.marginals(output_2)
 ````
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/260332.svg" width=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/3777e1.svg" width=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/7e1f19.svg" width=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/3777e1.svg" width=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/7e1f19.svg" width=200>
