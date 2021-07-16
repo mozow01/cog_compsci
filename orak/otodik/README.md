@@ -65,16 +65,16 @@ Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, 
 ````javascript
 var data = [{k: 5},
             {k: 16},
-            {k: 17}
+            {k: 17},
            ]
 
 var simpleModel = function() {
   
-  var m = uniform(5,17);
+  var m = uniform(4,18);
    
   map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
-  var Prior = uniform(5,17);
+  var Prior = uniform(4,18);
   
   var PredictivePosterior = gaussian(m,1);
   
@@ -87,26 +87,31 @@ var simpleModel = function() {
 
 var complexModel = function() {
   
-  var epsilon = uniform(0,0.3); // HyperPrior
+   // hiperprior
   
-  var m = gaussian(16,epsilon);
+  var epsilon = gaussian(0.2,0.05);
+
+  // prior
+  
+  var m = epsilon > 0 ? gaussian(16,epsilon) : gaussian(16,0.2);
   
   map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
-  var HyperPrior = uniform(0,0.3);
+  var HyperPrior = gaussian(0.2,0.05);
   
   var Prior = gaussian(16,HyperPrior);
   
   var PredictivePosterior = gaussian(m,1);
   
   return {
+           HyperPrior: HyperPrior,
            Prior: Prior, 
            Posterior: m,
-           PosteriorEps: epsilon,
+           Posterior_eps: epsilon,
            PosteriorPredictive: PredictivePosterior};
 }
 
-var opts = {method: 'SMC', particles: 1000, rejuvSteps: 5}
+var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
 
 var output_1 = Infer(opts, simpleModel)
 
