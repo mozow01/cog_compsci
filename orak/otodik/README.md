@@ -66,7 +66,7 @@ Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, 
 
 Ha a prior uniform: 
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gaussunif_1.png" width=1000>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gaussunif_1.png" width=500>
 
 És egy hülye hierarchikus modell:
 
