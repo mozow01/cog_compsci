@@ -62,6 +62,8 @@ var complexModel = function() {
   
   var prior = beta(30,90);
   
+    // 20 fős csoportokra normálva
+  
   var predictivePosterior = binomial({p: p, n: 20});
   
   var predictivePrior = binomial({p: prior, n: 20});
