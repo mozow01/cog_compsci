@@ -66,6 +66,8 @@ Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, 
 
 Ha a prior uniform: 
 
+<img src="orak/files/gaussunif_1.png" class="img-responsive" alt="">
+
 
 
 ````javascript
