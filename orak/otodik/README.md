@@ -68,6 +68,8 @@ Ha a prior uniform:
 
 ![](https://github.com/mozow01/cog_compsci/blob/main/orak/files/gaussunif_1.png)
 
+És egy hülye hierarchikus modell:
+
 
 
 ````javascript
