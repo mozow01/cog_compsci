@@ -41,6 +41,8 @@ var output_1 = Infer(opts, simpleModel)
 viz.marginals(output_1)
 ````
 
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/1559f8.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/30810f.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/bab66f.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/d0c66b.svg" width=200>
+
 ### Beta prior
 
 
