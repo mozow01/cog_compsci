@@ -60,7 +60,13 @@ viz.marginals(output_2)
 ````
 ## Aranyhal
 
-Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g) vagy priorból dolgozzunk-e. Tudjuk, hogy ezen halfajta súlyának átlaga 16 ± 0.3 g, és a normál elszolása szórása 1 közeli. 
+Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet, ha több, akkor kevesebbet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g, voltaképpen non-informatív prior) vagy (informatív) priorból dolgozzunk-e. Tudjuk, hogy ezen halfajta súlya normál eloszlást mutat, az átlaga 16 g, ennek az adatnak a szórása 0.2 g ± 0.05 g, továbbá a normál elszolás szórása. 
+
+### Megoldás. 
+
+Ha a prior uniform: 
+
+
 
 ````javascript
 var data = [{k: 5},
