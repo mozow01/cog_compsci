@@ -91,6 +91,8 @@ var simpleModel = function() {
          };
 }
 
+var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
+
 var output_1 = Infer(opts, simpleModel)
 
 viz.marginals(output_1)
