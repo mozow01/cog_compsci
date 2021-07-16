@@ -141,4 +141,4 @@ var output_2 = Infer(opts, complexModel)
 viz.marginals(output_2)
 ````
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/8ce04e.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ce5dab.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/5a2b3e.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/8f051c.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/2db665.svg" width=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/2db665.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/8f051c.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/5a2b3e.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ce5dab.svg" width=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/8ce04e.svg" width=200>
