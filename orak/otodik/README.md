@@ -4,6 +4,10 @@
 
 Három csoportban kérdezték meg, hogy a pillangó virág-e, a mért változó értékei a data változó alatt találhatók. A két modellben a priorok a non-informative és a dogmatikus volt. 
 
+### Egyenletes prior
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/binom_1.png" width=500>
+
 ````javascript
 var data = [{name: 'napocskas', n:20, k:5},
             {name: 'holdacskas', n:23, k:8},
@@ -30,6 +34,24 @@ var simpleModel = function() {
           PredictivePosterior: predictivePosterior};
 }
 
+var opts = {method: 'MCMC', samples: 20000}
+
+var output_1 = Infer(opts, simpleModel)
+
+viz.marginals(output_1)
+````
+
+### Beta prior
+
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/binom_2.png" width=500>
+
+````javascript
+var data = [{name: 'napocskas', n:20, k:5},
+            {name: 'holdacskas', n:23, k:8},
+            {name: 'napraforgo', n:19, k:17},
+           ]
+
 var complexModel = function() {
   
   var p = beta(30,90);
@@ -50,11 +72,7 @@ var complexModel = function() {
 
 var opts = {method: 'MCMC', samples: 20000}
 
-var output_1 = Infer(opts, simpleModel)
-
 var output_2 = Infer(opts, complexModel)
-
-viz.marginals(output_1)
 
 viz.marginals(output_2)
 ````
