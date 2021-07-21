@@ -39,6 +39,10 @@ var multiModel = function() {
 
     var vector = Vector([4,6,4,2]);
     
+    //[6, 13, 44, 73]
+    
+    //[8, 10, 4, 4]
+    
     var x = dirichlet(vector);
 
     var x1 = (x.data)[0];
@@ -69,3 +73,5 @@ var opts = {method: 'MCMC', samples: 10000}
 var output_1 = Infer(opts,multiModel)
 
 ````
+
+ketevi_2.png
