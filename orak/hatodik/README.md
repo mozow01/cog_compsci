@@ -77,4 +77,39 @@ var output_1 = Infer(opts,multiModel)
 
 ````
 
+## Adattér kategorikus és multinomiális esetén
+
+````javascript
+var cat1 = Infer({method: 'enumerate'}, function(){
+  
+    //var Probs = dirichlet(Vector([2, 3, 1, 1, 1]))
+    return categorical({vs: ['2-es', '3-as', '4-es', '5-ös'], 
+                        ps: [0.2756,  0.3516, 0.2076, 0.1663]})
+  })
+
+viz.auto(cat1, {xLabel: 'poszterior; B prior', yLabel: 'gyakoriság'});
+````
+
+````javascript
+var cat1 = Infer({method: 'enumerate'}, function(){
+  
+    return multinomial({ ps: [0.2,  0.1, 0.4, 0.25, 0.05], n: 1})
+  })
+
+
+viz.hist(cat1, {xLabel: 'esetek', yLabel: 'valószínűség'});
+  
+````
+````javascript
+var cat1 = Infer({method: 'enumerate'}, function(){
+  
+    return multinomial({ ps: [0.2,  0.1, 0.7], n: 3})
+  })
+
+
+viz.hist(cat1, {xLabel: 'esetek', yLabel: 'valószínűség'});
+````
+
+  
+
 
