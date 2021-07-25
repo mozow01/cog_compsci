@@ -166,8 +166,4 @@ var output_2 = Infer(opts, complexModel)
 viz.marginals(output_2)
 ````
 
-28c592.jpg
-8628b1.jpg
-1f1af8.jpg
-
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/8628b1.jpg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/28c592.jpg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/1f1af8.jpg" height=200>
