@@ -125,9 +125,9 @@ viz.marginals(output_1)
 ````
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/260332.svg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/3777e1.svg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/7e1f19.svg" height=200>
 
-#### És egy hülye hierarchikus modell:
+#### Komplexebb modell:
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gausshier.png" width=500>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/gauss_dogm.png" width=500>
 
 
 ````javascript
