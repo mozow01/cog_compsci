@@ -86,7 +86,7 @@ viz.marginals(output_2)
 
 ## Aranyhal
 
-Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet, ha több, akkor kevesebbet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g) vagy (informatív) priorból dolgozzunk-e. A komplexebb megközelítéshez tudjuk, hogy ezen halfajta súlya normál eloszlást mutat, az átlaga 16 g, ennek az adatnak a szórása 0.2 g ± 0.05 g, továbbá a normál elszolás szórása. 
+Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet, ha több, akkor kevesebbet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g) vagy (informatív) priorból dolgozzunk-e. A komplexebb megközelítéshez tudjuk, hogy ezen halfajta súlya (x) normál eloszlást mutat, az átlaga 16 g, ennek az adatnak a szórása 0.2 g, továbbá az x normál elszolásának szórása 1 g. 
 
 ### Megoldás. 
 
@@ -138,28 +138,25 @@ var data = [{k: 5},
 
 var complexModel = function() {
   
-   // hiperprior
-  
-  var epsilon = gaussian(0.2,0.05);
-
-  // prior
-  
-  var m = epsilon > 0 ? gaussian(16,epsilon) : gaussian(16,0.2);
+  var m = gaussian(16,0.2);
   
   map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
   
-  var HyperPrior = gaussian(0.2,0.05);
-  
-  var Prior = gaussian(16,HyperPrior);
+  var Prior = gaussian(16,0.2);
   
   var PredictivePosterior = gaussian(m,1);
   
   return {
-           HyperPrior: HyperPrior,
            Prior: Prior, 
            Posterior: m,
-           Posterior_eps: epsilon,
            PosteriorPredictive: PredictivePosterior};
+}
+
+var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
+
+var output_2 = Infer(opts, complexModel)
+
+viz.marginals(output_2)
 }
 
 var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
