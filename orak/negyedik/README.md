@@ -121,12 +121,13 @@ Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, h
 
 |K|Az M<sub>1</sub> melletti bizonyíték erőssége|
 |---|---|
-|... < 1 | Negatív: M<sub>1</sub> elvetendő|
-|1 < ... < 10<sup>1/2</sup>=3.16|Anekdotikus (alig érdemes említeni)| 
-|10<sup>1/2</sup> < ... < 10|Gyenge|
-|10 < ... < 10<sup>3/2</sup>=31.62|Erős|
-|10<sup>3/2</sup> < ... < 100|Nagyon erős|
-|100 < ... |Döntő|
+|... < 10<sup>0</sup>= 1| Negatív: M<sub>1</sub> elvetendő|
+|10<sup>0</sup> < ... < 10<sup>1/2</sup>=3.16| Alig érdemes említeni| 
+|10<sup>1/2</sup> < ... < 10<sup>3/4</sup>=6| Anekdotikus| 
+|10<sup>3/4</sup> < ... < 10<sup>1</sup>=10| Gyenge|
+|10<sup>1</sup> < ... < 10<sup>3/2</sup>=31.62| Erős|
+|10<sup>3/2</sup> < ... < 10<sup>2</sup>=100 | Nagyon erős|
+|10<sup>2</sup> < ... | Döntő |
 
 A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>), P(17|M<sub>2</sub>) kiszámítása után: K=P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)=
 
