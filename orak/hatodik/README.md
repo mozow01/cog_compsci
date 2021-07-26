@@ -10,12 +10,56 @@ ahol pare<sub>k</sub> az x<sub>k</sub> csúcs (közvetlen) szülei. A szorzatban
 
 A faktoritációs tulajdoságot ténylegesen felezni tudjuk **faktorpontokkal.** Ekkor pontosan akkor köti össze egy faktor pont egy gyerekeket és
 
-## Bevezető példák (locsoló+eső)
+## Bayes-tétel (hónap és vizes fű)
 
-A generatív modell négy valószínűségi változóból áll, "hónap" (h), "felhős" (f), "locsolórendszer" (l), "eső" (e), "vizes a fű" (v). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
-
+A generatív modell (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "hónap" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_1.png" width=500>
+
+És a webppl kód:
+
+````javascript
+var vizesModel = Infer({ method: 'enumerate' }, function(){
+  var évszak = categorical({ps:[0.25,0.25,0.25,0.25], 
+                            vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
+  
+  var felhős = ((évszak === 'tavasz') || (évszak === 'ősz' )) ? flip(0.9) : flip(0.5);
+  
+  var esik = felhős ? flip(0.8) : flip(0.0);
+ 
+  var locsoló = felhős ? flip(0.1) : flip(0.9);
+  
+  var vizes = esik && locsoló 
+                   ? flip(.99)  
+                   : (esik && !locsoló ) || (esik && !locsoló ) 
+                        ? flip(0.9) 
+                        : flip(0.1);
+       condition(vizes === true);
+  
+  var évszakPrior = categorical({ps:[0.25,0.25,0.25,0.25], 
+                            vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
+  
+  var felhősPrior = ((évszakPrior === 'tavasz') || (évszakPrior === 'ősz' )) ? 
+      flip(0.9) : flip(0.5);
+  
+       return {évszakPrior: évszakPrior, felhősPrior: felhősPrior,
+               évszakPost: évszak, felhősPost: felhős  };
+});
+
+viz.marginals(vizesModel)
+````
+
+Itt "hónap" előtt van egy konstans csúcs, ami a kategorikus változó eloszlásának adatait (hogy egyenletes) tartalmazza. Ezek a paraméterek azonban rögzítettek.
+
+A **Bayes-tétel** szerint
+
+<img src="https://render.githubusercontent.com/render/math?math=P(latens%5Cmid%20megfigyelt)%20%3D%20%5Cdfrac%7BP(megfigyelt%20%5Cmid%20latens%20)%5Ccdot%20P(latens)%7D%7BP(megfigyelt)%7D">
+
+Ill. itt: 
+
+<img src="https://render.githubusercontent.com/render/math?math=P(honap%5Cmid%20vizes)%20%3D%20%5Cdfrac%7BP(vizes%20%5Cmid%20honap%20)%5Ccdot%20P(honap)%7D%7BP(vizes)%7D">
+
+
 
 
 ## Multinomiális eloszlás
