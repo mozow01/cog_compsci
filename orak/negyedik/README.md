@@ -83,7 +83,7 @@ A középszintű matematika érettségi eredményét, mint viszonylag objektív 
 Generatív modell: 
 
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_3.png" width=300>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_3.png" width=500>
 
 ````Javascript
 var multiModel = function() {
@@ -115,4 +115,10 @@ var output_1 = Infer(opts,multiModel)
 
 viz.marginals(output_1)
 ````
+
+Eredmények:
+
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=500>
+
 
