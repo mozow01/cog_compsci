@@ -14,7 +14,7 @@ A faktoritációs tulajdoságot ténylegesen felezni tudjuk **faktorpontokkal.**
 
 A generatív modell (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "évszak" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_1.png" width=500>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_1.png" width=600>
 
 És a webppl kód:
 
@@ -107,7 +107,7 @@ Például a kategorikus változó számára a konjugált prior a Dirichlet-elosz
 
 A locsolós példa ezzel módosítva:
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_2.png" width=500>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_2.png" width=600>
 
 És a kód:
 
