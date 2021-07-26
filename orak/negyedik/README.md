@@ -128,11 +128,13 @@ Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, h
 |10<sup>3/2</sup> < ... < 100|Nagyon erős|
 |100 < ... |Döntő|
 
-A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>)=0.0036 és P(17|M<sub>2</sub>)=0.1007. Innen P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)
+A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>), P(17|M<sub>2</sub>) kiszámítása után: K=P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)=
 
-K = 27 > 10
+K = 15,47 > 10
 
 azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</sub> erősen elvetendő. Tehát az elitgimnáziumi érték nagyon nem vehető olyannak, ami egy véletlenül adódó átlagos gimnáziumi osztály eredménye lehetne.
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_1.png" width=600>
 
 * A fenti kérdés az absztrakt matematikai jelölések megértésére vonatkozott. Ugyanebben a mérésben a 24 átlagos gimnazista közül 11 mondta, hogy a "hagyományos" matekkal nem volt gondja. A 31 elitgimnazista között ez a szám 19. Mennyire tartható a M<sub>1</sub> (mutatis mutandis)?
 
