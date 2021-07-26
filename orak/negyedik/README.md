@@ -121,4 +121,4 @@ Eredmények:
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=600>
 
-
+A vizsgált csoportot, az A jelűt vetettük össze két kontrollcsoporttal. Az egyik az iskolán belüli B, amely egy kisebb, homogénabb félosztály volt. A másik, a C jelű az egyik elitgimnázium teljes végzős évfolyama. A bayesiánus elemzésből az derül ki, hogy a B, mint prior messze jobban magyarázza a mért csoport eredményeit, mint a C. A Mann–Whitney-próba szerint azonban nincs kimutatható különbség a B és az A ordinális mérési szintű adatsorok mediánja között (p=0.87>0.05).
