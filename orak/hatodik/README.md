@@ -10,9 +10,9 @@ ahol pare<sub>k</sub> az x<sub>k</sub> csúcs (közvetlen) szülei. A szorzatban
 
 A faktoritációs tulajdoságot ténylegesen felezni tudjuk **faktorpontokkal.** Ekkor pontosan akkor köti össze egy faktor pont egy gyerekeket és
 
-## Bayes-tétel (hónap és vizes fű)
+## Bayes-tétel (évszak és vizes fű)
 
-A generatív modell (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "hónap" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
+A generatív modell (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "évszak" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_1.png" width=500>
 
@@ -49,7 +49,7 @@ var vizesModel = Infer({ method: 'enumerate' }, function(){
 viz.marginals(vizesModel)
 ````
 
-Itt "hónap" előtt van egy konstans csúcs, ami a kategorikus változó eloszlásának adatait (hogy egyenletes) tartalmazza. Ezek a paraméterek azonban rögzítettek.
+Itt "évszak" előtt van egy konstans csúcs, ami a kategorikus változó eloszlásának adatait (hogy egyenletes) tartalmazza. Ezek a paraméterek azonban rögzítettek.
 
 A **Bayes-tétel** szerint
 
@@ -59,8 +59,110 @@ Ill. itt:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(honap%5Cmid%20vizes)%20%3D%20%5Cdfrac%7BP(vizes%20%5Cmid%20honap%20)%5Ccdot%20P(honap)%7D%7BP(vizes)%7D">
 
+Rögzített inputtal (h) a generatív modell segítségével ki lehet számolni, mi a vizes fű változó feltételes eloszlása: 
 
+<img src="https://render.githubusercontent.com/render/math?math=vizes%5Cquad%20%5Cmapsto%20%5Cquad%20P(vizes%20%5Cmid%20honap%20)">
 
+(ez tehát egy előrejelzés).
+
+A generatív modell programozott verziója a fenti kódban ez:
+
+````javascript
+var évszak = categorical({ps:[0.25,0.25,0.25,0.25], vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
+
+var felhős = ((évszak === 'tavasz') || (évszak === 'ősz' )) ? flip(0.9) : flip(0.5);
+  
+var esik = felhős ? flip(0.8) : flip(0.0);
+ 
+var locsoló = felhős ? flip(0.1) : flip(0.9);
+  
+var vizes = esik && locsoló 
+                   ? flip(.99)  
+                   : (esik && !locsoló ) || (esik && !locsoló ) 
+                        ? flip(0.9) 
+                        : flip(0.1);
+````
+
+A pszeudokódját az ábrán látjuk.
+
+Ha rögzítjük az outputot(v), akkor vagy mintavételezéssel vagy kimerítéssel, de ki lehet számolni, hogy az egyes inputok milyen valószínűséggel adják ezt a v-t:
+
+<img src="https://render.githubusercontent.com/render/math?math=honap%5Cquad%20%5Cmapsto%20%5Cquad%20P(vizes%20%5Cmid%20honap%20)">
+
+ez a **likelihood függvény,** sajnos ez **nem eloszlás**. Ahhoz az évszak változó felett (a feltétel mellett) egy valószínűségi eloszlást kapjunk, még súlyozni kell a "évszak" marginális eloszlásával és 1-re normálni kell ezt a mennyiséget. Akkor a Bayes-tétel szerint ez az új mennyiség már eloszlás, ami a posterior. 
+
+A Bayes-inferencia most "kimerítéssel" (enumerate) és "az adat feltételezésével" (condition) működik: a hónap változó marginális eloszlását számolja ki azzal a feltétellel, hogy adat = vizes, az összes eset végigszámolásával.
+
+## Konjugált prior
+
+Nyilvánvaló, hogy a **jelenséget** a generatív modell tartalmazza, ami pedig a likelihood függvényt számolja ki valamilyen módon. Ez most az egyszerűségében is elég bonyi, de maradjunk annyiban, hogy valami kategorikus változó a bemenet és Boole-értékű a kimenet. Az elemzést tovább finomíthatjuk úgy, hogy a prior paramétereit variáljuk. Most a priot egy egyszerű **kategorikus** változó: egy zsákban színes golyók vannak rögzített arányban és egy golyót húzunk belőle. A prior paramétereire tett elméleti feltételezést hiperpriornak nevezzük. 
+
+Hogyan választunk hiperpriort (vagy általában priort)?  
+
+Bárhogy. De ha szép eredményt akarunk, akkor a likelihoodhoz (vagyis az alapjelenséghez) olyan hiperpriot eloszlást (másik jelenséget) kell választanunk, amivel ha a likelihood-ot megszorozzuk ugyanolyan jelenséget kapunk, mint a hiperprior. Ez azért van, mert azt gondoljuk, hogy a Bayes-i update-elés valóban élesítés: egy y |----> f(p,y) (prior) függvénycsaládból választja ki azt a p paramétert, amit az adatok mellett a legvalószínűbb. Nem kell feltétlenül így tennünk, mert úgy is numerikus a számítás és a gép kidobja az eloszlást mindenképpen. De ez az ajánlás, nem teljesen hülyeség. 
+
+[https://en.wikipedia.org/wiki/Conjugate_prior]
+
+Például a kategorikus változó számára a konjugált prior a Dirichlet-eloszlás. A binomiális ("hányan hibáztak rá a jó válaszra") változóhoz a beta. A beta általánosítása a Dirichlet.
+
+A locsolós példa ezzel módosítva:
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_2.png" width=500>
+
+És a kód:
+
+````javascript
+var vizesmasikModel = Infer({ method: 'rejection' }, function(){
+  
+  var x = dirichlet({alpha: Vector([1/10,2/10,7/10])});
+
+    var x1 = (x.data)[0];
+
+    var x2 = (x.data)[1];
+
+    var x3 = (x.data)[2];
+  
+  var felhős =  categorical({ps:[x1,x2,x3], 
+                            vs: ['derült', 'enyhén felhős', 'erősen felhős'] });
+  
+  var esik = (felhős === 'derült')
+                   ? flip(.1)  
+                   : (felhős === 'enyhén felhős')
+                        ? flip(0.6) 
+                        : flip(0.9);
+ 
+  var locsoló = (felhős === 'derült')
+                   ? flip(.9)  
+                   : (felhős === 'enyhén felhős')
+                        ? flip(0.2) 
+                        : flip(0);
+  
+  var vizes = esik && locsoló 
+                   ? flip(.99)  
+                   : (esik && !locsoló ) || (esik && !locsoló ) 
+                        ? flip(0.9) 
+                        : flip(0.1);
+       condition(vizes === true);
+  
+  var y = dirichlet({alpha: Vector([1/10,2/10,7/10])});
+   
+    var y1 = (y.data)[0];
+
+    var y2 = (y.data)[1];
+
+    var y3 = (y.data)[2];
+  
+  var felhősPrior = categorical({ps:[y1,y2,y3], 
+                            vs: ['derült', 'enyhén felhős', 'erősen felhős'] });
+  
+  
+       return {derűsHyperPrior: y1, enyhenHyperPrior2: y2, erösenHyperPrior: y3, 
+               felhősPrior: felhősPrior,
+               felhősPosterior: felhős  };
+});
+
+viz.marginals(vizesmasikModel)
+````
 
 ## Multinomiális eloszlás
 
