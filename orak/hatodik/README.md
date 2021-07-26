@@ -95,15 +95,15 @@ A Bayes-inferencia most "kimerítéssel" (enumerate) és "az adat feltételezés
 
 ## Konjugált prior
 
-Nyilvánvaló, hogy a **jelenséget** a generatív modell tartalmazza, ami pedig a likelihood függvényt számolja ki valamilyen módon. Ez most az egyszerűségében is elég bonyi, de maradjunk annyiban, hogy valami kategorikus változó a bemenet és Boole-értékű a kimenet. Az elemzést tovább finomíthatjuk úgy, hogy a prior paramétereit variáljuk. Most a priot egy egyszerű **kategorikus** változó: egy zsákban színes golyók vannak rögzített arányban és egy golyót húzunk belőle. A prior paramétereire tett elméleti feltételezést hiperpriornak nevezzük. 
+Nyilvánvaló, hogy a **jelenséget** a generatív modell tartalmazza, ami pedig a likelihood függvényt számolja ki valamilyen módon. Ez most az egyszerűségében is elég bonyi, de maradjunk annyiban, hogy valami kategorikus változó a bemenet és Boole-értékű a kimenet. Az elemzést tovább finomíthatjuk úgy, hogy a prior paramétereit variáljuk. Most a prior egy egyszerű **kategorikus** változó: egy zsákban színes golyók vannak rögzített arányban és egy golyót húzunk belőle. A prior paramétereire tett elméleti feltételezést hiperpriornak nevezzük. 
 
 Hogyan választunk hiperpriort (vagy általában priort)?  
 
-Bárhogy. De ha szép eredményt akarunk, akkor a likelihoodhoz (vagyis az alapjelenséghez) olyan hiperpriot eloszlást (másik jelenséget) kell választanunk, amivel ha a likelihood-ot megszorozzuk ugyanolyan jelenséget kapunk, mint a hiperprior. Ez azért van, mert azt gondoljuk, hogy a Bayes-i update-elés valóban élesítés: egy y |----> f(p,y) (prior) függvénycsaládból választja ki azt a p paramétert, amit az adatok mellett a legvalószínűbb. Nem kell feltétlenül így tennünk, mert úgy is numerikus a számítás és a gép kidobja az eloszlást mindenképpen. De ez az ajánlás, nem teljesen hülyeség. 
+Bárhogy. De ha szép eredményt akarunk, akkor a likelihoodhoz (vagyis az alapjelenséghez) olyan hiperprior eloszlást (másik jelenséget) kell választanunk, amivel ha a likelihood-ot megszorozzuk ugyanolyan jelenséget kapunk, mint a hiperprior. Ez azért van, mert azt gondoljuk, hogy a Bayes-i update-elés valóban élesítés: egy y |----> f(p,y) (prior) függvénycsaládból választja ki azt a p paramétert, amit az adatok mellett a legvalószínűbb. Nem kell feltétlenül így tennünk, mert úgy is numerikus a számítás és a gép kidobja az eloszlást mindenképpen. De ez az ajánlás, nem teljesen hülyeség. 
 
 [https://en.wikipedia.org/wiki/Conjugate_prior]
 
-Például a kategorikus változó számára a konjugált prior a Dirichlet-eloszlás. A binomiális ("hányan hibáztak rá a jó válaszra") változóhoz a beta. A beta általánosítása a Dirichlet.
+Például a kategorikus változó számára a konjugált prior a Dirichlet-eloszlás. A binomiális ("hányan hibáztak rá a jó válaszra") változóhoz a beta. A beta általánosítása a Dirichlet. A gauss-nak a gauss.
 
 A locsolós példa ezzel módosítva:
 
