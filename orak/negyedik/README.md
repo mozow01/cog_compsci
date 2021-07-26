@@ -74,7 +74,7 @@ P(19|M<sub>2</sub>)/P(19|M<sub>1</sub>) = 4.32
 
 azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak **anekdotikusan**, a 3.16 < K < 6. Különbség tehát kimutatható, de már messze nem olyan hihetően, mint az előbb.
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/homer.png" width=600>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/homer.png" width=300>
 
 ## Érettségi eredmények, döntő eredmény
 
@@ -83,4 +83,36 @@ A középszintű matematika érettségi eredményét, mint viszonylag objektív 
 Generatív modell: 
 
 
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_3.png" width=300>
+
+````Javascript
+var multiModel = function() {
+  
+   var vector = Vector([4, 6, 4, 2]);
+    var x = dirichlet(vector);
+  
+    var x1 = (x.data)[0];
+    var x2 = (x.data)[1];
+    var x3 = (x.data)[2];
+    var x4 = (x.data)[3];
+  
+    var s = x1 + x2 + x3 + x4;
+  
+  observe(Multinomial({ps: [x1/s,x2/s,x3/s,x3/s], n: 1}), [0,0,1] );
+   var w = multinomial({ps: [x1/s,x2/s,x3/s,x3/s], n: 1});
+   
+    return {
+      s: w
+         // Prior: prior, 
+           //PredictivePrior: predictivePrior, 
+         // Posterior: , 
+         // PredictivePosterior: predictivePosterior
+    };
+}      
+
+var opts = {method: 'MCMC'}
+var output_1 = Infer(opts,multiModel)
+
+viz.marginals(output_1)
+````
 
