@@ -119,6 +119,6 @@ viz.marginals(output_1)
 Eredmények:
 
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=500>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=600>
 
 
