@@ -124,7 +124,7 @@ Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, h
 |... < 10<sup>0</sup>= 1| Negatív: M<sub>1</sub> elvetendő|
 |10<sup>0</sup> < ... < 10<sup>1/2</sup>=3.16| Alig érdemes említeni| 
 |10<sup>1/2</sup> < ... < 10<sup>3/4</sup>=6| Anekdotikus| 
-|10<sup>3/4</sup> < ... < 10<sup>1</sup>=10| Gyenge|
+|10<sup>3/4</sup> < ... < 10<sup>1</sup>=10| Szubsztanciális (létező) |
 |10<sup>1</sup> < ... < 10<sup>3/2</sup>=31.62| Erős|
 |10<sup>3/2</sup> < ... < 10<sup>2</sup>=100 | Nagyon erős|
 |10<sup>2</sup> < ... | Döntő |
@@ -143,5 +143,5 @@ Ebben az esetben legyen M<sub>1</sub> priorja beta(30,55), ami a 11/24 várható
 
 P(19|M<sub>2</sub>)/P(19|M<sub>1</sub>) = 4.32
 
-azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak elég gyengén, a 3.16 < K < 10. Különbség tehát kimutatható, de már messze nem olyan erősen, mint az előbb.
+azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak anekdotikusan, a 3.16 < K < 6. Különbség tehát kimutatható, de már messze nem olyan hihetően, mint az előbb.
 
