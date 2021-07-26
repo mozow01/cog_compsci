@@ -1,7 +1,7 @@
 # Bayes-i hipotézisvizsgálat
 
 
-## Hipotézisvizsgálat
+## Halmazjelölések -- külvárosi és menő gimi
 
 * Egy 24 fős átlagos gimnáziumi osztályban a diákok közül 6 válaszolta (25%), hogy nem volt gondja a matekkal. Egy elitgimnáziumban ugyanez a szám 31-ből 17. Két binomiális eloszlást szimuláló modellel élünk. M<sub>1</sub> szerint a prior 0.25 várható értékű (E(X)=a/(a+b)) dogmatikus beta eloszlás (beta(30,90), kis szórás), amellyel azt feltételezzük, hogy tényleg az átlagos gimnázium adja az átlagot, M<sub>2</sub> pedig egyenletes és bármi kijöhetett volna, mert a gimnáziumok között igen nagy eltérések is lehetnek. Melyik modell magyarázza jobban a megfigyelt 7/31 értéket?
 
@@ -31,6 +31,9 @@ var output = Infer({model: model, samples: 10000, method: 'MCMC'});
 
 viz.marginals(output);
 ````
+
+## Bayes-faktor
+
 A bayesiánus modell összehasonlítás a következőképpen megy. Kiszámítjuk mindkét esetben a 
 
 <img src="https://render.githubusercontent.com/render/math?math=P(k%3Dk_0%5Cmid%20M_i)">
@@ -51,6 +54,8 @@ Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, h
 |10<sup>3/2</sup> < ... < 10<sup>2</sup>=100 | Nagyon erős|
 |10<sup>2</sup> < ... | Döntő |
 
+## Egy erős döntési helyzet
+
 A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>), P(17|M<sub>2</sub>) kiszámítása után: K=P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)=
 
 K = 15,47 > 10
@@ -59,11 +64,23 @@ azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_1.png" width=600>
 
+## Anekdoikus dönési helyzet
+
 * A fenti kérdés az absztrakt matematikai jelölések megértésére vonatkozott. Ugyanebben a mérésben a 24 átlagos gimnazista közül 11 mondta, hogy a "hagyományos" matekkal nem volt gondja. A 31 elitgimnazista között ez a szám 19. Mennyire tartható a M<sub>1</sub> (mutatis mutandis)?
 
 Ebben az esetben legyen M<sub>1</sub> priorja beta(30,55), ami a 11/24 várható értéknek felel meg. Az adatok alapján:
 
 P(19|M<sub>2</sub>)/P(19|M<sub>1</sub>) = 4.32
 
-azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak anekdotikusan, a 3.16 < K < 6. Különbség tehát kimutatható, de már messze nem olyan hihetően, mint az előbb.
+azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak **anekdotikusan**, a 3.16 < K < 6. Különbség tehát kimutatható, de már messze nem olyan hihetően, mint az előbb.
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/homer.png" width=600>
+
+## Érettségi eredmények, döntő eredmény
+
+A középszintű matematika érettségi eredményét, mint viszonylag objektív adatot hasonlíthatjuk össze a párhuzamos osztály egy csoportjával ill. egy elitgimnázium végzős évfolyamának eredményével.
+
+Generatív modell: 
+
+
 
