@@ -36,14 +36,13 @@ viz.marginals(output);
 
 Modell összehasonlításnál voltaképpen egy hierarchikus modellt építünk: 
 
-i ~ categorical((1,2),(P<sub>1</sub>,P<sub>2</sub>))
+i ~ categorical((1,2),(P<sub>1</sub>,P<sub>2</sub>)) (hiperprior)
 
-&Theta;
+&theta; ~ p<sub>i</sub>(&theta;) (prior)
 
+x ~ P<sub>i</sub>(x | &theta;) (likelihood)
 
-
-
-Legyen adva a két M<sub>i</sub> = (P<sub>i</sub>( @theta; ), L<sub>i</sub>( x | @theta; ) ) generatív modell és az ezekhez tartozó P(M<sub>i</sub>) "priorok", amik azt mondják meg, hogy mennyi a valószínűsége a  
+Ekkor a 
 
 A bayesiánus modell összehasonlítás a következőképpen megy. Kiszámítjuk mindkét esetben a 
 
