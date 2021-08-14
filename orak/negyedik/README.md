@@ -38,7 +38,7 @@ Modell összehasonlításnál voltaképpen egy hierarchikus modellt építünk:
 
 i ~ categorical((1,2),(P<sub>1</sub>,P<sub>2</sub>))
 
-$Theta
+&Theta;
 
 
 
