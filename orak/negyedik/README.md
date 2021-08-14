@@ -34,6 +34,14 @@ viz.marginals(output);
 
 ## Bayes-faktor
 
+Modell összehasonlításnál voltaképpen egy hierarchikus modellt építünk: 
+
+i ~ categorical((1,2),(P<sub>1</sub>,P<sub>2</sub>)
+
+
+
+Legyen adva a két M<sub>i</sub> = (P<sub>i</sub>( @theta; ), L<sub>i</sub>( x | @theta; ) ) generatív modell és az ezekhez tartozó P(M<sub>i</sub>) "priorok", amik azt mondják meg, hogy mennyi a valószínűsége a  
+
 A bayesiánus modell összehasonlítás a következőképpen megy. Kiszámítjuk mindkét esetben a 
 
 <img src="https://render.githubusercontent.com/render/math?math=P(k%3Dk_0%5Cmid%20M_i)">
