@@ -1,5 +1,25 @@
 # Példák 
 
+<pre><code class="language-webppl">
+// Implements the Bayesian Network, above
+var grassGetsWet = Infer({ method: 'enumerate' }, function(){
+  var cloudy = flip(0.5);
+  var rain = cloudy ? flip(0.8) : flip(0.2);
+  var sprinkler = cloudy ? flip(0.1) : flip(0.5);
+  var wetGrass = rain &amp;&amp; sprinkler 
+                   ? flip(.99)  
+                   : (rain &amp;&amp; !sprinkler) || (!rain &amp;&amp; sprinkler) 
+                        ? flip(0.9) 
+                        : flip(0.0);
+  condition(cloudy === true);
+  return wetGrass;
+});
+
+
+print('Probability of wet grass, given cloudy = ' 
+               + Math.exp(grassGetsWet.score(true)) );
+</code></pre>
+
 ## Binomiális kísérlet; különböző méretű óvodás csoportokra
 
 Három csoportban kérdezték meg, hogy a pillangó virág-e, a mért változó értékei a data változó alatt találhatók. A két modellben a priorok a non-informative és a dogmatikus volt. 
