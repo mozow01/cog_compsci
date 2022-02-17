@@ -111,11 +111,11 @@ viz.hist(eloszlas);
 3. Lerakunk 5 helyre 2 golyót, úgy, hogy egy helyen, csak 1 golyó lehet egyszerre. Adjuk meg az elemi eseménytér két modelljét és mondjuk meg, hogy mennyi annak az eseménynek a valószínűsége, hogy a) mindkét golyó az első három hely valamelyikén van, b) valamelyik golyó az utolsó 2 hely valamelyikén van.
 
 ````javascript
-var lerakas = function () {
-  var golyo1 = randomInteger(5) + 1;
-  var golyo2 = randomInteger(5) + 1;
-  condition(golyo1 !== golyo2);
-  return [golyo1,golyo2];
+var lerakas1= function () {
+  var golyo1_helye = randomInteger(5) + 1;
+  var golyo2_helye = randomInteger(5) + 1;
+  condition(golyo1_helye !== golyo2_helye);
+  return [golyo1_helye,golyo2_helye];
 }
 
 var lerakas2 = function () {
@@ -128,13 +128,14 @@ var lerakas2 = function () {
   return [hely1,hely2,hely3,hely4,hely5];
 }
 
-var eloszlas = Enumerate(lerakas2);
+var eloszlas_1 = Enumerate(lerakas1)
+
+var eloszlas_2 = Enumerate(lerakas2);
 
 //var inf = Infer({method: 'enumerate'}, dobas);
 //print(inf);
 //viz.hist(inf);
 
-print(eloszlas);
-
-viz.hist(eloszlas);
+viz.hist(eloszlas_1);
+viz.hist(eloszlas_2)
 ````
