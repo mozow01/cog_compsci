@@ -59,8 +59,7 @@ var minta = repeat(10000,dobas);
 viz.hist(minta);
 ````
 
-3. Számítsuk ki, hogy mi egy konkrét feladat valószínűsége azzal, hogy ismerjük az elemi esemény sokaságbeli gyakoriságát és a feltételes elemi események gyakoriságát!
-3. a)
+3. Számítsuk ki, hogy mi egy konkrét feladat valószínűsége azzal, hogy ismerjük az elemi esemény sokaságbeli gyakoriságát és a feltételes elemi események gyakoriságát! a)
 
 ````javascript
 var dobas = function () {
