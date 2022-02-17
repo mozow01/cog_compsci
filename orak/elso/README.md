@@ -61,6 +61,39 @@ viz.hist(minta);
 
 3. Számítsuk ki, hogy mi egy konkrét feladat valószínűsége azzal, hogy ismerjük az elemi esemény sokaságbeli gyakoriságát és a feltételes elemi események gyakoriságát!
 
+3. a)
+
+````javascript
+var dobas = function () {
+  var kocka1 = randomInteger(6) + 1;
+  var kocka2 = randomInteger(6) + 1;
+  return [kocka1,kocka2];
+}
+
+var kedvezo_dobas = function () {
+  var kocka1 = randomInteger(6) + 1;
+  var kocka2 = randomInteger(6) + 1;
+  condition((kocka1 == 6 || kocka2 == 6))
+  return [kocka1,kocka2];
+}
+
+var osszes = Infer({method: 'enumerate'}, dobas);
+
+var kedvezo = Infer({method: 'enumerate'}, kedvezo_dobas);
+
+print(osszes);
+viz.hist(osszes);
+
+print(kedvezo);
+viz.hist(kedvezo);
+
+print("p = kedvező/összes = " 
+      + Math.exp((osszes.score)([6,6]))/Math.exp((kedvezo.score)([6,6])));
+
+````
+
+3. b)
+
 ````javascript
 var dobas = function () {
   var kocka1 = randomInteger(6) + 1;
