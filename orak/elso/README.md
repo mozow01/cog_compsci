@@ -78,7 +78,7 @@ print("p = kedvező/összes = "
 
 ````
 
-3. b)
+2. b)
 
 ````javascript
 var dobas = function () {
