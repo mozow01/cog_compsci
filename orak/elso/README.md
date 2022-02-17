@@ -110,9 +110,9 @@ viz.hist(eloszlas);
 
 Ha X halmaz és _P_(X) az összes részhalmazainak halmaza, akkor a Σ ⊆ _P_(X) halmazcsalád σ-algebra, ha
 
-    X ∈ Σ (biztos esemény)
-    Σ zárt a komplementerre: ha A ∈ Σ, akkor X \ A ∈ Σ is
-    Σ zárt a megszámlálható unióra: ha  A1, A2, A3, ... ∈ Σ, akkor A1 ∪ A2 ∪ A3 ∪ … ∈ Σ.
+1. X ∈ Σ (biztos esemény)
+2. Σ zárt a komplementerre: ha A ∈ Σ, akkor X \ A ∈ Σ is
+3. Σ zárt a megszámlálható unióra: ha  A1, A2, A3, ... ∈ Σ, akkor A1 ∪ A2 ∪ A3 ∪ … ∈ Σ.
 
 Ezekből következik, hogy ∅ is a Σ eleme és a (megszámlálható) metszet is a Σ eleme. (De Morgan azonosságok.) Tehát Σ egyben Boole-halmazalgebra is.
 
