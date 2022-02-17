@@ -26,7 +26,8 @@ var output =
 
 ## Kockák
 
-1. Három (kettő, négy) kockával dobunk. Mi az elemi események tere? Mi az _eloszlás?_
+1. Három (kettő, négy) kockával dobunk. Mi az elemi események tere? Mi az _elméleti eloszlás?_ Ugyanez, de végezzünk random kísérleteket. Mi az adott kimenetelek **mintabeli gyakorisága?**
+
 
 ````javascript
 var dobas = function () {
@@ -36,30 +37,17 @@ var dobas = function () {
   return [kocka1,kocka2,kocka3];
 }
 
-var eloszlas = Enumerate(dobas);
-print(eloszlas);
-viz.auto(eloszlas);
-````
-
-2. Ugyanez, de végezzünk random kísérleteket. Mi az adott kimenetelek **mintabeli gyakorisága?**
-
-````javascript
-var dobas = function () {
-  var kocka1 = randomInteger(6) + 1;
-  var kocka2 = randomInteger(6) + 1;
-  var kocka3 = randomInteger(6) + 1;
-  return [kocka1,kocka2];
-}
-
-var eloszlas = Enumerate(dobas);
+var elméleti = Enumerate(dobas);
 //print(eloszlas);viz.auto(eloszlas);
 
-var minta = repeat(10000,dobas);
+var mintavétel = repeat(100000,dobas);
 
-viz.hist(minta);
+viz.hist(elméleti);
+
+viz.hist(mintavétel);
 ````
 
-3. Számítsuk ki, hogy mi egy konkrét feladat valószínűsége azzal, hogy ismerjük az elemi esemény sokaságbeli gyakoriságát és a feltételes elemi események gyakoriságát! a)
+2. Számítsuk ki, hogy mi egy konkrét feladat valószínűsége azzal, hogy ismerjük az elemi esemény sokaságbeli gyakoriságát és a feltételes elemi események gyakoriságát! a)
 
 ````javascript
 var dobas = function () {
@@ -120,7 +108,7 @@ viz.hist(eloszlas);
 ````
 ## Golyók
 
-4. Lerakunk 5 helyre 2 golyót, úgy, hogy egy helyen, csak 1 golyó lehet egyszerre. Adjuk meg az elemi eseménytér két modelljét és mondjuk meg, hogy mennyi annak az eseménynek a valószínűsége, hogy a) mindkét golyó az első három hely valamelyikén van, b) valamelyik golyó az utolsó 2 hely valamelyikén van.
+3. Lerakunk 5 helyre 2 golyót, úgy, hogy egy helyen, csak 1 golyó lehet egyszerre. Adjuk meg az elemi eseménytér két modelljét és mondjuk meg, hogy mennyi annak az eseménynek a valószínűsége, hogy a) mindkét golyó az első három hely valamelyikén van, b) valamelyik golyó az utolsó 2 hely valamelyikén van.
 
 ````javascript
 var lerakas = function () {
