@@ -60,7 +60,6 @@ viz.hist(minta);
 ````
 
 3. Számítsuk ki, hogy mi egy konkrét feladat valószínűsége azzal, hogy ismerjük az elemi esemény sokaságbeli gyakoriságát és a feltételes elemi események gyakoriságát!
-
 3. a)
 
 ````javascript
