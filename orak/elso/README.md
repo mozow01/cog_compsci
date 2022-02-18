@@ -116,36 +116,10 @@ Ha X halmaz és _P_(X) az összes részhalmazainak halmaza, akkor a Σ ⊆ _P_(X
 
 Ezekből következik, hogy ∅ is a Σ eleme és a (megszámlálható) metszet is a Σ eleme. (De Morgan azonosságok.) Tehát Σ egyben Boole-halmazalgebra is.
 
-## Golyók
+## Házi feladatok
 
-3. Lerakunk 5 helyre 2 golyót, úgy, hogy egy helyen, csak 1 golyó lehet egyszerre. Adjuk meg az elemi eseménytér két modelljét és mondjuk meg, hogy mennyi annak az eseménynek a valószínűsége, hogy a) mindkét golyó az első három hely valamelyikén van, b) valamelyik golyó az utolsó 2 hely valamelyikén van.
-
-````javascript
-var lerakas1= function () {
-  var golyo1_helye = randomInteger(5) + 1;
-  var golyo2_helye = randomInteger(5) + 1;
-  condition(golyo1_helye !== golyo2_helye);
-  return [golyo1_helye,golyo2_helye];
-}
-
-var lerakas2 = function () {
-  var hely1 = randomInteger(2);
-  var hely2 = randomInteger(2);
-  var hely3 = randomInteger(2);
-  var hely4 = randomInteger(2);
-  var hely5 = randomInteger(2);
-  condition(hely1+hely2+hely3+hely4+hely5 == 2);
-  return [hely1,hely2,hely3,hely4,hely5];
-}
-
-var eloszlas_1 = Enumerate(lerakas1)
-
-var eloszlas_2 = Enumerate(lerakas2);
-
-//var inf = Infer({method: 'enumerate'}, dobas);
-//print(inf);
-//viz.hist(inf);
-
-viz.hist(eloszlas_1);
-viz.hist(eloszlas_2)
-````
+1. Írjuk át a SimpleModel-t úgy, hogy az konklúzióban a tanár/könyvtáros kategóriák is megjelennek és egy determiniszikus, matekos logikával gondolkodó ágenst modellezzen.
+2. Írjuk át a SimpleModel-t úgy, hogy hihető valószínűségekkel ( flip(0...) ) egy olyan természetes ágens probalilisztikus videlkedését modellezze, aki a) néha összetéveszti a cserfest a csendessel, b) a tanárt valamilyen nagy valószínűséggel cserfesenk tételezi fel.
+3. Írjuk olyan programot, ami kiszámítja, hogy ha két kockával dobunk, akkor mi annak a valószínűsége, hogy a) a dobott számok között van prímszám (vili, hogy itt csak a 2, 3, 5) ill. b) a dobott számok összege kisebb, mint 6.
+4. * Írjunk programot, ami  kiszámítja, hogy ha 3 kockával dobunk, akkor mi annak a valószínűsége, hogy pontosan 2 kocka hatos.
+5. * Igazoljuk, hogy  B ∩ (A1 ∪ A2 ∪ A3 ∪ … ) = (B ∩ A1) ∪ (B ∩ A2) ∪ (B ∩ A3) ∪ …
