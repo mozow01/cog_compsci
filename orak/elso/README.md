@@ -118,7 +118,7 @@ Ezekből következik, hogy ∅ is a Σ eleme és a (megszámlálható) metszet i
 
 ## Házi feladatok
 
-1. Írjuk át a SimpleModel-t úgy, hogy az konklúzióban a tanár/könyvtáros kategóriák is megjelennek és egy determiniszikus, matekos logikával gondolkodó ágenst modellezzen.
+1. Írjuk át a SimpleModel-t úgy, hogy a konklúzióban a tanár/könyvtáros kategóriák is megjelennek és egy determiniszikus, matekos logikával gondolkodó ágenst modellezzen.
 2. Írjuk át a SimpleModel-t ComplexModel-re úgy, hogy hihető valószínűségekkel ( flip(0...) ) egy olyan természetes ágens probalilisztikus viselkedését modellezze, aki a) néha összetéveszti a cserfest a csendessel, b) a tanárt valamilyen nagy valószínűséggel cserfesenk tételezi fel.
 3. Írjuk olyan programot, ami kiszámítja, hogy ha két kockával dobunk, akkor mi annak a valószínűsége, hogy a) a dobott számok között van prímszám (vili, hogy itt csak a 2, 3, 5) ill. b) a dobott számok összege kisebb, mint 6.
 4. (nehezebb) Írjunk programot, ami kiszámítja, hogy ha 3 kockával dobunk, akkor mi annak a valószínűsége, hogy pontosan 2 kocka hatos.
