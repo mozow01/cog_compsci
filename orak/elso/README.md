@@ -122,4 +122,4 @@ Ezekből következik, hogy ∅ is a Σ eleme és a (megszámlálható) metszet i
 2. Írjuk át a SimpleModel-t ComplexModel-re úgy, hogy hihető valószínűségekkel ( flip(0...) ) egy olyan természetes ágens probalilisztikus viselkedését modellezze, aki a) néha összetéveszti a cserfest a csendessel, b) a tanárt valamilyen nagy valószínűséggel cserfesenk tételezi fel.
 3. Írjuk olyan programot, ami kiszámítja, hogy ha két kockával dobunk, akkor mi annak a valószínűsége, hogy a) a dobott számok között van prímszám (vili, hogy itt csak a 2, 3, 5) ill. b) a dobott számok összege kisebb, mint 6.
 4. (nehezebb) Írjunk programot, ami kiszámítja, hogy ha 3 kockával dobunk, akkor mi annak a valószínűsége, hogy pontosan 2 kocka hatos.
-5. (nehezebb) Igazoljuk, hogy  B \ (A1 ∪ A2 ∪ A3 ∪ … ) = (B \ A1) ∩ (B \ A2) ∩ (B \ A3) ∩ … (használjuk fel, hogy H = K, ha midnen x-re x ∈ H-ból következik x ∈ K és midnen x-re x ∈ K-ból következik x ∈ H ).
+5. (nehezebb) Igazoljuk, hogy  B \ (A1 ∪ A2 ∪ A3 ∪ … ) = (B \ A1) ∩ (B \ A2) ∩ (B \ A3) ∩ … (használjuk fel, hogy H = K, ha minden x-re x ∈ H-ból következik x ∈ K és minden x-re x ∈ K-ból következik x ∈ H ).
