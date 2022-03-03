@@ -130,12 +130,12 @@ Y = királyt húzása (1/0) magyar kártyávól, akkor és csak akkor, ha X = 1,
 
 |      |  X=1   | X=0 |  
 | ---  | --- | --- | 
-|  Y=1 |  1/8 | 1/13 | 
-|  Y=0 | 7/8 | 12/13  | 
+|  Y=1, ha X = ... |  1/8 | 1/13 | 
+|  Y=0, ha X = ... | 7/8 | 12/13  | 
 
-**Megjegyzés.** Y ilyenkor csak X rögzítésével lesz "igazi" eloszlás. A mögöttes eloszlás K, azaz a "király húzása" P( Y ) = P( K | X ) és a K és X együttes eloszlása. 
+**Megjegyzés.** Ez a táblázat ilyenkor csak X rögzítésével lesz "igazi" eloszlás. A mögöttes eloszlás Y, azaz a "király húzása" csak közvetetten tudható. 
 
-**MDefiníció** (Leszűkítjük az elemi események terét a feltételre, az A eseményt teljesítő elemi részeseményekre, azaz innentől nem Ω, hanem A az összes elemi események tere: )
+**Definíció** (Leszűkítjük az elemi események terét a feltételre, az A eseményt teljesítő elemi részeseményekre, azaz innentől nem Ω, hanem A az összes elemi események tere: )
 
 <img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
 
@@ -153,12 +153,14 @@ var Z = Infer({method: 'enumerate', model: model5})
 viz(Z)
 ````
 
-Itt az eloszlás már igazi, "joint" (K,X) 
+Ekkor P(X=i,Y=j) = P(Y=j|X=i) P(X=i), azaz pl.: P(X=1,Y=1) = 1/8 * 1/2.
+
+Ekkor (X,Y) eloszlása már igazi, együttes, "joint". 
 
 |      |  X=1   | X=0 |  
 | ---  | --- | --- | 
-|  K=1 |  1/16 | 1/26 | 
-|  K=0 | 7/16 | 6/13  | 
+|  Y=1 |  1/16 | 1/26 | 
+|  Y=0 | 7/16 | 6/13  | 
 
 ## Monty Hall- (vos Savant-) paradoxon
 
