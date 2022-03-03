@@ -39,7 +39,7 @@ var eloszlás2 = Enumerate(model2)
 viz.auto(eloszlás2)
 ````
 
-Ennél sokkal izgalmasabb, ha azt a kérdés, hogy valaki megmondja a kísérlet eredményét és nekünk kell kitalálnunk azt, hogy a húzások milyenek voltak:
+Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét és nekünk kéne megmondanunk, hogy a húzások milyenek voltak. Ezt hívjuk hipotetikus következtetésnek, vagy ebben a kontextusban egyszerűen inferálásnak.
 
 ````javascript
 var model3 = function() {
