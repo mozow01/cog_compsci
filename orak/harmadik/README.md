@@ -1,3 +1,62 @@
+# Feltételes valószínűség
+
+## Feltétel, következtetés egy változóra (inferálás), feltételes valószínűség (vissza a binomiálishoz)
+
+Egy 52 lapos francia kártyapakliban annak a valószínűsége, hogy egy kártya kőr (♥) p = 13/52 = 0.25. Keressük annak az X valószínűségi változónak az eloszlását, ami azt mondja meg, hogy ha _visszatevéssel_ kiveszünk a pakliból 3 lapot, akkor hány ebből a kőr, tehát
+
+X := ,,kőrök száma 3 visszatevéses húzásból, francia kártyapakliban''
+
+````javascript
+var model = function() {
+  var H1 = flip(0.25)
+  var H2 = flip(0.25)
+  var H3 = flip(0.25)
+  var X = H1 + H2 + H3
+  return {'X': X}
+}
+var eloszlás = Enumerate(model)
+
+var binom = Binomial({p: 0.25, n: 3})
+
+viz.auto(binom)
+viz.auto(eloszlás)
+````
+
+Ha tudunk valamit a szituációból, ez az érték változni fog. Pl.: mi akkor X eloszlása, ha tudjuk, hogy az első esetben kőrt húzunk. 
+
+````javascript
+
+var model2 = function() {
+  var H1 = flip(0.25)
+  var H2 = flip(0.25)
+  var H3 = flip(0.25)
+  condition( H1 == 1 )
+  var X = H1 + H2 + H3
+  return {'X': X}
+}
+var eloszlás2 = Enumerate(model2)
+
+viz.auto(eloszlás2)
+````
+
+Ennél sokkal izgalmasabb, ha azt a kérdés, hogy valaki megmondja a kísérlet eredményét és nekünk kell kitalálnunk azt, hogy a húzások milyenek voltak:
+
+````javascript
+var model3 = function() {
+  var H1 = flip(0.25)
+  var H2 = flip(0.25)
+  var H3 = flip(0.25)
+  var X = H1 + H2 + H3
+  condition( X == 2 )
+  return {'H1' : H1}
+}
+var eloszlás3 = Enumerate(model3)
+````
+
+viz.auto(eloszlás3)
+
+
+
 ## Monty Hall- (vos Savant-) paradoxon
 
 Adott 3 csukott ajtó mögött egy-egy nyeremény: 1 autó és 1-1 plüsskecske. Monty, a showman megkér minket arra, hogy tippeljük meg, hol az autó (ha eltaláljuk, a miénk lesz). Amikor ez megtörtént, akkor Monty kinyit egy ajtót, éspedig szigorúan azok közül egyet, amelyek mögött egy kecske van és nem mutattunk rá. Majd felteszi újra a kérdést: hol az autó. Érdemes-e megmásítanunk a döntésünket?
