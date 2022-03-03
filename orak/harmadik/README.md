@@ -22,7 +22,7 @@ viz.auto(binom)
 viz.auto(eloszlás)
 ````
 
-Ha tudunk valamit a szituációból, ez az érték változni fog. Pl.: mi akkor X eloszlása, ha tudjuk, hogy az első esetben kőrt húzunk. 
+Ha tudunk valamit a szituációból, ez az érték változni fog. Pl.: mi akkor X eloszlása, **ha tudjuk,** hogy az első esetben kőrt húzunk. 
 
 ````javascript
 
@@ -39,7 +39,7 @@ var eloszlás2 = Enumerate(model2)
 viz.auto(eloszlás2)
 ````
 
-Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét és nekünk kéne megmondanunk, hogy a húzások milyenek voltak. Ezt hívjuk hipotetikus következtetésnek, vagy ebben a kontextusban egyszerűen inferálásnak.
+Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét és nekünk kéne megmondanunk, hogy a húzások milyenek voltak. Ezt hívjuk **hipotetikus következtetésnek,** vagy ebben a kontextusban egyszerűen **inferálásnak.**
 
 ````javascript
 var model3 = function() {
@@ -54,7 +54,77 @@ var eloszlás3 = Enumerate(model3)
 viz.auto(eloszlás3)
 ````
 
+## Rejection sampling (és persze a többi...)
 
+Eddig enumeráció volt, de most érdemes a funkcionális programozásban rejlő rekurziót is kiaknázni a **rejection sampling** módszerrel:
+
+````javascript
+var mintavétel = function () {
+    var H1 = flip(0.25)
+    var H2 = flip(0.25)
+    var H3 = flip(0.25)
+    var X = H1 + H2 + H3
+    return  X == 2 ? {'H1' : H1} : mintavétel()
+}
+viz(repeat(10, mintavétel))
+````
+
+Ha minden igaz, akkor ez ugyanaz, mint a webppl 
+
+
+````javascript
+var model4 = function () {
+    var H1 = flip(0.25)
+    var H2 = flip(0.25)
+    var H3 = flip(0.25)
+    var X = H1 + H2 + H3
+    condition( X == 2)
+    return  {'H1' : H1}
+}
+
+var H1_inferálása = Infer({method: 'rejection', samples: 100, model: model4})
+
+viz.auto(H1_inferálása)
+````
+
+## Pihenésképp egy érdekesség: "mem" függvény
+
+Tegyük fel, hogy hipotetikus emberek szemszínét szeretnénk generálni véletlenszerűen. 
+
+````javascript
+var szemszín = function (ember) {
+  return categorical({ps: [0.6, 0.2, 0.2], vs: ['barna','kék','szürke']})
+}
+
+var vektor = [szemszín('Pisti'), szemszín('Anna'), szemszín('Cili')]
+
+print(vektor)
+
+viz.auto(vektor)
+````
+
+A probléma, hogy ilyenkor ugyanannak az embernek egy másik híváskor más lesz a szemszíne. Ezt a mem-mel, mint egyfajta "feltétellel" kerülhetjük ki.
+
+
+````javascript
+var szemszín2 = mem(function (ember) {
+  return categorical({ps: [0.6, 0.2, 0.2], vs: ['barna','kék','szürke']})
+})
+
+var vektor2 = [szemszín2('Pisti'), szemszín2('Anna'), szemszín2('Pisti')]
+
+print(vektor2)
+
+viz.auto(vektor2)
+````
+
+## Felételes valószínűség
+
+Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt teljesítő elemi részeseményekre, azaz innentől nem Ω, hanem A az összes elemi események tere:
+
+<img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
+
+(P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
 
 
 
