@@ -1,6 +1,6 @@
 # Feltételes valószínűség
 
-## Feltétel, következtetés egy változóra (inferálás), feltételes valószínűség (vissza a binomiálishoz)
+## Feltétel, inferálás
 
 Egy 52 lapos francia kártyapakliban annak a valószínűsége, hogy egy kártya kőr (♥) p = 13/52 = 0.25. Keressük annak az X valószínűségi változónak az eloszlását, ami azt mondja meg, hogy ha _visszatevéssel_ kiveszünk a pakliból 3 lapot, akkor hány ebből a kőr, tehát
 
@@ -51,9 +51,10 @@ var model3 = function() {
   return {'H1' : H1}
 }
 var eloszlás3 = Enumerate(model3)
+viz.auto(eloszlás3)
 ````
 
-viz.auto(eloszlás3)
+
 
 
 
