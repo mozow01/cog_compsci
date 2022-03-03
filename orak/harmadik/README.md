@@ -153,6 +153,13 @@ var Z = Infer({method: 'enumerate', model: model5})
 viz(Z)
 ````
 
+Itt az eloszlás már igazi, "joint" (K,X) 
+
+|      |  X=1   | X=0 |  
+| ---  | --- | --- | 
+|  K=1 |  1/16 | 1/26 | 
+|  K=0 | 7/16 | 6/13  | 
+
 ## Monty Hall- (vos Savant-) paradoxon
 
 Adott 3 csukott ajtó mögött egy-egy nyeremény: 1 autó és 1-1 plüsskecske. Monty, a showman megkér minket arra, hogy tippeljük meg, hol az autó (ha eltaláljuk, a miénk lesz). Amikor ez megtörtént, akkor Monty kinyit egy ajtót, éspedig szigorúan azok közül egyet, amelyek mögött egy kecske van és nem mutattunk rá. Majd felteszi újra a kérdést: hol az autó. Érdemes-e megmásítanunk a döntésünket?
