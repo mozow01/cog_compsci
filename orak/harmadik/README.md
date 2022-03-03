@@ -120,13 +120,37 @@ viz.auto(vektor2)
 
 ## Felételes valószínűség
 
+Valószínűségi változók függhetnek egymástól.
+
+**Például **
+
+X = pénzérmével fej vagy írás (boole (1/0) értékű változó (0.5, 0.5) kategorikus eloszással)
+
+Y = királyt húzunk (1/0), feltéve, hogy ha X = 1, akkor magyar, ha X = 0, akkor francia kártyapakliból
+
+|      |  X=1   | X=0 |  
+| ---  | --- | --- | 
+|  Y=1 |  1/8 | 1/13 | 
+|  Y=0 | 7/8 | 12/13  | 
+
+
 Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt teljesítő elemi részeseményekre, azaz innentől nem Ω, hanem A az összes elemi események tere:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
 
-(P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
+P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A).
 
+````javascript
+var model5 = function () {
+    var X = flip()
+    var Y = flip( X ? 1/8 : 1/13)
+    return  {'X,Y': [X , Y]}
+}
 
+var Z = Infer({method: 'enumerate', model: model5})
+
+viz(Z)
+````
 
 ## Monty Hall- (vos Savant-) paradoxon
 
