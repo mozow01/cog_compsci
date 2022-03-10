@@ -10,7 +10,11 @@ Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt te
 
 <img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
 
-(P(B|A) -t úgy mondjuk ki, hogy B valószínűsége feltéve, hogy A (probability of B given A)).
+Itt A és B események, azaz halmazok vagy állítások és nem változók. Ha adott az X és Y változó és annak valamely x és y értéke, akkor az írásmód:
+
+vagy
+
+ezt szorzatszabálynak hívjuk és az együttes vagy joint vagy többváltozós valószínűség felbontását szorzatra **faktorizációnak** nevezzük. A faktorizáció feltételes valószínűségekkel a függőségi viszonokat jeleníti meg.  
 
 **1.** 
 
@@ -24,11 +28,10 @@ Legyen R az az igaz/hamis értékű kategorikus változó, hogy esik. Ekkor
 
 vagyis ez nem függ semmitől. A dugó T változója viszont feltételesen van megadva:  
 
- T ~ categorical(igaz, ha R=igaz: 1/2; igaz, ha R=hamis: 1/2 ; hamis, ha R=igaz: 3/4; hamis, ha R=hamis: 1/4 ) 
-
+<img src="https://render.githubusercontent.com/render/math?math=T%20%5C%3B~%5C%3B%20%5Ctext%7Bcategorical(igaz%2C%20ha%20R%3Digaz%3A%7D%5C%3B%201%2F2%3B%5C%3B%5Ctext%7Bigaz%2C%20ha%20R%3Dhamis%3A%20%7D%5C%3B1%2F2%3B%5C%3B%5Ctext%7Bhamis%2C%20ha%20R%3Digaz%3A%7D%5C%3B3%2F4%3B%5C%3B%5Ctext%7Bhamis%2C%20ha%20R%3Dhamis%3A%20%7D%5C%3B1%2F4%20%5Ctext%7B)%7D%20">
 _Rögzített_ x és y értékek esetén:
 
- P( R=x, T=y ) = P( T=y | R=x ) * P(R=x)   
+<img src="https://render.githubusercontent.com/render/math?math=P(R%3Dx%2CT%3Dy)%3DP(T%3Dy%5Cmid%20R%3Dx%20)%5Ccdot%20P(R%3Dx)%20">  
 
 
 **b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
