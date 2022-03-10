@@ -20,7 +20,7 @@ Pesten annak a valószínűsége, hogy március 14-edikán esik: 1/3. Ha esik, a
 
 Legyen R az az igaz/hamis értékű kategorikus változó, hogy esik. Ekkor 
 
- R ~ categorical(igaz: 1/3; hamis: 2/3) 
+<img src="https://render.githubusercontent.com/render/math?math=R%20%5C%3B~%20%5C%3B%5Ctext%7Bcategorical%7D(%5Ctext%7Bigaz%3A%7D%5C%3B%201%2F3%3B%5Ctext%7B%20hamis%3A%7D%5C%3B2%2F3)%20">
 
 vagyis ez nem függ semmitől. A dugó T változója viszont feltételesen van megadva:  
 
