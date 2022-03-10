@@ -18,6 +18,17 @@ Pesten annak a valószínűsége, hogy március 14-edikán esik: 1/3. Ha esik, a
 
 **a)** Mi annak a valószínűsége, hogy közlekedési torlódás alakul ki?
 
+Legyen R az az igaz/hamis értékű kategorikus változó, hogy esik. Ekkor 
+
+R ~ categorical(igaz: 1/3; hamis: 2/3) 
+
+vagyis ez nem függ semmitől. A dugó T változója viszont feltételesen van megadva:  
+
+T ~ categorical(igaz, ha R=igaz: 1/2; igaz, ha R=hamis: 1/2 ; hamis, ha R=igaz: 3/4; hamis, ha R=hamis: 1/4 ) 
+
+_Rögzített_ x és y értékek esetén:
+
+P( R=x, T=y ) = P( T=y | R=x ) * P(R=x)   
 
 
 **b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
