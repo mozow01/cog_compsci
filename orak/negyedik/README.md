@@ -1,4 +1,4 @@
-# Bayesiánus adatelemzés (Bayesian Data Analysis)
+# Bayesiánus adatelemzés I. (Bayesian Data Analysis)
 
 ## Ismétlés, összefoglalás
 
@@ -14,7 +14,11 @@ Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt te
 
 **1.** 
 
-**a)** Mi annak a valószínűsége, hogy két kockával dobva, az eredményben van hatos. 
+Pesten annak a valószínűsége, hogy március 14-edikán esik: 1/3. Ha esik, akkor 50%-os valószínűséggel dugul be a város. Ha nem esik, akkor a dugó kialakulásának aránya 0,25.   
+
+**a)** Mi annak a valószínűsége, hogy közlekedési torlódás alakul ki?
+
+
 
 **b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
 
