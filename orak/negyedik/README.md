@@ -10,7 +10,15 @@ Ekkor leszűkítjük az elemi események terét a feltételre, az A eseményt te
 
 <img src="https://render.githubusercontent.com/render/math?math=P(B%7CA)%5Coverset%7B%5Cmathrm%7Bdef.%7D%7D%7B%3D%7D%5Cdfrac%7BP(A%5Ccap%20B)%7D%7BP(A)%7D%5Cquad%20%5Cquad%20P(A)%5Cneq%200">
 
-Itt A és B események, azaz halmazok vagy állítások és nem változók. Ha adott az X és Y változó és annak valamely x és y értéke, akkor az írásmód:
+Itt A és B események, azaz halmazok vagy állítások és nem változók. 
+
+**Szorzatszabály.** A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az értékét tudjuk, sőt, vannak olyan tárgyalások is (Rényi), amelyekben a feltételes valószínűség az alapfogalom. Éppen ezért a definíciót néha így írják:
+
+<img src="https://render.githubusercontent.com/render/math?math=P(A%5Ccap%20B)%3DP(B%7CA)%5Ccdot%20P(A)%5Cquad%20%5Cquad%20%5Cmathrm%7Bill.%7D%20%5Cquad%20%5Cquad%20P(B%5Ccap%20A)%3DP(A%7CB)%5Ccdot%20P(B)">
+
+**Változókkal**
+
+Ha adott az X és Y változó és annak valamely x és y értéke, akkor az írásmód:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(Y%3Dy%5Cmid%20X%3Dx%20)%3D%5Cdfrac%7BP(X%3Dx%2CY%3Dy)%7D%7BP(X%3Dx)%7D%20">
 
@@ -18,7 +26,7 @@ vagy
 
 <img src="https://render.githubusercontent.com/render/math?math=P(X%3Dx%2CY%3Dy)%3DP(Y%3Dy%5Cmid%20X%3Dx%20)%5Ccdot%20P(X%3Dx)%20">
 
-ezt szorzatszabálynak hívjuk és az együttes vagy joint vagy többváltozós valószínűség felbontását szorzatra **faktorizációnak** nevezzük. A faktorizáció feltételes valószínűségekkel a függőségi viszonyokat jeleníti meg.  
+az együttes vagy joint vagy többváltozós valószínűség _felbontását_ szorzatra **faktorizációnak** nevezzük. A faktorizáció feltételes valószínűségekkel a függőségi viszonyokat jeleníti meg.  
 
 **1.** 
 
@@ -38,45 +46,38 @@ _Rögzített_ x és y értékek esetén:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(R%3Dx%2CT%3Dy)%3DP(T%3Dy%5Cmid%20R%3Dx%20)%5Ccdot%20P(R%3Dx)%20">  
 
-
-
-
-**b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
+Számoljuk ki az előző óra alapján:
 
 ````javascript
-var kocka_modell = function () {
-  var kocka1 = randomInteger(6) + 1;
-  var kocka2 = randomInteger(6) + 1;
-  condition(kocka1 == 6 || kocka2 == 6)
-  return [kocka1,kocka2];
+var model6 = function () {
+    var R = flip(1/3)
+    var T = R==true ? flip(1/2) : flip(1/4)
+    return  {R: R, T: T, '(R,T)': [R, T]}
 }
 
-var eloszlas = Enumerate(kocka_modell);
+var Z = Infer({method: 'enumerate', model: model6})
 
-// Ugyenez valószínűségi következtetéssel is kiszámítható
-// var következtetés = Infer({method: 'enumerate'}, kocka_modell);
-// Ugyanez minételezéssel: 
-
-var következtetés = Infer({method: 'rejection'}, kocka_modell);
-print(következtetés);
-viz.auto(következtetés);
-
-print(eloszlas);
-viz.auto(eloszlas);
+viz(Z)
 ````
-Ellenőrzés, komplementer valószínűséggel: P(van hatos) = 1 - (5^2)/(6^2) ~ 0.3056 (= 11/36 ).
 
-Ezzel gyakorlatilag a **feltételes valószínűséget** is megértettük, így:
+Ami nekünk kell, az a T eloszlása. De ez függ az R-ről, ezért erre szummázunk és a joint valószínűséget  
 
-* Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van benne (egyáltalán) hatos? 
+<img src="https://render.githubusercontent.com/render/math?math=P(T%3Dy)%3D%5Csum_%7Bx%3D%5Ctext%7Bigaz%2C%20hamis%7D%7D%20P(Y%3Dy%2C%20X%3Dx)%20%3D%20P(Y%3Dy%2C%20X%3Digaz)%2BP(Y%3Dy%2C%20X%3Dhamis)">
 
-P(az első hatos | van a dobások között hatos) = 6/11 vagy ((6/36) / (11/36)).
 
-**Megjegyzés, szorzatszabály.** A feltételes valószínűség sokszor olyan intuitív, hogy azonnal ennek az értékét tudjuk, sőt, vannak olyan tárgyalások is (Rényi), amelyekben a feltételes valószínűség az alapfogalom. Éppen ezért a definíciót néha így írják:
+**b)** Tudjuk, hogy annak a valószínűsége, hogy késem, 1/2 ha nincs dugó, ha viszont dugó van, akkor 90%. Mennyi a késésem eloszlása? 
 
-<img src="https://render.githubusercontent.com/render/math?math=P(A%5Ccap%20B)%3DP(B%7CA)%5Ccdot%20P(A)%5Cquad%20%5Cquad%20%5Cmathrm%7Bill.%7D%20%5Cquad%20%5Cquad%20P(B%5Ccap%20A)%3DP(A%7CB)%5Ccdot%20P(B)">
+Legyen ez a változó L.
 
-### Feltételes eloszlás joint eloszlás esetén
+<img src="https://render.githubusercontent.com/render/math?math=L%5C%3B~%5C%3B%5Ctext%7Bcategorical(igaz%3A%7D%5C%3B1%5C%2C%3B%5Ctext%7Bha%20T%20igaz%7D%3B%5C%3B%5C%3B1%2F2%2C%5C%3B%5Ctext%7Bha%20T%20hamis%7D)">
+
+Ekkor a függési viszonyok:
+
+<img src="https://render.githubusercontent.com/render/math?math=P(R%3Dx%2CT%3Dy%2CL%3Dz)%3D%20P(L%3Dy%5Cmid%20T%3Dy)%5Ccdot%20P(T%3Dy%5Cmid%20R%3Dx)%5Ccdot%20P(R%3Dx)">
+
+Alakítsuk át a programot és marginalizáljunk L-re!
+
+### Feltételes eloszlás joint eloszlás esetén általános eset
 
 A 
 
