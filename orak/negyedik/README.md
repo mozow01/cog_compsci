@@ -103,7 +103,10 @@ Mindez Y-ra nem igaz: az Y értékben változó P(X = x<sub>i</sub> | Y ) kifeje
 
 ## Bayes-tétel eseményekkel
 
+<img src="https://render.githubusercontent.com/render/math?math=P(A%5Cmid%20B)%3D%5Cdfrac%7BP(B%5Cmid%20A)%5Ccdot%20P(A)%7D%7BP(B)%7D%0A">
 
+Ugyanis:
+<img src="https://render.githubusercontent.com/render/math?math=P(A%5Cmid%20B)%5Ccdot%20P(B)%3DP(A%5Ccap%20B)%3DP(B%5Cmid%20A)%5Ccdot%20P(A)%0A">
 
 ## Bayes-tétel jointtal
 
