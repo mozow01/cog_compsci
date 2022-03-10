@@ -18,7 +18,7 @@ vagy
 
 <img src="https://render.githubusercontent.com/render/math?math=P(X%3Dx%2CY%3Dy)%3DP(Y%3Dy%5Cmid%20X%3Dx%20)%5Ccdot%20P(X%3Dx)%20">
 
-ezt szorzatszabálynak hívjuk és az együttes vagy joint vagy többváltozós valószínűség felbontását szorzatra **faktorizációnak** nevezzük. A faktorizáció feltételes valószínűségekkel a függőségi viszonokat jeleníti meg.  
+ezt szorzatszabálynak hívjuk és az együttes vagy joint vagy többváltozós valószínűség felbontását szorzatra **faktorizációnak** nevezzük. A faktorizáció feltételes valószínűségekkel a függőségi viszonyokat jeleníti meg.  
 
 **1.** 
 
@@ -37,6 +37,8 @@ vagyis ez nem függ semmitől. A dugó T változója viszont feltételesen van m
 _Rögzített_ x és y értékek esetén:
 
 <img src="https://render.githubusercontent.com/render/math?math=P(R%3Dx%2CT%3Dy)%3DP(T%3Dy%5Cmid%20R%3Dx%20)%5Ccdot%20P(R%3Dx)%20">  
+
+
 
 
 **b)** Mi annak a valószínűsége, hogy az első kocka hatos feltéve, hogy van a dobottak között (egyáltalán) hatos.
