@@ -423,7 +423,7 @@ azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_1.png" width=600>
 
-## Anekdoikus dönési helyzet
+## Anekdotikus döntési helyzet
 
 * A fenti kérdés az absztrakt matematikai jelölések megértésére vonatkozott. Ugyanebben a mérésben a 24 átlagos gimnazista közül 11 mondta, hogy a "hagyományos" matekkal nem volt gondja. A 31 elitgimnazista között ez a szám 19. Mennyire tartható a M<sub>1</sub> (mutatis mutandis)?
 
