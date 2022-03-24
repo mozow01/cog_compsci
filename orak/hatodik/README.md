@@ -265,7 +265,7 @@ viz.hist(cat1, {xLabel: 'esetek', yLabel: 'valószínűség'});
 ## Modellösszehasonlítás és hiperpriorok
 
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut1_1.png" width=1000>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" width=1000>
 
 ````javascript
 var Model = Infer({ method: 'rejection' }, function(){
