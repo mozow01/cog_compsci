@@ -118,7 +118,7 @@ print(vektor2)
 viz.auto(vektor2)
 ````
 
-## Felételes valószínűség
+## Feltételes valószínűség
 
 Valószínűségi változók függhetnek egymástól.
 
