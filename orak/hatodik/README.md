@@ -326,7 +326,8 @@ var HiperModel = Infer({method: 'rejection', samples: 10000 },
 });
   
 
-viz.marginals(HiperModel)````
+viz.marginals(HiperModel)
+````
 
 Itt a következő két stratgia van a Bayes faktor kiszámítására.
 
