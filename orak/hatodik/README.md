@@ -199,57 +199,10 @@ azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak **anekdo
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/homer.png" width=300>
 
-## Érettségi eredmények, döntő eredmény
-
-A középszintű matematika érettségi eredményét, mint viszonylag objektív adatot hasonlíthatjuk össze a párhuzamos osztály egy csoportjával ill. egy elitgimnázium végzős évfolyamának eredményével.
-
-Generatív modell: 
-
-
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_3.png" width=500>
-
-````Javascript
-var multiModel = function() {
-  
-   var vector = Vector([4, 6, 4, 2]);
-    var x = dirichlet(vector);
-  
-    var x1 = (x.data)[0];
-    var x2 = (x.data)[1];
-    var x3 = (x.data)[2];
-    var x4 = (x.data)[3];
-  
-    var s = x1 + x2 + x3 + x4;
-  
-  observe(Multinomial({ps: [x1/s,x2/s,x3/s,x3/s], n: 1}), [0,0,1] );
-   var w = multinomial({ps: [x1/s,x2/s,x3/s,x3/s], n: 1});
-   
-    return {
-      s: w
-         // Prior: prior, 
-           //PredictivePrior: predictivePrior, 
-         // Posterior: , 
-         // PredictivePosterior: predictivePosterior
-    };
-}      
-
-var opts = {method: 'MCMC'}
-var output_1 = Infer(opts,multiModel)
-
-viz.marginals(output_1)
-````
-
-Eredmények:
-
-
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=600>
-
-A vizsgált csoportot, az A jelűt vetettük össze két kontrollcsoporttal. Az egyik az iskolán belüli B, amely egy kisebb, homogénabb félosztály volt. A másik, a C jelű az egyik elitgimnázium teljes végzős évfolyama. A bayesiánus elemzésből az derül ki, hogy a B, mint prior messze jobban magyarázza a mért csoport eredményeit, mint a C. A Mann–Whitney-próba szerint azonban nincs kimutatható különbség a B és az A ordinális mérési szintű adatsorok mediánja között (p=0.87>0.05).
-
 
 ## Modellösszehasonlítás és hiperpriorok
 
-Döntsün a két város között. Azt tudjuk, hogy derült az ég. Melyik városban vagyunk?
+Döntsünk a két város között! Azt tudjuk, hogy derült az ég. Melyik városban vagyunk?
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" width=1000>
 
@@ -329,7 +282,7 @@ var HiperModel = Infer({method: 'rejection', samples: 10000 },
 viz.marginals(HiperModel)
 ````
 
-Itt a következő két stratgia van a Bayes faktor kiszámítására.
+A következő két stratégia ajánlkzik a Bayes faktor kiszámítására.
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7BBF%7D_%7B12%7D%3D%20%5Cdfrac%7BP(D%7CM_1)%7D%7BP(D%7CM_2)%7D%0A%3D%20%5Cdfrac%7BP(M_1%7CD)%7D%7BP(M_2%7CD)%7D%5Ccdot%5Cdfrac%7BP(M_2)%7D%7BP(M_1)%7D">
   
