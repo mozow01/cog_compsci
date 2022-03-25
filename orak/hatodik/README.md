@@ -1,168 +1,4 @@
-# Gráfmodellek (folytatás)
 
-## Ismétlés 
-
-A gráfmodell alapjául szolgáló _G_ irányított körmentes gráf (DAG) egy spéci címkézett osztályba tarozik. A **bekarikázott** csúcsok valószínűségi változókat reprezentálnak (és elég ezeket feltüntetni, de nem kell csak ezeket), a **bekarikázatlanok** determinisztikus változókat. A **nyilak** a p(x<sub>0</sub>,...,x<sub>K</sub>) joint valószínűség alábbi alakú szorzattá bonthatóságát fejezi ki valamilyen értelemben:
-
-<img src="https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20%5Cmathrm%7Bp%7D(%5Cmathbf%7Bx%7D)%3D%5Cprod_%7Bk%3D1%7D%5E%7BK%7D%5Cmathrm%7Bp%7D(x_k%5Cmid%5Cmathrm%7Bpare%7D_k)">
-
-ahol pare<sub>k</sub> az x<sub>k</sub> csúcs (közvetlen) szülei. A szorzatban pontosan akkor szerepel a p(x<sub>k</sub> | x<sub>i</sub>,...,x<sub>j</sub>) tényező, ha a G-ben van x<sub>i</sub>,...,x<sub>j</sub> pontjaiból x<sub>k</sub>-ba mutató nyíl. A **besatírozott** csúcsok olyan valószínűségi változók, amelyek a megfigyelt változókat reprezentálják. Tehát G gráfmondellje a p(x<sub>0</sub>,...x<sub>K</sub>) joint valószínűségnek, ha a fenti faktorizációs tulajdonság teljesül.
-
-A faktoritációs tulajdoságot ténylegesen felezni tudjuk **faktorpontokkal.** Ekkor pontosan akkor köti össze egy faktor pont egy gyerekeket és
-
-## Bayes-tétel (évszak és vizes fű)
-
-A generatív modell (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "évszak" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
-
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_1.png" width=600>
-
-És a webppl kód:
-
-````javascript
-var vizesModel = Infer({ method: 'enumerate' }, function(){
-  var évszak = categorical({ps:[0.25,0.25,0.25,0.25], 
-                            vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
-  
-  var felhős = ((évszak === 'tavasz') || (évszak === 'ősz' )) ? flip(0.9) : flip(0.5);
-  
-  var esik = felhős ? flip(0.8) : flip(0.0);
- 
-  var locsoló = felhős ? flip(0.1) : flip(0.9);
-  
-  var vizes = esik && locsoló 
-                   ? flip(.99)  
-                   : (esik && !locsoló ) || (esik && !locsoló ) 
-                        ? flip(0.9) 
-                        : flip(0.1);
-       condition(vizes === true);
-  
-  var évszakPrior = categorical({ps:[0.25,0.25,0.25,0.25], 
-                            vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
-  
-  var felhősPrior = ((évszakPrior === 'tavasz') || (évszakPrior === 'ősz' )) ? 
-      flip(0.9) : flip(0.5);
-  
-       return {évszakPrior: évszakPrior, felhősPrior: felhősPrior,
-               évszakPost: évszak, felhősPost: felhős  };
-});
-
-viz.marginals(vizesModel)
-````
-
-Itt "évszak" előtt van egy konstans csúcs, ami a kategorikus változó eloszlásának adatait (hogy egyenletes) tartalmazza. Ezek a paraméterek azonban rögzítettek.
-
-A **Bayes-tétel** szerint
-
-<img src="https://render.githubusercontent.com/render/math?math=P(latens%5Cmid%20megfigyelt)%20%3D%20%5Cdfrac%7BP(megfigyelt%20%5Cmid%20latens%20)%5Ccdot%20P(latens)%7D%7BP(megfigyelt)%7D">
-
-Ill. itt: 
-
-<img src="https://render.githubusercontent.com/render/math?math=P(honap%5Cmid%20vizes)%20%3D%20%5Cdfrac%7BP(vizes%20%5Cmid%20honap%20)%5Ccdot%20P(honap)%7D%7BP(vizes)%7D">
-
-Rögzített inputtal (h) a generatív modell segítségével ki lehet számolni, mi a vizes fű változó feltételes eloszlása: 
-
-<img src="https://render.githubusercontent.com/render/math?math=vizes%5Cquad%20%5Cmapsto%20%5Cquad%20P(vizes%20%5Cmid%20honap%20)">
-
-(ez tehát egy előrejelzés).
-
-A generatív modell programozott verziója a fenti kódban ez:
-
-````javascript
-var évszak = categorical({ps:[0.25,0.25,0.25,0.25], vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
-
-var felhős = ((évszak === 'tavasz') || (évszak === 'ősz' )) ? flip(0.9) : flip(0.5);
-  
-var esik = felhős ? flip(0.8) : flip(0.0);
- 
-var locsoló = felhős ? flip(0.1) : flip(0.9);
-  
-var vizes = esik && locsoló 
-                   ? flip(.99)  
-                   : (esik && !locsoló ) || (esik && !locsoló ) 
-                        ? flip(0.9) 
-                        : flip(0.1);
-````
-
-A pszeudokódját az ábrán látjuk.
-
-Ha rögzítjük az outputot(v), akkor vagy mintavételezéssel vagy kimerítéssel, de ki lehet számolni, hogy az egyes inputok milyen valószínűséggel adják ezt a v-t:
-
-<img src="https://render.githubusercontent.com/render/math?math=honap%5Cquad%20%5Cmapsto%20%5Cquad%20P(vizes%20%5Cmid%20honap%20)">
-
-ez a **likelihood függvény,** sajnos ez **nem eloszlás**. Ahhoz az évszak változó felett (a feltétel mellett) egy valószínűségi eloszlást kapjunk, még súlyozni kell a "évszak" marginális eloszlásával és 1-re normálni kell ezt a mennyiséget. Akkor a Bayes-tétel szerint ez az új mennyiség már eloszlás, ami a posterior. 
-
-A Bayes-inferencia most "kimerítéssel" (enumerate) és "az adat feltételezésével" (condition) működik: a hónap változó marginális eloszlását számolja ki azzal a feltétellel, hogy adat = vizes, az összes eset végigszámolásával.
-
-## Konjugált prior
-
-Nyilvánvaló, hogy a **jelenséget** a generatív modell tartalmazza, ami pedig a likelihood függvényt számolja ki valamilyen módon. Ez most az egyszerűségében is elég bonyi, de maradjunk annyiban, hogy valami kategorikus változó a bemenet és Boole-értékű a kimenet. Az elemzést tovább finomíthatjuk úgy, hogy a prior paramétereit variáljuk. Most a prior egy egyszerű **kategorikus** változó: egy zsákban színes golyók vannak rögzített arányban és egy golyót húzunk belőle. A prior paramétereire tett elméleti feltételezést hiperpriornak nevezzük. 
-
-Hogyan választunk hiperpriort (vagy általában priort)?  
-
-Bárhogy. De ha szép eredményt akarunk, akkor a likelihoodhoz (vagyis az alapjelenséghez) olyan hiperprior eloszlást (másik jelenséget) kell választanunk, amivel ha a likelihood-ot megszorozzuk ugyanolyan jelenséget kapunk, mint a hiperprior. Ez azért van, mert azt gondoljuk, hogy a Bayes-i update-elés valóban élesítés: egy y |----> f(p,y) (prior) függvénycsaládból választja ki azt a p paramétert, amit az adatok mellett a legvalószínűbb. Nem kell feltétlenül így tennünk, mert úgy is numerikus a számítás és a gép kidobja az eloszlást mindenképpen. De ez az ajánlás, nem teljesen hülyeség. 
-
-[https://en.wikipedia.org/wiki/Conjugate_prior]
-
-Például a kategorikus változó számára a konjugált prior a Dirichlet-eloszlás. A binomiális ("hányan hibáztak rá a jó válaszra") változóhoz a beta. A beta általánosítása a Dirichlet. A gauss-nak a gauss.
-
-A locsolós példa ezzel módosítva:
-
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_2.png" width=600>
-
-És a kód:
-
-````javascript
-var vizesmasikModel = Infer({ method: 'rejection' }, function(){
-  
-  var x = dirichlet({alpha: Vector([1/10,2/10,7/10])});
-
-    var x1 = (x.data)[0];
-
-    var x2 = (x.data)[1];
-
-    var x3 = (x.data)[2];
-  
-  var felhős =  categorical({ps:[x1,x2,x3], 
-                            vs: ['derült', 'enyhén felhős', 'erősen felhős'] });
-  
-  var esik = (felhős === 'derült')
-                   ? flip(.1)  
-                   : (felhős === 'enyhén felhős')
-                        ? flip(0.6) 
-                        : flip(0.9);
- 
-  var locsoló = (felhős === 'derült')
-                   ? flip(.9)  
-                   : (felhős === 'enyhén felhős')
-                        ? flip(0.2) 
-                        : flip(0);
-  
-  var vizes = esik && locsoló 
-                   ? flip(.99)  
-                   : (esik && !locsoló ) || (esik && !locsoló ) 
-                        ? flip(0.9) 
-                        : flip(0.1);
-       condition(vizes === true);
-  
-  var y = dirichlet({alpha: Vector([1/10,2/10,7/10])});
-   
-    var y1 = (y.data)[0];
-
-    var y2 = (y.data)[1];
-
-    var y3 = (y.data)[2];
-  
-  var felhősPrior = categorical({ps:[y1,y2,y3], 
-                            vs: ['derült', 'enyhén felhős', 'erősen felhős'] });
-  
-  
-       return {derűsHyperPrior: y1, enyhenHyperPrior2: y2, erösenHyperPrior: y3, 
-               felhősPrior: felhősPrior,
-               felhősPosterior: felhős  };
-});
-
-viz.marginals(vizesmasikModel)
-````
 
 ## Multinomiális eloszlás
 
@@ -261,6 +97,143 @@ var cat1 = Infer({method: 'enumerate'}, function(){
 
 viz.hist(cat1, {xLabel: 'esetek', yLabel: 'valószínűség'});
 ````
+
+
+# Bayes-i hipotézisvizsgálat
+
+
+## Halmazjelölések -- külvárosi és menő gimi
+
+* Egy 24 fős átlagos gimnáziumi osztályban a diákok közül 6 válaszolta (25%), hogy nem volt gondja a matekkal. Egy elitgimnáziumban ugyanez a szám 31-ből 17. Két binomiális eloszlást szimuláló modellel élünk. M<sub>1</sub> szerint a prior 0.25 várható értékű (E(X)=a/(a+b)) dogmatikus beta eloszlás (beta(30,90), kis szórás), amellyel azt feltételezzük, hogy tényleg az átlagos gimnázium adja az átlagot, M<sub>2</sub> pedig egyenletes és bármi kijöhetett volna, mert a gimnáziumok között igen nagy eltérések is lehetnek. Melyik modell magyarázza jobban a megfigyelt 7/31 értéket?
+
+Az ordinális skálán működő klasszikus Mann--Whitney-próba p = 0.06-ot ad, azaz határeset, pedig a vak is látja, hogy lényeges eltérés van a két diákcsoport között.
+
+````javascript
+var model = function() {
+   // var p = uniform(0,1);          //M_2 modell: bármi lehet a p prior eloszlása
+var p = beta(30,90);                 //M_1 modell: az átlagos diákok a prior
+  observe(Binomial({p : p, n: 31}), 17);
+
+var poszterior_predikativ = binomial(p,31); // ezzel az új p-vel a szimulált adatok
+
+   //var prior_p = uniform(0,1);
+   var prior_p =  beta(30,90); // érintetlen paraméter
+
+var prior_predikativ = binomial(prior_p,31); // érintetlen paraméterből szimulált adatok
+
+return {
+       Prior: prior_p, 
+       Posterior : p,
+       PredictivePrior : prior_predikativ,
+       PredictivePosterior : poszterior_predikativ};
+};
+
+var output = Infer({model: model, samples: 10000, method: 'MCMC'});
+
+viz.marginals(output);
+````
+
+## Bayes-faktor
+
+Modell összehasonlításnál voltaképpen egy hierarchikus modellt építünk: 
+
+i ~ categorical((1,2),(P<sub>1</sub>,P<sub>2</sub>)) (hiperprior)
+
+&theta; ~ p<sub>i</sub>(&theta;) (prior)
+
+x ~ P<sub>i</sub>(x | &theta;) (likelihood)
+
+Ekkor a 
+
+A bayesiánus modell összehasonlítás a következőképpen megy. Kiszámítjuk mindkét esetben a 
+
+<img src="https://render.githubusercontent.com/render/math?math=P(k%3Dk_0%5Cmid%20M_i)">
+
+i=1 és i=2 modellre jellemző **likelihood** értéket. Ezek hányadosa a **Bayes-faktor:**
+
+<img src="https://render.githubusercontent.com/render/math?math=K%3D%5Cdfrac%7BP(k%3Dk_0%5Cmid%20M_1)%7D%7BP(k%3Dk_0%5Cmid%20M_2)%7D">
+
+Az alábbi táblázat (az egyik olyan amiben) a K értékek szerint látható, hogy M<sub>1</sub> mennyire magyarázza a jelenséget a megfigyelt változó ismeretében, mint M<sub>2</sub>.
+
+|K|Az M<sub>1</sub> melletti bizonyíték erőssége|
+|---|---|
+|... < 10<sup>0</sup>= 1| Negatív: M<sub>1</sub> elvetendő|
+|10<sup>0</sup> < ... < 10<sup>1/2</sup>=3.16| Alig érdemes említeni| 
+|10<sup>1/2</sup> < ... < 10<sup>3/4</sup>=6| Anekdotikus| 
+|10<sup>3/4</sup> < ... < 10<sup>1</sup>=10| Szubsztanciális (létező) |
+|10<sup>1</sup> < ... < 10<sup>3/2</sup>=31.62| Erős|
+|10<sup>3/2</sup> < ... < 10<sup>2</sup>=100 | Nagyon erős|
+|10<sup>2</sup> < ... | Döntő |
+
+## Egy erős döntési helyzet
+
+A konkrét példába, a program lefutását követően, az adatokból: P(17|M<sub>1</sub>), P(17|M<sub>2</sub>) kiszámítása után: K=P(17|M<sub>2</sub>)/P(17|M<sub>1</sub>)=
+
+K = 15,47 > 10
+
+azaz a próba **erősen** M<sub>2</sub>-t részesíti előnyben és az M<sub>1</sub> erősen elvetendő. Tehát az elitgimnáziumi érték nagyon nem vehető olyannak, ami egy véletlenül adódó átlagos gimnáziumi osztály eredménye lehetne.
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_1.png" width=600>
+
+## Anekdotikus döntési helyzet
+
+* A fenti kérdés az absztrakt matematikai jelölések megértésére vonatkozott. Ugyanebben a mérésben a 24 átlagos gimnazista közül 11 mondta, hogy a "hagyományos" matekkal nem volt gondja. A 31 elitgimnazista között ez a szám 19. Mennyire tartható a M<sub>1</sub> (mutatis mutandis)?
+
+Ebben az esetben legyen M<sub>1</sub> priorja beta(30,55), ami a 11/24 várható értéknek felel meg. Az adatok alapján:
+
+P(19|M<sub>2</sub>)/P(19|M<sub>1</sub>) = 4.32
+
+azaz az egyenletes eloszlás még mindig jobban magyaráz, de már csak **anekdotikusan**, a 3.16 < K < 6. Különbség tehát kimutatható, de már messze nem olyan hihetően, mint az előbb.
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/homer.png" width=300>
+
+## Érettségi eredmények, döntő eredmény
+
+A középszintű matematika érettségi eredményét, mint viszonylag objektív adatot hasonlíthatjuk össze a párhuzamos osztály egy csoportjával ill. egy elitgimnázium végzős évfolyamának eredményével.
+
+Generatív modell: 
+
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_3.png" width=500>
+
+````Javascript
+var multiModel = function() {
+  
+   var vector = Vector([4, 6, 4, 2]);
+    var x = dirichlet(vector);
+  
+    var x1 = (x.data)[0];
+    var x2 = (x.data)[1];
+    var x3 = (x.data)[2];
+    var x4 = (x.data)[3];
+  
+    var s = x1 + x2 + x3 + x4;
+  
+  observe(Multinomial({ps: [x1/s,x2/s,x3/s,x3/s], n: 1}), [0,0,1] );
+   var w = multinomial({ps: [x1/s,x2/s,x3/s,x3/s], n: 1});
+   
+    return {
+      s: w
+         // Prior: prior, 
+           //PredictivePrior: predictivePrior, 
+         // Posterior: , 
+         // PredictivePosterior: predictivePosterior
+    };
+}      
+
+var opts = {method: 'MCMC'}
+var output_1 = Infer(opts,multiModel)
+
+viz.marginals(output_1)
+````
+
+Eredmények:
+
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=600>
+
+A vizsgált csoportot, az A jelűt vetettük össze két kontrollcsoporttal. Az egyik az iskolán belüli B, amely egy kisebb, homogénabb félosztály volt. A másik, a C jelű az egyik elitgimnázium teljes végzős évfolyama. A bayesiánus elemzésből az derül ki, hogy a B, mint prior messze jobban magyarázza a mért csoport eredményeit, mint a C. A Mann–Whitney-próba szerint azonban nincs kimutatható különbség a B és az A ordinális mérési szintű adatsorok mediánja között (p=0.87>0.05).
+
 
 ## Modellösszehasonlítás és hiperpriorok
 
