@@ -1,6 +1,17 @@
 # Multinomiális eloszlás
 
-Legyen adva k hely, ahova n = 1 vagy 2 vagy 3 ... k golyót rakunk le. Ezzel megadjuk, hogy egy kategóriális változó mely értékeit jelüljük ki. Például van egy kérdés, amelyekre az a) -- b) -- c) -- d) -- ... válaszokat választhatjuk ki. Ha több válasz is, de mindig ugyanannyi megadható, akkor n > 1. Valahonnan tudjuk, hogy az egyes lehetőségeket az emberek a p<sub>1</sub>,...,p<sub>k</sub> valószínűségekkel választják. (Persze p<sub>1</sub>+...+p<sub>k</sub> = 1.) A kérdés, hogy mi annak a valószínűség hogy valaki az a)-t éppen n<sub>a</sub>, a b)-t n<sub>b</sub>, ... db-szor választotta. 
+A **multinomiális eloszlás** a binomiális eloszlás általánosítása. Például egy dobókocka dobott értékeit modellezi, amellyel n-szer dobunk egymás után. Ekkor n független kísérlet mindegyike olyan, amelyben 6-féle érték közül veheti fel valamelyiket, előre adott valószínűséggel, dobókockánál mind 1/6-dal. 
+
+n=8 elemű sorozat és k=6-féle kategória esetén tehát az x ~ multinomial({ps: (1/6, 1/6, 1/6, 1/6, 1/6, 1/6), vs: (1, 2, 3, 4, 5, 6)}) változó egy-egy értéke:
+
+(6, 4, 4, 6, 1, 2, 3, 1)
+(5, 5, 1, 3, 2, 6, 1, 4)
+(1, 1, 4, 5, 2, 2, 6, 6)
+...
+
+k = 2 és n = 1 esetén a multinomiális eloszlás a **Bernoulli-eloszlás**. k=2 és n>1 esetén visszakapjuk a ninomiális eloszlást. Amikor k>2 és n=1, akkor ez a **kategorikus eloszlás**.
+
+A Bernoulli-eloszlás azt modellezi, hogy egy cinkelt (vagy szabályos) érmével dobva egyszer fejet vagy írást bobunk-e (Boole értékű kimenetel p valószínűséggel). A binomiális ezt általánosítja n egymást követő dobásra. A multinomiálisnál nem csak Boole-értékű lehet a kimenetel, hanem k-féle értékű. Világos, hogy az előre adott, nem feltétlenül egyető p_1,... , p_k valószínűségek összege 1. 
 
 ## Érettségi osztályzatok
 
