@@ -164,7 +164,7 @@ viz.marginals(vizesmasikModel)
 
 # Példák
 
-## Binomiális kísérlet; különböző méretű soportokkal
+## Binomiális kísérlet különböző méretű csoportokkal
 
 Három különböző csoportban kérdezték meg, hogy a pillangó virág-e, a mért változó értékei a data változó alatt találhatók. A két modellben a priorok a non-informative és a dogmatikus volt. 
 
@@ -323,13 +323,7 @@ var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
 var output_2 = Infer(opts, complexModel)
 
 viz.marginals(output_2)
-}
 
-var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
-
-var output_2 = Infer(opts, complexModel)
-
-viz.marginals(output_2)
 ````
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/8628b1.jpg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/28c592.jpg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/1f1af8.jpg" height=200>
