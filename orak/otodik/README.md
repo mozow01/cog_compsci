@@ -254,6 +254,8 @@ viz.marginals(output_2)
 
 Egy aranyhal súlyadatai: 5, 16 és 17 g, három mérés után. Úgy döntünk, hogy ha az átlag a 15-17 sávba esik, akkor átlagos mennységet adunk neki, ha kevesebb, akkor többet, ha több, akkor kevesebbet. A kérdés, hogy számtani közepet számoljunk-e (12.7 g) vagy (informatív) priorból dolgozzunk-e. A komplexebb megközelítéshez tudjuk, hogy ezen halfajta súlya (x) normál eloszlást mutat, az átlaga 16 g, ennek az adatnak a szórása 0.2 g, továbbá az x normál elszolásának szórása 1 g. 
 
+Ebben a példában, lévén a likelihood folytonos eloszlás, **nem használhatjuk a diszkrét eloszlások feltételeit tartalamzó condition-t,** mert az hajszálpontos értéket ütköztet. Helyette az **observe** parancs lazít az adatok ütköztetésén. Ekkor elég, ha a generált adatok a megfigyelt adatok egy kis környezetében vannak. Lásd: [https://webppl.readthedocs.io/en/master/inference/conditioning.html]
+
 ### Megoldás. 
 
 #### Ha a prior uniform: 
