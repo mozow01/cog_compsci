@@ -1,8 +1,10 @@
-
-
-## Multinomiális eloszlás
+# Multinomiális eloszlás
 
 Legyen adva k hely, ahova n = 1 vagy 2 vagy 3 ... k golyót rakunk le. Ezzel megadjuk, hogy egy kategóriális változó mely értékeit jelüljük ki. Például van egy kérdés, amelyekre az a) -- b) -- c) -- d) -- ... válaszokat választhatjuk ki. Ha több válasz is, de mindig ugyanannyi megadható, akkor n > 1. Valahonnan tudjuk, hogy az egyes lehetőségeket az emberek a p<sub>1</sub>,...,p<sub>k</sub> valószínűségekkel választják. (Persze p<sub>1</sub>+...+p<sub>k</sub> = 1.) A kérdés, hogy mi annak a valószínűség hogy valaki az a)-t éppen n<sub>a</sub>, a b)-t n<sub>b</sub>, ... db-szor választotta. 
+
+## Érettségi osztályzatok
+
+Az egyik csoportban az alábbi jegyek születtek (egy adat egy jegyet kódon a (kettes, hármas, négyes, ötös) vektor egy koordinátájának kiválasztásával). Ezt összevetjük a másik csoport eredényeivel, mint priorral (4 kettes, 6, hármas, 4 jó és 2 jeles). Mennyire magyarázza a második csoport eredménye, mint prior modell az első csoport eredményét. (Meg, ugye, mihez képest :) )
 
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/ketevi_2.png" width=500>
@@ -65,7 +67,11 @@ var output_1 = Infer(opts,multiModel)
 
 ````
 
+A modell "kritika" egy változata, ha megnézzük kvalitatív módon, hogy vannak-e olyan helyek az eloszlásban, ahol vannak a modell nem jól jósol. 
+
 ## Adattér kategorikus és multinomiális esetén
+
+Multinomiálisnál egyre kell, hogy összeződjenek a ps-ek, kategorikusnál ez nem megszorítás.
 
 ````javascript
 var cat1 = Infer({method: 'enumerate'}, function(){
@@ -78,6 +84,8 @@ var cat1 = Infer({method: 'enumerate'}, function(){
 viz.auto(cat1, {xLabel: 'poszterior; B prior', yLabel: 'gyakoriság'});
 ````
 
+
+
 ````javascript
 var cat1 = Infer({method: 'enumerate'}, function(){
   
@@ -88,6 +96,10 @@ var cat1 = Infer({method: 'enumerate'}, function(){
 viz.hist(cat1, {xLabel: 'esetek', yLabel: 'valószínűség'});
   
 ````
+
+
+
+
 ````javascript
 var cat1 = Infer({method: 'enumerate'}, function(){
   
@@ -237,6 +249,7 @@ A vizsgált csoportot, az A jelűt vetettük össze két kontrollcsoporttal. Az 
 
 ## Modellösszehasonlítás és hiperpriorok
 
+Döntsün a két város között. Azt tudjuk, hogy derült az ég. Melyik városban vagyunk?
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" width=1000>
 
@@ -315,6 +328,15 @@ var HiperModel = Infer({method: 'rejection', samples: 10000 },
 
 viz.marginals(HiperModel)````
 
-  
+Itt a következő két stratgia van a Bayes faktor kiszámítására.
 
+<img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7BBF%7D_%7B12%7D%3D%20%5Cdfrac%7BP(D%7CM_1)%7D%7BP(D%7CM_2)%7D%0A%3D%20%5Cdfrac%7BP(M_1%7CD)%7D%7BP(M_2%7CD)%7D%5Ccdot%5Cdfrac%7BP(M_2)%7D%7BP(M_1)%7D">
+  
+Ha a modellek valószínűsége ugyanaz (nem feltétetezzük, hogy valamelyik kitüntetettebb), akkor a P(M2)/P(M1) = 1 és nem kell vele foglalkozni. (Ha nem az, akkor meg átszorunk vele, oszt jónapot.)
+
+1. A BF annak a két mennyiségnek az aránya, hogy a mért adat mennyire valószínű a két modellben. Ezt 1 adat esetén egyszerűen a prediktív priorból leolvashatjuk. Sok adat esetén nem ilyen egyszerű. Mindenesetre azért használunk prediktív priort, mert a modelleket vetjük össze és az adatokkal frisített poszteriorokat.
+
+2. A fenti számolás miatt [https://en.wikipedia.org/wiki/Bayes_factor] a BF ugyanaz, mint annak a két mennyiségnek a hányadosa, hogy a két modell mennyire valószínű, feltéve, hogy tudjuk az adatott. Azaz bevezetjük a modell i indexét (i=1;2), mint hiperparamétert, frissítjük a P(M2),P(M1) priorokat (P(M2|D),P(M1|D)) és megynézzük mi lett a poszteriorok hányadosa, melyik modell valószínűbb, tudva a D adatot. 
+
+Ez utóbbit alkalmaztuk a fenti példánál D=derűs, i = Város = {Winden; Hawkins}.
 
