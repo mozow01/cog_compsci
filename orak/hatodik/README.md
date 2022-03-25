@@ -290,7 +290,7 @@ Ha a modellek valószínűsége ugyanaz (nem feltétetezzük, hogy valamelyik ki
 
 1. A BF annak a két mennyiségnek az aránya, hogy a mért adat mennyire valószínű a két modellben. Ezt 1 adat esetén egyszerűen a prediktív priorból leolvashatjuk. Sok adat esetén nem ilyen egyszerű. Mindenesetre azért használunk prediktív priort, mert a modelleket vetjük össze és az adatokkal frisített poszteriorokat.
 
-2. A fenti számolás miatt [https://en.wikipedia.org/wiki/Bayes_factor] a BF ugyanaz, mint annak a két mennyiségnek a hányadosa, hogy a két modell mennyire valószínű, feltéve, hogy tudjuk az adatott. Azaz bevezetjük a modell i indexét (i=1;2), mint hiperparamétert, frissítjük a P(M2),P(M1) priorokat (P(M2|D),P(M1|D)) és megynézzük mi lett a poszteriorok hányadosa, melyik modell valószínűbb, tudva a D adatot. 
+2. A fenti számolás miatt [https://en.wikipedia.org/wiki/Bayes_factor] a BF ugyanaz, mint annak a két mennyiségnek a hányadosa, hogy a két modell mennyire valószínű, feltéve, hogy tudjuk az adatott. Azaz bevezetjük a modell i indexét (i=1;2), mint hiperparamétert, frissítjük a P(M2),P(M1) priorokat (P(M2|D),P(M1|D)) és megnézzük mi lett a poszteriorok hányadosa, melyik modell valószínűbb, tudva a D adatot. 
 
 Ez utóbbit alkalmaztuk a fenti példánál D=derűs, i = Város = {Winden; Hawkins}.
 
