@@ -333,7 +333,7 @@ Itt a következő két stratgia van a Bayes faktor kiszámítására.
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cmathrm%7BBF%7D_%7B12%7D%3D%20%5Cdfrac%7BP(D%7CM_1)%7D%7BP(D%7CM_2)%7D%0A%3D%20%5Cdfrac%7BP(M_1%7CD)%7D%7BP(M_2%7CD)%7D%5Ccdot%5Cdfrac%7BP(M_2)%7D%7BP(M_1)%7D">
   
-Ha a modellek valószínűsége ugyanaz (nem feltétetezzük, hogy valamelyik kitüntetettebb), akkor a P(M2)/P(M1) = 1 és nem kell vele foglalkozni. (Ha nem az, akkor meg átszorunk vele, oszt jónapot.)
+Ha a modellek valószínűsége ugyanaz (nem feltétetezzük, hogy valamelyik kitüntetettebb), akkor P(M2)/P(M1) = 1 és nem kell vele foglalkozni. (Ha nem az, akkor meg átszorzunk vele, oszt jónapot.)
 
 1. A BF annak a két mennyiségnek az aránya, hogy a mért adat mennyire valószínű a két modellben. Ezt 1 adat esetén egyszerűen a prediktív priorból leolvashatjuk. Sok adat esetén nem ilyen egyszerű. Mindenesetre azért használunk prediktív priort, mert a modelleket vetjük össze és az adatokkal frisített poszteriorokat.
 
