@@ -158,6 +158,8 @@ var output_1 = Infer(opts, simpleModel)
 viz.marginals(output_1)
 ````
 
+# 5-6. alkalom
+
 **5.1** Egy másik lexikonban a hörcsög súlyára 40 g-ot mondanak 8 g szórással. Melyik modell magyarázza jobban az adatokat?
 
 **5.2** (King-Ace Paradox, folytatás) Azt vizsgáljuk, hogy az "Ha ász van a kezemben, akkor király van, **vagy** ha nincs ász a kezemben, akkor király van a kezemben" mondatot hogyan értékelik az emberek, abban a tekintetben, hogy követlezik-e belőle a "Király van a kezemben" mondat. A három-választós teszt: "biztosan" "nem feltétlenül" "épp ellenkezőleg". Az egyik modell szerint a válaszok aránya, ilyen sorrendben (0.8, 0.1, 0.1), a másik modell szerint (0.2,0.7,0.1). Írj egy programot, ami az alany válaszát generálja. Kérdezz meg egy embert és találd ki, melyik modell szerint működik! Kérdezz meg 3 embert és mond meg, az "emberek" melyik modell szerint gondolkodnak!
