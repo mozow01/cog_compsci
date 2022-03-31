@@ -32,43 +32,7 @@
 
 ## 4. alkalom
 
-
-
-
-
-
-
-
-
- 
-
-
-
-**1.** Az alábbi program azt a szituációt szimulálja, hogy 5 helyre 2 golyót rakunk le. Módosítsd úgy a programot, hogy 6 helyre 3 golyót rakjon le minden lehetséges módon!
-
-a) Ennek segítségével számítsd ki, hogy mi annak a valószínűsége, hogy ha 6 helyre 3 golyót rakunk le találomra, akkor ebből pontosan kettő az első 4 helyen lesz! (A condition-t kell módosítani az "és" &&, "vagy" ||, illetve összegek segítségével, majd arányt számítani.)
-
-b) Számítsd ki mi annak a valószínűsége, hogy ha 6 helyre 3 golyót találomra lerakunk, akkor legalább kettő az első 4 helyen lesz!
-
-````javascript
-var model = function () {
-  var hely1 = randomInteger(2);
-  var hely2 = randomInteger(2);
-  var hely3 = randomInteger(2);
-  var hely4 = randomInteger(2);
-  var hely5 = randomInteger(2);
-  condition(hely1+hely2+hely3+hely4+hely5 == 2);
-  return [hely1,hely2,hely3,hely4,hely5];
-}
-
-var eloszlas = Enumerate(model);
-
-print(eloszlas);
-
-viz.hist(eloszlas);
-````
-
-**2.** Francia kártyapakliból kiválogatjuk a figurásokat (bubi, dáma, király, ász). Ez 16 lap. Kihúzunk visszatevés nélkül belőlük két lapot. Az alábbi program azokat az eseteket sorolja fel, amikor teljesül az A = "az egyik lap nem kőr vagy a másik lap nem király" esemény. Ezt tekintsük úgy, mint egy olyan P(X,Y) joint eloszlást, ahol a lyukas helyekhez tartozó valószínűség nulla, a többihez egyenletes.
+**4.1** Francia kártyapakliból kiválogatjuk a figurásokat (bubi, dáma, király, ász). Ez 16 lap. Kihúzunk visszatevés nélkül belőlük két lapot. Az alábbi program azokat az eseteket sorolja fel, amikor teljesül az A = "az egyik lap nem kőr vagy a másik lap nem király" esemény. Ezt tekintsük úgy, mint egy olyan P(X,Y) joint eloszlást, ahol a lyukas helyekhez tartozó valószínűség nulla, a többihez egyenletes.
 
 ````javascript
 var kartya = function () {
@@ -93,41 +57,50 @@ print(eloszlas);
 viz.auto(eloszlas);
 ````
 
-a) Rajzoljuk fel a P(X) = P( X = x<sub>i</sub> ) = ∑<sub>j</sub>P( X = x<sub>i</sub> , Y = y<sub>j</sub> ) marginális eloszlást (vigyázat! ez nem lesz ugyanaz, mint amit a "marginals" parancs ad vissza a webppl-ben!).
+a) Rajzold fel a P(X) = P( X = x<sub>i</sub> ) = ∑<sub>j</sub>P( X = x<sub>i</sub> , Y = y<sub>j</sub> ) marginális eloszlást (vigyázat! ez nem lesz ugyanaz, mint amit a "marginals" parancs ad vissza a webppl-ben!).
 
 b) Számoljuk ki a P( X = treff király vagy X = treff ász | Y = pikk dáma ) feltételes valószínűséget!
 
-**3.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyire ízlett a 30 fős ovis csoportnak (mikor hiányzott valaki, akkor az óvónénik szavaztak helyettük). A három mérési adat: 25, 26, 28 ovisnak ízlett. 
+**4.2.** Egymás utáni három héten kérdeztük meg, hogy a "Nagyra nőjetek" ételszolgáltató kft. rántotthús fogása mennyire ízlett az napocskás ovis csoportnak. A három mérési adat: 25-nek a 31 főből, 26-nak a 30 főből (egy beteg lett), és 28 a 31 főből (visszajött a beteg) ovisnak ízlett. 
 
 a) Tervezzünk generatív modellt az óvodások válaszainak modellezésére. Dogmatikus beta priort feltételezzünk, amely kifejezi, hogy igen ínyükre van ez az étel! 
 
 A pillangós példa ez volt:
 
 ````javascript
-var model = function() {  
+var data = [{name: 'napocskas', n:20, k:5},
+            {name: 'holdacskas', n:23, k:8},
+            {name: 'napraforgo', n:19, k:17},
+           ]
+
+var complexModel = function() {
+  
   var p = beta(30,90);
   
-  observe(Binomial({p : p, n: 20}), 4);
+  map(function(d){observe(Binomial({p: p, n: d.n}), d.k)}, data);
+  
+  var prior = beta(30,90);
+  
+    // 20 fős csoportokra normálva
+  
+  var predictivePosterior = binomial({p: p, n: 20});
+  
+  var predictivePrior = binomial({p: prior, n: 20});
+  
+  return {Prior: prior, 
+          PredictivePrior: predictivePrior, 
+          Posterior: p, 
+          PredictivePosterior: predictivePosterior};
+}
 
-  var poszterior_predikativ = binomial(p,30);
+var opts = {method: 'MCMC', samples: 20000}
 
-  var prior_p = beta(30,90);
+var output_2 = Infer(opts, complexModel)
 
-  var prior_predikativ = binomial(prior_p,20);
-
-return {
-       Prior: prior_p, 
-       Posterior : p,
-       PredictivePrior : prior_predikativ,
-       PredictivePosterior : poszterior_predikativ};
-};
-
-var output = Infer({model: model, samples: 10000, method: 'MCMC'});
-
-viz.marginals(output);
+viz.marginals(output_2)
 ````
 
-b) Határozzuk meg próbálgatással a posterior eloszlás várható értékét és a kredibilitási intervallumot 95%-ra!
+**4.3** Határozzuk meg próbálgatással a posterior eloszlás várható értékét és a kredibilitási intervallumot 95%-ra!
 
 Ez a pillangós példánál ez volt:
 
@@ -151,4 +124,45 @@ print(expectation(output));
 expectation(output,function(p){0.1<p && p<0.31})
 ````
 
-**4.** A szomszédos óvodába minden második nap a krisnások hordják az ételt, ezért az ottani gyerekek ismerik a tradicionális magyar konyhától eltérő ízvilágot. A mérés szerint ott 30 óvodásból 15 szerette csak a "Nagyra nőjetek" rántotthúsát. Az M modell legyen az előző feladatbeli, az N modell pedig az, hogy akármilyen uniform p értékkel döntenek a szomszédos óvoda óvodásai. Mennyire (milyen szinten) magyarázza jobban a megfigyelt értéket az N az M-hez képest (vagy fordítva)? Végezzünk Bayes-faktoros elemzést! (Erről lásd a negyedik valszám órát.)
+**4.4** Hörcsögünk súlyának mérési adatai: 28 g, 31 g, 44 g, 29 g. Lexikonbeli adatok: átalgos súly: 32 g, szórás: 10 g. Mi lesz a prediktív posterior eloszlás és a várható érték?  
+
+````javascript
+var data = [{k: 5},
+            {k: 16},
+            {k: 17},
+           ]
+
+var simpleModel = function() {
+  
+  var m = uniform(4,18);
+   
+  map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
+  
+  var Prior = uniform(4,18);
+  
+  var PredictivePosterior = gaussian(m,1);
+  
+  return {
+          Prior: Prior, 
+          Posterior: m,
+          PosteriorPredictive: PredictivePosterior
+   
+
+      };
+}
+
+var opts = {method: 'SMC', particles: 2000, rejuvSteps: 5}
+
+var output_1 = Infer(opts, simpleModel)
+
+viz.marginals(output_1)
+````
+
+**5.1** Egy másik lexikonban a hörcsög súlyára 40 g-ot mondanak 8 g szórással. Melyik modell magyarázza jobban az adatokat?
+
+**5.2** (King-Ace Paradox, folytatás) Azt vizsgáljuk, hogy az "Ha ász van a kezemben, akkor király van, **vagy** ha nincs ász a kezemben, akkor király van a kezemben" mondatot hogyan értékelik az emberek, abban a tekintetben, hogy követlezik-e belőle a "Király van a kezemben" mondat. A három-választós teszt: "biztosan" "nem feltétlenül" "épp ellenkezőleg". Az egyik modell szerint a válaszok aránya, ilyen sorrendben (0.8, 0.1, 0.1), a másik modell szerint (0.2,0.7,0.1). Írj egy programot, ami az alany válaszát generálja. Kérdezz meg egy embert és találd ki, melyik modell szerint működik! Kérdezz meg 3 embert és mond meg, az "emberek" melyik modell szerint gondolkodnak!
+
+**5.3** Készíts generatív modellt, amelyik megjósolja, hogy elkésem-e a munkából, ha az függ attól, hogy kirándultam-e a hétvégén. Ha kirándultam, akkor ninkább nem kések el. Viszont az, hogy kirándultam-e az attól függ, hogy esett-e az eső a hétvégén. Milyen eloszlások esetén erősen esőre következtetni abból, hogy elkéstem-e vagy sem?
+
+**5.4** Készíts generatív modellt, amelyik megjósolja, hogy vizes-e a fű, ha tudjuk, hogy ez attól függ, hogy felhős-e az ég vagy sem ill, hogy felvette-e a szemüvegét a kertész, aki bekapcsolja a locsolót, vagy sem. Ha nem veszi fel a szemüvegét nem tudja, hogy felhős-e ezért inkább locsol. 
+
