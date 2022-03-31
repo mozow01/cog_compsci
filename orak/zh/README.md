@@ -24,7 +24,7 @@
 
 **3.1** Írj programot, amelyik kiszámolja, hogy mi annak a valószínűsége, hogy 52 lapos francia kártyából 2 kártyát választva az egyik király, a másik nem király! 
 
-**3.2** Legyen az X Y és Z valószínűség változó olyan, ami az {0, 1, 2, 3} számok közöl választ egyenletes valószínűséggel. Legyen W = X + Y + Z, mi az X változó eloszlása, ha tudjuk, hogy W = 7? (írj proframot)
+**3.2** Legyen az X Y és Z valószínűség változó olyan, ami az {0, 1, 2, 3} számok közöl választ egyenletes valószínűséggel. Legyen W = X + Y + Z, mi az X változó eloszlása, ha tudjuk, hogy W = 7? (Írj programot!)
 
 **3.3** Értsd meg a Monty Hall/vos Savant paradoxon programját!
 
