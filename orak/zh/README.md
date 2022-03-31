@@ -12,6 +12,28 @@
 
 ## 2. alkalom
 
+**2.1** Írj programot, amelyik generálja az összes olyan lehetséges esetet, amikor 6 helyre 2 golyót teszünk le ismétlés nélkül! 
+
+**2.2** Írj programot, amelyik modellezi, hogy 6 helyre 3 golyót letéve összesen milyen lehetőségek vannak, feltéve, hogy a 2. helyen nem lehet golyó!
+
+**2.3** A sokéves átlag szerint 0.001 annak a valószínűsége, hogy valaki elbotlik a szavazókör küszöbében és eltöri valamilyét. Írjunk egy rövidke programot, aminek az adataiból ki tudjuk nyerni, hogy mi annak a valószínűsége, hogy a falu 137 szavazásra jogosult választójából pontosan kettővet történik meg ez a sajnálatos eset!
+
+**2.4** Írj programot, amelyik generálja az összes olyan lehetséges esetet, amikor 6 helyre 2 golyót teszünk le és ismétlődés is lehet! 
+
+## 3. alkalom
+
+**3.1** Írj programot, amelyik kiszámolja, hogy mi annak a valószínűsége, hogy 52 lapos francia kártyából 2 kártyát választva az egyik király, a másik nem király! 
+
+**3.2** Legyen az X Y és Z valószínűség változó olyan, ami az {0, 1, 2, 3} számok közöl választ egyenletes valószínűséggel. Legyen W = X + Y + Z, mi az X változó eloszlása, ha tudjuk, hogy W = 7? (írj proframot)
+
+**3.3** Értsd meg a Monty Hall/vos Savant paradoxon programját!
+
+**3.4** Van egy beépített emberünk a Monty Hall/vos Savant szituációban, akinek a válaszában 50% százalékban helyesen mutogatja el nekünk a színfalak mögül, hogy hol melyik ajtó mögött van az autó. Szót fogadunk neki, és azt az ajtót választjuk, amit ő javasol. Még mindig érdemes-e azután váltani, hogy Monty megmutatot egy kecskét? A választ támasszuk alá webppl programmal!
+
+## 4. alkalom
+
+
+
 
 
 
