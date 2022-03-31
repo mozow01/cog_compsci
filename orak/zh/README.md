@@ -1,4 +1,11 @@
-# Ez itt a második zh
+# ZH 2022
+
+**1. alkalom**
+
+**1.1** Írj olyan ````SimpleModel````-t, ami
+
+
+
 
 **1.** Az alábbi program azt a szituációt szimulálja, hogy 5 helyre 2 golyót rakunk le. Módosítsd úgy a programot, hogy 6 helyre 3 golyót rakjon le minden lehetséges módon!
 
