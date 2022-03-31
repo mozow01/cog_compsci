@@ -1,4 +1,4 @@
-## Ízelítő
+## Valószínűségi következtetés
 
 ````javascript
 var feature1 = ['könyvtáros','tanár'];
