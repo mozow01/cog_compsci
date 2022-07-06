@@ -149,16 +149,16 @@ var eloszlás3 = Enumerate(model3)
 viz.auto(eloszlás3)
 ````
 ````javascript
-var model6 = function () {
-    var R = flip(2/3)
-    var T = R==true ? flip(1/2) : flip(1/4)
-    var L = T==true ?  flip(0.9) : flip(.5)
-    condition(L==1)
-    return  {R: R, T: T, L: L}
+var model = function () {
+    var eső = flip(1/5)
+    var dugó = (eső == true) ? flip(1/2) : flip(1/4)
+    var késés = (dugó == true) ?  flip(0.9) : flip(.05)
+    condition(késés == 1)
+    return  {eső: eső, dugó: dugó, késés: késés}
 }
 
-var Z = Infer({method: 'SMC', model: model6})
+var X = Infer({method: 'SMC', model: model})
 
-viz.marginals(Z)
+viz.marginals(X)
 ````
 
