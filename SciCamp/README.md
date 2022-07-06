@@ -1,5 +1,10 @@
 # Valszám problémamegoldás fájdalommentesen
 
+## webppl 
+
+Noah Goodman and Andreas Stuhlmüller (Stanford)
+
+http://webppl.org/ egy valószínűségi programnyelv, ami a JavaScript nyelvbe van beágyazva és pszicholgiai és természetes nyelvi modellezésre és fejlesztették.
 
 ## Kísérletek modellezése
 
