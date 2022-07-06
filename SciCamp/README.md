@@ -171,3 +171,36 @@ viz.marginals(X)
 
 Adott 3 csukott ajtó mögött egy-egy nyeremény: 1 autó és 1-1 plüsskecske. Monty, a showman megkér minket arra, hogy tippeljük meg, hol az autó (ha eltaláljuk, a miénk lesz). Amikor ez megtörtént, akkor Monty kinyit egy ajtót, éspedig szigorúan azok közül egyet, amelyek mögött egy kecske van és nem mutattunk rá. Majd felteszi újra a kérdést: hol az autó. Érdemes-e megmásítanunk a döntésünket?
 
+````javascript
+var vosSavantProblem = function () {
+    var Autó = categorical({ps:[1/3,1/3,1/3], vs:[1, 2, 3]})
+    var Tipp = categorical({ps:[1/3,1/3,1/3], vs:[1, 2, 3]})
+    var Monty = (Autó == Tipp) 
+                ? ( (Autó == 1) 
+                   ? categorical({ps:[1/2,1/2], vs:[2, 3]}) : 
+                   ( (Autó == 2) ? categorical({ps:[1/2,1/2], vs:[1, 3]}) :
+                    categorical({ps:[1/2,1/2], vs:[1, 2]}) ) )
+                : ( (1 !== Autó && 1 !== Tipp ) ? 1 :
+                   ( (2 !== Autó && 2 !== Tipp ) ) ? 2 : 3 )
+    
+    var stratégia_maradás = (Autó == Tipp) ? 'nyer' : 'veszít'
+    
+    var ÚjTipp = (Autó !== Tipp) 
+                ? Autó
+                : ( (Tipp == 1 && Monty == 2) ? 3 : 
+                   ( (Tipp == 1 && Monty == 3) ? 2 : 
+                   ( (Tipp == 2 && Monty == 1) ? 3 :
+                   ( (Tipp == 2 && Monty == 3) ? 1 :
+                   ( (Tipp == 3 && Monty == 1) ? 2 : 1 ) ) ) ) ) 
+    
+    var stratégia_váltás = (Autó == ÚjTipp) ? 'nyer' : 'veszít'
+    
+    return  {
+             stratégia_maradás: stratégia_maradás, 
+             stratégia_váltás: stratégia_váltás } 
+}
+
+var eloszlás = Enumerate(vosSavantProblem)
+
+viz.marginals(eloszlás)
+````
