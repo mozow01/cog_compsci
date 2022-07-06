@@ -115,6 +115,9 @@ viz.hist(osszes);
 print(kedvezo);
 viz.hist(kedvezo);
 
+print("11/36 = " 
+      + 11/36);
+
 print("p = kedvező/összes = " 
       + Math.exp((osszes.score)([6,6]))/Math.exp((kedvezo.score)([6,6])));
 
