@@ -54,7 +54,6 @@ viz.auto(output);
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/2381778-200.png" width=100>
 
-
 Mi annak a valószínűsége, hogy két kockával dobva legalább az egyik hatos?
 
 ````javascript
@@ -91,6 +90,8 @@ print("p = kedvező/összes = "
       + Math.exp((összes.score)([6,6]))/Math.exp((kedvező.score)([6,6])));
 ````
 ### Kártyahúzás visszatevéssel (binomiális eloszlás)
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/png-transparent-blackjack-texas-hold-em-three-card-poker-playing-card-card-miscellaneous-game-angle-thumbnail.png" width=100>
 
 Egy 52 lapos francia kártyapakliban annak a valószínűsége, hogy egy kártya kőr (♥): p = 13/52 = 0.25. Keressük annak az X valószínűségi változónak az eloszlását, ami azt mondja meg, hogy ha _visszatevéssel_ kiveszünk a pakliból 3 lapot, akkor hány ebből a kőr, tehát
 
@@ -145,4 +146,5 @@ var model3 = function() {
 var eloszlás3 = Enumerate(model3)
 viz.auto(eloszlás3)
 ````
+
 
