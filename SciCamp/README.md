@@ -52,7 +52,7 @@ viz.auto(output);
 
 ### Kockadobás kedvező esetekkel
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/1200px-2-Dice-Icon.svg.png" width=100>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/2381778-200.png" width=100>
 
 
 Mi annak a valószínűsége, hogy két kockával dobva legalább az egyik hatos?
