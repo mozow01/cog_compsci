@@ -283,4 +283,4 @@ var HiperModel = Infer({method: 'rejection', samples: 10000 },
 viz.marginals(HiperModel)
 ````
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" width=400>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" width=1000>
