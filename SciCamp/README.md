@@ -12,7 +12,6 @@ http://webppl.org/ egy valószínűségi programnyelv, ami a JavaScript nyelvbe 
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/1200px-2-Dice-Icon.svg.png" width=100>
 
-
 ````javascript
 // Két kocka
 
