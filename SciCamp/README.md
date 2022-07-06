@@ -3,6 +3,10 @@
 
 ## Kísérletek modellezése
 
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/1200px-2-Dice-Icon.svg.png" width=500>
+
+
 ````javascript
 // Két kocka
 
