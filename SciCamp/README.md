@@ -4,10 +4,11 @@
 
 Noah Goodman and Andreas Stuhlmüller (Stanford)
 
-http://webppl.org/ egy valószínűségi programnyelv, ami a JavaScript nyelvbe van beágyazva és pszicholgiai és természetes nyelvi modellezésre és fejlesztették.
+http://webppl.org/ egy valószínűségi programnyelv, ami a JavaScript nyelvbe van beágyazva és pszicholgiai és természetes nyelvi jelenségek modellezésére és fejlesztették. Nagyon sok valószínűségi eloszlást és mintavételezési eljárást tartalmaz és kellően variábilisan és felhasználóbarát módon lehet vele  valószínűségi modelleket írni. 
 
 ## Kísérletek modellezése
 
+### Kockadobás
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/1200px-2-Dice-Icon.svg.png" width=100>
 
