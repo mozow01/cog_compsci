@@ -206,8 +206,7 @@ viz.marginals(eloszlás)
 ````
 ## Winden vagy Hawkins?
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" height=200>
-<img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/muut_1-1.png" height=200>
+<img src="winden.jpg" height=200><img src="nancy_leave_hawkins_stranger_things_netflix_ringer.jpg" height=200>
 
 Melyik városban vagyunk, ha odacsöppenünk és csak annyit tudunk, hogy felhős-e az ég. Ha másnap nem akarunk kilépni otthonról, meg tudjuk-e jósolni, hogy fog-e eső esni?
 
