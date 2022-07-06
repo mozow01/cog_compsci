@@ -148,6 +148,9 @@ var model3 = function() {
 var eloszlás3 = Enumerate(model3)
 viz.auto(eloszlás3)
 ````
+
+Egy újabb példával: Tegyük fel, hogy az, hogy a munkából elkésem, az függ attól, hogy dugó van-e a városban, a dugó viszont attól is függ, hogy esik-e. Ezek persze valószínűségi függések: esőben inkább van dugó és dugó nélkül is néha kések. Meg lehet-e és mikor lehet megjósolni, hogy dugó van-e vagy hogy esik-e?
+
 ````javascript
 var model = function () {
     var eső = flip(1/5)
