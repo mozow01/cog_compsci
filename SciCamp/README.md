@@ -148,7 +148,17 @@ var model3 = function() {
 var eloszlás3 = Enumerate(model3)
 viz.auto(eloszlás3)
 ````
+````javascript
+var model6 = function () {
+    var R = flip(2/3)
+    var T = R==true ? flip(1/2) : flip(1/4)
+    var L = T==true ?  flip(0.9) : flip(.5)
+    condition(L==1)
+    return  {R: R, T: T, L: L}
+}
 
+var Z = Infer({method: 'SMC', model: model6})
 
-
+viz.marginals(Z)
+````
 
