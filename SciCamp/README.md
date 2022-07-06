@@ -132,7 +132,7 @@ viz.auto(eloszlás2)
 
 ## Valószínűségi (induktív) következtetés, Bayes-inferencia
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/Screenshot from 2022-07-06 23-01-09.png" width=100>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/Screenshot from 2022-07-06 23-01-09.png" width=200>
 
 Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét (a feltétel lényeges) és nekünk kéne megmondanunk, hogy a húzások milyenek voltak. Ezt hívjuk **induktív következtetésnek,** **Bayes-inferenciának,** vagy ebben a kontextusban egyszerűen **inferálásnak.**
 
