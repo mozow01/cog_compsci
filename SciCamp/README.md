@@ -49,7 +49,40 @@ print("p( kocka1=6 és kocka2=6) = "+Math.exp((output.score)([6,6])));
 viz.auto(output);
 // viz.hist(output);
 // viz.table(output);
+````
 
+### Kockadobás kedvező esetekkel
 
+````javascript
+var dobás = function () {
+  var kocka1 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], 
+                            vs: [1, 2, 3, 4, 5, 6]});
+  var kocka2 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], 
+                            vs: [1, 2, 3, 4, 5, 6]});
+  return [kocka1,kocka2];
+}
 
+var kedvező_dobás = function () {
+  var kocka1 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], 
+                            vs: [1, 2, 3, 4, 5, 6]});
+  var kocka2 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], 
+                            vs: [1, 2, 3, 4, 5, 6]});
+  condition((kocka1 == 6 || kocka2 == 6));
+  
+  return  [kocka1,kocka2];
+}
+
+var összes = Infer({method: 'enumerate'}, dobás);
+
+var kedvező = Infer({method: 'enumerate'}, kedvező_dobás);
+
+viz.auto(összes);
+
+viz.auto(kedvező);
+
+print("11/36 = " 
+      + 11/36);
+
+print("p = kedvező/összes = " 
+      + Math.exp((összes.score)([6,6]))/Math.exp((kedvező.score)([6,6])));
 ````
