@@ -88,3 +88,59 @@ print("11/36 = "
 print("p = kedvező/összes = " 
       + Math.exp((összes.score)([6,6]))/Math.exp((kedvező.score)([6,6])));
 ````
+### Kártyahúzás visszatevéssel (binomiális eloszlás)
+
+Egy 52 lapos francia kártyapakliban annak a valószínűsége, hogy egy kártya kőr (♥): p = 13/52 = 0.25. Keressük annak az X valószínűségi változónak az eloszlását, ami azt mondja meg, hogy ha _visszatevéssel_ kiveszünk a pakliból 3 lapot, akkor hány ebből a kőr, tehát
+
+X := ,,kőrök száma 3 visszatevéses húzásból, francia kártyapakliban''
+
+````javascript
+var model = function() {
+  var H1 = flip(0.25)
+  var H2 = flip(0.25)
+  var H3 = flip(0.25)
+  var X = H1 + H2 + H3
+  return {'X': X}
+}
+var eloszlás = Enumerate(model)
+
+var binom = Binomial({p: 0.25, n: 3})
+
+viz.auto(binom)
+viz.auto(eloszlás)
+````
+
+Ha tudunk valamit a szituációból, ez az érték változni fog. Pl.: mi akkor X eloszlása, **ha tudjuk,** hogy az első esetben kőrt húzunk. 
+
+````javascript
+
+var model2 = function() {
+  var H1 = flip(0.25)
+  var H2 = flip(0.25)
+  var H3 = flip(0.25)
+  condition( H1 == 1 )
+  var X = H1 + H2 + H3
+  return {'X': X}
+}
+var eloszlás2 = Enumerate(model2)
+
+viz.auto(eloszlás2)
+````
+
+## Valószínűségi (induktív) következtetés, Bayes-inferencia
+
+Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét (a feltétel lényeges) és nekünk kéne megmondanunk, hogy a húzások milyenek voltak. Ezt hívjuk **induktív következtetésnek,** **Bayes-inferenciának,** vagy ebben a kontextusban egyszerűen **inferálásnak.**
+
+````javascript
+var model3 = function() {
+  var H1 = flip(0.25)
+  var H2 = flip(0.25)
+  var H3 = flip(0.25)
+  var X = H1 + H2 + H3
+  condition( X == 2 )
+  return {'H1' : H1}
+}
+var eloszlás3 = Enumerate(model3)
+viz.auto(eloszlás3)
+````
+
