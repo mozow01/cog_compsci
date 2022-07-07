@@ -2,7 +2,7 @@
 
 ## webppl 
 
-A **webppl** a Stanford Egyetemen dolgozó Noah Goodman and Andreas Stuhlmüller által fejlesztett programozási nyelv, ami online futtatható, valószínűségi programozási nyelv és JavaScript egy olyan részére épül, ami funkcionális (azaz nincs benne pl. "for" ciklus, hanem csak függvények). Megpelő, hogy pszichológusok fejlesztették, igaz ők nem terapeuták, hanem úgy nevezett komputációs kognitív tudósok (computational cognitive scientists), a Stanford  "Cocolab" nevű laborjában dolgoznak és persze nagyon értenek az informatikához is. Amire a **webppl** használható: pszicholgiai és természetes nyelvi jelenségek modellezése és részben kiértékelése. De nagyon sok valószínűségi eloszlást és mintavételezési eljárást tartalmaz és kellően variábilisan, hogy akármiylen modellt be lehessen programozni és persze felhasználóbarát.
+A **webppl** a Stanford Egyetemen dolgozó Noah Goodman and Andreas Stuhlmüller által fejlesztett programozási nyelv, ami online futtatható, valószínűségi programozási nyelv és JavaScript egy olyan részére épül, ami funkcionális (azaz nincs benne pl. "for" ciklus, hanem csak függvények). Megpelő, hogy pszichológusok fejlesztették, igaz ők nem terapeuták, hanem úgy nevezett komputációs kognitív tudósok (computational cognitive scientists), a Stanford  "Cocolab" nevű laborjában dolgoznak és persze nagyon értenek az informatikához is. Amire a **webppl** használható: pszicholgiai és természetes nyelvi jelenségek modellezése és részben kiértékelése. De nagyon sok valószínűségi eloszlást és mintavételezési eljárást tartalmaz és kellően variábilisan, hogy akármiylen modellt be lehessen programozni és persze felhasználóbarát. 
 
 Bemásolva a 
 
@@ -19,7 +19,7 @@ megfelelő ablakjába, a kódok azonnal futtathatók, ahogy a gif-en látható: 
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/1200px-2-Dice-Icon.svg.png" width=100>
 
-A webppl-ben egy kockadobás kimenetelét egy _függvény_ megírásával lehet előidézni. var ... = ... a függvény (vagy érték) definiálása. Érdekes, hogy ez egy olyan függvény lesz, aminek a zárójelében nincs semmi :) Ez azért van, mert a bemenetét random módon generált értékek fogják szolgáltatni. Milyen gyakorisággal jönnek elő ezek az értékek? A ````var kocka1 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], vs: [1, 2, 3, 4, 5, 6]});```` például 1-től 6-ig ad értéket az "első kocka" dobása után leolvasott értéknek 1/6-1/6- stb. valószínűségekkel. A "categorical" azt jelenti, hogy "ps" valószínűségellek jönnek elő a "vs" értékek, véges sok. Amit a "dobás" függvény visszaad (return), az egy rendezett pár ````[kocka1,kocka2]````, ami két dobás eredményét tartalmazza. 
+A webppl-ben egy kockadobás kimenetelét egy _függvény_ megírásával lehet előidézni. var ... = ... a függvény (vagy érték) definiálása. Érdekes, hogy ez egy olyan függvény lesz, aminek a zárójelében nincs semmi :) Ez azért van, mert a bemenetét random módon generált értékek fogják szolgáltatni. Milyen gyakorisággal jönnek elő ezek az értékek? A ````var kocka1 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], vs: [1, 2, 3, 4, 5, 6]});```` például 1-től 6-ig ad értéket az "első kocka" dobása után leolvasott értéknek 1/6-1/6- stb. valószínűségekkel. A "categorical" azt jelenti, hogy "ps" valószínűségellek jönnek elő a "vs" értékek, véges sok. Amit a "dobás" függvény visszaad (return), az egy rendezett pár ````[kocka1,kocka2]````, ami két dobás eredményét tartalmazza. Ha egy dobás eredményét akarajuk kiíratni, akkor ez a ````print(dobás());```` paranccsal tesszük. Sok dobásnál ez megjeleníhető pl. így: ````var sokdobás = repeat(10, dobás); viz.auto(sokdobás);```` vagy így ````var sokdobás = repeat(10, dobás); print(sokdobás);````. Ill. még sok verzióban (lásd a viz. utáni opciókat). Bővebben: dokumentáció itt: https://webppl.readthedocs.io/en/master/ , vizualizáció itt: http://probmods.github.io/webppl-viz/ és itt: https://github.com/probmods/webppl-viz .
 
 ```javascript
 // Két kocka
@@ -38,6 +38,8 @@ print(dobás());
 // Sok dobás és gyakorisági táblázata
 
 var sokdobás = repeat(10, dobás); 
+
+print(sokdobás);
 
 viz.auto(sokdobás);
 
@@ -59,6 +61,7 @@ viz.auto(output);
 // viz.table(output);
 ````
 
+Ha szeretnénk az összes esetet megjeleníteni, akkor ````var output = Enumerate(dobás);```` a barátunk. "Enumerate" szépen felsorolja az összes lehetséges esetet. A kódban látható ügyesékedéssel (````(output.score)([6,6]))```` leolvassa a megfelelő dobáspár valószínűségének logaritmusát a ````Math.exp()```` JavaScript függvény meg az exponenciálissal visszacsinálja a logaritmust; valamiért a valószínűségi érték logaritmusával való számolás gazdaságosabb.) Persze ez az értéke kísértetiesen hasonlít az 1/36-odra, ami a dupla hatos dobás valószínűsége. 
 ### Kockadobás kedvező esetekkel
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/2381778-200.png" width=100>
