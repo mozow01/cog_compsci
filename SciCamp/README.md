@@ -65,8 +65,7 @@ Ha szeretnénk az összes esetet megjeleníteni, akkor ````var output = Enumerat
 
 //-vel tudjuk kommentbe tolni azokat a sorokat, amiket nem akarunk futtatni. 
 
-Az Infer parancsról majd később, mindenesetre ````var output = Infer({method: 'enumerate', model: dobás});```` ugyanazt csinálja, mint Enumerate. De ````var output = Infer({method: 'forward', samples: 10000, model: dobás});
-```` már kicsit izgibb: egymás után 10000-szer kiszámolja a dobás függvényt és az adatokból gyakorisági táblázatot készít, majd a gyakoriságokból arányt és így ebből a 10000-es mintából elkészít egy közelítő valószínűségi eloszlást, ami az Enumerate-hez közelít a samples érték feltolásával. A program valahol a Stanford Egyetemen égeti a szervereket, ne sajnáljuk őket, legfeljebb nem jönnek meg az adatok a Föld kihüléséig. Fizessenek a gazdagok!
+Az Infer parancsról majd később, mindenesetre ````var output = Infer({method: 'enumerate', model: dobás});```` ugyanazt csinálja, mint Enumerate. De ````var output = Infer({method: 'forward', samples: 10000, model: dobás});```` már kicsit izgibb: egymás után 10000-szer kiszámolja a dobás függvényt és az adatokból gyakorisági táblázatot készít, majd a gyakoriságokból arányt és így ebből a 10000-es mintából elkészít egy közelítő valószínűségi eloszlást, ami az Enumerate-hez közelít a samples érték feltolásával. A program valahol a Stanford Egyetemen égeti a szervereket, ne sajnáljuk őket, legfeljebb nem jönnek meg az adatok a Föld kihüléséig. Fizessenek a gazdagok!
 
 ### Kockadobás kedvező esetekkel
 
@@ -107,6 +106,8 @@ print("11/36 = "
 print("p = kedvező/összes = " 
       + Math.exp((összes.score)([6,6]))/Math.exp((kedvező.score)([6,6])));
 ````
+
+Világos, hogy itt egy őj parancs készítette el nekünk a kedvező esetek leválogatását: ````condition((kocka1 == 6 || kocka2 == 6));````. || a vagy jele a JavaScript-ben, == az értékazonosság, azaz nem értékadó, definiáló egyenlőség (=) hanem állítás-egyenlőség. Ha aziránt érdeklődünk, hogy mikor mindkettő 6-os, akkor ````condition((kocka1 == 6 && kocka2 == 6));```` && hagyományosan az és jele. ````condition((kocka1 == 6 && !(kocka2 == 6) ));```` azt jelenti, hogy az első hatos, a második kifejezetten **nem** hatos. ! a tagadás jele.
 ### Kártyahúzás visszatevéssel (binomiális eloszlás)
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/png-transparent-blackjack-texas-hold-em-three-card-poker-playing-card-card-miscellaneous-game-angle-thumbnail.png" width=100>
