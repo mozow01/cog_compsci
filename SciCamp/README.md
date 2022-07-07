@@ -8,8 +8,9 @@ Bemásolva a
 
 http://webppl.org/
 
-megfelelő ablakjába, a kódok azonnal futtathatók.
+megfelelő ablakjába, a kódok azonnal futtathatók így:
 
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/webppl.gif" width=1000>
 
 
 ## Kombinatorikai, valószínűségi kísérletek modellezése
