@@ -61,7 +61,13 @@ viz.auto(output);
 // viz.table(output);
 ````
 
-Ha szeretnénk az összes esetet megjeleníteni, akkor ````var output = Enumerate(dobás);```` a barátunk. "Enumerate" szépen felsorolja az összes lehetséges esetet. A kódban látható ügyesékedéssel (````(output.score)([6,6]))```` leolvassa a megfelelő dobáspár valószínűségének logaritmusát a ````Math.exp()```` JavaScript függvény meg az exponenciálissal visszacsinálja a logaritmust; valamiért a valószínűségi érték logaritmusával való számolás gazdaságosabb.) Persze ez az értéke kísértetiesen hasonlít az 1/36-odra, ami a dupla hatos dobás valószínűsége. 
+Ha szeretnénk az összes esetet megjeleníteni, akkor ````var output = Enumerate(dobás);```` a barátunk. "Enumerate" szépen felsorolja az összes lehetséges esetet. A kódban látható ügyesékedéssel (````(output.score)([6,6]))```` leolvassa a megfelelő dobáspár valószínűségének logaritmusát a ````Math.exp()```` JavaScript függvény meg az exponenciálissal visszacsinálja a logaritmust; valamiért a valószínűségi érték logaritmusával való számolás gazdaságosabb.) Persze ez az érték kísértetiesen hasonlít az 1/36-odra, ami a dupla hatos dobás valószínűsége.
+
+//-vel tudjuk kommentbe tolni azokat a sorokat, amiket nem akarunk futtatni. 
+
+Az Infer parancsról majd később, mindenesetre ````var output = Infer({method: 'enumerate', model: dobás});```` ugyanazt csinálja, mint Enumerate. De ````var output = Infer({method: 'forward', samples: 10000, model: dobás});
+```` már kicsit izgibb: egymás után 10000-szer kiszámolja a dobás függvényt és az adatokból gyakorisági táblázatot készít, majd a gyakoriságokból arányt és így ebből a 10000-es mintából elkészít egy közelítő valószínűségi eloszlást, ami az Enumerate-hez közelít a samples érték feltolásával. A program valahol a Stanford Egyetemen égeti a szervereket, ne sajnáljuk őket, legfeljebb nem jönnek meg az adatok a Föld kihüléséig. Fizessenek a gazdagok!
+
 ### Kockadobás kedvező esetekkel
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/2381778-200.png" width=100>
