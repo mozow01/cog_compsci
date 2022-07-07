@@ -2,9 +2,7 @@
 
 ## webppl 
 
-A *webppl* nevű Noah Goodman and Andreas Stuhlmüller (Stanford)
-
-http://webppl.org/ egy valószínűségi programnyelv, ami a JavaScript nyelvbe van beágyazva és pszicholgiai és természetes nyelvi jelenségek modellezésére és fejlesztették. Nagyon sok valószínűségi eloszlást és mintavételezési eljárást tartalmaz és kellően variábilisan és felhasználóbarát módon lehet vele  valószínűségi modelleket írni. 
+A **webppl** Noah Goodman and Andreas Stuhlmüller a Stanford egyetemen dolgozó _pszichológusok_ által fejlesztett programozási nyelv ami online futtatható,  valószínűségi programozási nyelv és JavaScript egy olyan részére épül, ami funkcionális (azaz nincs benne "for" ciklus, hanem csak függvények). Megpelő, hogy pszichológusok fejlesztették, de ők nem terapeuták, hanem úgy nevezett komputációs kognitív tudósok  (computational cognitive sciense), a "cocolab"-ben dolgoznak és persze nagyon értenek az informatikához is.  pszicholgiai és természetes nyelvi jelenségek modellezésére és fejlesztették. Nagyon sok valószínűségi eloszlást és mintavételezési eljárást tartalmaz és kellően variábilisan és felhasználóbarát módon lehet vele  valószínűségi modelleket írni. 
 
 ## Kombinatorikai, valószínűségi kísérletek modellezése
 
