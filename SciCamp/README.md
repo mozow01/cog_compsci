@@ -157,7 +157,7 @@ Itt ismét ````condition( H1 == 1 )```` játszotta a fő szerepet. Világos, hog
 
 ## Valószínűségi (induktív) következtetés, Bayes-inferencia
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/Screenshot from 2022-07-06 23-01-09.png" width=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/Screenshot+2017-06-05+15.37.56.png" width=200> 
 
 Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét (a feltétel lényeges) és nekünk kéne megmondanunk, hogy a húzások milyenek voltak. Ezt hívjuk **induktív következtetésnek,** **Bayes-inferenciának,** vagy ebben a kontextusban egyszerűen **inferálásnak.**
 
@@ -175,6 +175,10 @@ viz.auto(eloszlás3);
 ````
 
 Világos, hogy H1 eredeti eloszlásához képest a mostani rendesen átrendeződik: sokkal nagyobb a H1 == 1 valószínűsége, hiszen valamiből a 2-nek ki kell jönnie és elég ritka, hogy attól 2 az X, hogy a másik kettő 1 és az első 0... **Visszakövetkeztettünk** az eredeti H1 érétkre (nem abból, hogy 0.25 az 1 vszínűsége), abból, hogy mennyi a kísérlet végeredménye. Ez a Bayes-inferencia, (vissza)következtetés.
+
+## Esett vagy nem esett?
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/Screenshot from 2022-07-06 23-01-09.png" width=200>
 
 Egy újabb példával: Tegyük fel, hogy az, hogy a munkából elkésem, függ attól, hogy dugó van-e a városban. A dugó viszont attól is függ, hogy esik-e. Ezek persze valószínűségi függések: esőben inkább van dugó, de dugó nélkül is néha kések. Meg lehet-e és mikor lehet megjósolni, hogy dugó van-e vagy hogy esik-e?
 
