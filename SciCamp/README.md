@@ -63,13 +63,6 @@ viz.auto(output);
 
 Ha szeretnénk az összes esetet megjeleníteni, akkor ````var output = Enumerate(dobás);```` a barátunk. "Enumerate" szépen felsorolja az összes lehetséges esetet. A kódban látható ügyesékedéssel (````(output.score)([6,6]))```` leolvassa a megfelelő dobáspár valószínűségének logaritmusát a ````Math.exp()```` JavaScript függvény meg az exponenciálissal visszacsinálja a logaritmust; valamiért a valószínűségi érték logaritmusával való számolás gazdaságosabb.) Persze ez az érték kísértetiesen hasonlít az 1/36-odra, ami a dupla hatos dobás valószínűsége.
 
-//-vel tudjuk kommentbe tolni azokat a sorokat, amiket nem akarunk futtatni. 
-
-Az Infer parancsról majd később, mindenesetre ````var output = Infer({method: 'enumerate', model: dobás});```` ugyanazt csinálja, mint Enumerate. De ````var output = Infer({method: 'forward', samples: 10000, model: dobás});```` már kicsit izgibb: egymás után 10000-szer kiszámolja a dobás függvényt és az adatokból gyakorisági táblázatot készít, majd a gyakoriságokból arányt és így ebből a 10000-es mintából elkészít egy közelítő valószínűségi eloszlást, ami az Enumerate-hez közelít a samples érték feltolásával. A program valahol a Stanford Egyetemen égeti a szervereket, ne sajnáljuk őket, legfeljebb nem jönnek meg az adatok a Föld kihüléséig. Fizessenek a gazdagok!
-
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/277680373_341339591289591_2928453617509407729_n.jpg" width=200>
-
-
 ### Kockadobás kedvező esetekkel
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/2381778-200.png" width=100>
@@ -109,8 +102,14 @@ print("11/36 = "
 print("p = kedvező/összes = " 
       + Math.exp((összes.score)([6,6]))/Math.exp((kedvező.score)([6,6])));
 ````
+//-vel tudjuk kommentbe tolni azokat a sorokat, amiket nem akarunk futtatni. 
 
-Világos, hogy itt egy őj parancs készítette el nekünk a kedvező esetek leválogatását: ````condition((kocka1 == 6 || kocka2 == 6));````. || a vagy jele a JavaScript-ben, == az értékazonosság, azaz nem értékadó, definiáló egyenlőség (=) hanem állítás-egyenlőség. Ha aziránt érdeklődünk, hogy mikor mindkettő 6-os, akkor ````condition((kocka1 == 6 && kocka2 == 6));```` && hagyományosan az és jele. ````condition((kocka1 == 6 && !(kocka2 == 6) ));```` azt jelenti, hogy az első hatos, a második kifejezetten **nem** hatos. ! a tagadás jele.
+Az Infer parancsról majd később, mindenesetre ````var output = Infer({method: 'enumerate', model: dobás});```` ugyanazt csinálja, mint Enumerate. De ````var output = Infer({method: 'forward', samples: 10000, model: dobás});```` már kicsit izgibb: egymás után 10000-szer kiszámolja a dobás függvényt és az adatokból gyakorisági táblázatot készít, majd a gyakoriságokból arányt és így ebből a 10000-es mintából elkészít egy közelítő valószínűségi eloszlást, ami az Enumerate-hez közelít, amennyiben a samples érték feltoljuk. A program valahol a Stanford Egyetemen égeti a szervereket, ne sajnáljuk őket, legfeljebb nem jönnek meg az adatok a Föld kihüléséig. Fizessenek a gazdagok!
+
+Világos, hogy itt egy új parancs készítette el a kedvező esetek leválogatását: ````condition((kocka1 == 6 || kocka2 == 6));````. || a vagy jele a JavaScript-ben, == az értékazonosság, azaz nem értékadó, definiáló egyenlőség (ami a =), hanem állítás-egyenlőség. Ha aziránt érdeklődünk, hogy mikor mindkettő 6-os, akkor ````condition((kocka1 == 6 && kocka2 == 6));```` && hagyományosan az és jele. ````condition((kocka1 == 6 && !(kocka2 == 6) ));```` azt jelenti, hogy az első hatos, a második kifejezetten **nem** hatos. ! a tagadás jele.
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/277680373_341339591289591_2928453617509407729_n.jpg" width=200>
+
 ### Kártyahúzás visszatevéssel (binomiális eloszlás)
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/png-transparent-blackjack-texas-hold-em-three-card-poker-playing-card-card-miscellaneous-game-angle-thumbnail.png" width=100>
@@ -121,21 +120,23 @@ X := ,,kőrök száma 3 visszatevéses húzásból, francia kártyapakliban''
 
 ````javascript
 var model = function() {
-  var H1 = flip(0.25)
-  var H2 = flip(0.25)
-  var H3 = flip(0.25)
-  var X = H1 + H2 + H3
+  var H1 = flip(0.25);
+  var H2 = flip(0.25);
+  var H3 = flip(0.25);
+  var X = H1 + H2 + H3;
   return {'X': X}
 }
-var eloszlás = Enumerate(model)
+var eloszlás = Enumerate(model);
 
-var binom = Binomial({p: 0.25, n: 3})
+var binom = Binomial({p: 0.25, n: 3});
 
-viz.auto(binom)
-viz.auto(eloszlás)
+viz.auto(binom);
+viz.auto(eloszlás);
 ````
 
-Ha tudunk valamit a szituációból, ez az érték változni fog. Pl.: mi akkor X eloszlása, **ha tudjuk,** hogy az első esetben kőrt húzunk. 
+````flip(0.25)```` most a categorical egy spéci, spórolós változata. Boole-értéket ad vissza (azaz 0-t vagy 1-et) mégpedig 0.25 arányban az 1 javára. Húzás után visszatesszük a lapokat, így a szituáció hasonlít arra, amikor 3 ember utazik egy liftben és az egyik szellent. Ha az országos átlag szerint annak az egyánya, hogy egy ember a lifben elszellenti magát 0.25, akkor X eloszlása azt fogja megmutatni, hogy mi annak az valószínűsége, hogy pontosan 0, 1, 2, vagy 3 ember csinálja ezt a méltatlan dolgot. X tehát az oszlopok méretével arányos mértékű valószínűságekkel vesznek fel 0 és 3 közötti értékeket. Tusjuk jó, az a binomiális eloszlás és ezért a ````binom```` változó ugyanolyan eloszlású lesz. Lásd még a webppl dokumentációját!
+
+Ha tudunk valamit a szituációból, ez az eloszlás változni fog. Pl.: mi akkor X eloszlása, **ha tudjuk,** hogy az első esetben kőrt húzunk. 
 
 ````javascript
 
@@ -152,6 +153,8 @@ var eloszlás2 = Enumerate(model2)
 viz.auto(eloszlás2)
 ````
 
+Itt ismét ````condition( H1 == 1 )```` játszotta a fő szerepet. Világos, hogy X már nem vehet fel 0 értéket, mert már H1 == 1.
+
 ## Valószínűségi (induktív) következtetés, Bayes-inferencia
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/Screenshot from 2022-07-06 23-01-09.png" width=200>
@@ -160,18 +163,20 @@ Ennél sokkal izgalmasabb, ha valaki megmondja a kísérlet eredményét (a felt
 
 ````javascript
 var model3 = function() {
-  var H1 = flip(0.25)
-  var H2 = flip(0.25)
-  var H3 = flip(0.25)
-  var X = H1 + H2 + H3
-  condition( X == 2 )
+  var H1 = flip(0.25);
+  var H2 = flip(0.25);
+  var H3 = flip(0.25);
+  var X = H1 + H2 + H3;
+  condition( X == 2 );
   return {'H1' : H1}
 }
-var eloszlás3 = Enumerate(model3)
-viz.auto(eloszlás3)
+var eloszlás3 = Enumerate(model3);
+viz.auto(eloszlás3);
 ````
 
-Egy újabb példával: Tegyük fel, hogy az, hogy a munkából elkésem, az függ attól, hogy dugó van-e a városban, a dugó viszont attól is függ, hogy esik-e. Ezek persze valószínűségi függések: esőben inkább van dugó és dugó nélkül is néha kések. Meg lehet-e és mikor lehet megjósolni, hogy dugó van-e vagy hogy esik-e?
+Világos, hogy H1 eredeti eloszlásához képest a mostani rendesen átrendeződik: sokkal nagyobb a H1 == 1 valószínűsége, hiszen valamiből a 2-nek ki kell jönnie és elég ritka, hogy attól 2 az X, hogy a másik kettő 1 és az első 0... **Visszakövetkeztettünk** az eredeti H1 érétkre (nem abból, hogy 0.25 az 1 vszínűsége), abból, hogy mennyi a kísérlet végeredménye. Ez a Bayes-inferencia, (vissza)következtetés.
+
+Egy újabb példával: Tegyük fel, hogy az, hogy a munkából elkésem, függ attól, hogy dugó van-e a városban. A dugó viszont attól is függ, hogy esik-e. Ezek persze valószínűségi függések: esőben inkább van dugó, de dugó nélkül is néha kések. Meg lehet-e és mikor lehet megjósolni, hogy dugó van-e vagy hogy esik-e?
 
 ````javascript
 var model = function () {
