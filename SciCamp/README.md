@@ -19,7 +19,9 @@ megfelelő ablakjába, a kódok azonnal futtathatók, ahogy a gif-en látható: 
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/1200px-2-Dice-Icon.svg.png" width=100>
 
-````javascript
+A webppl-ben egy kockadobás kimenetelét egy _függvény_ megírásával lehet előidézni. var ... = ... a függvény (vagy érték) definiálása. Érdekes, hogy ez egy olyan függvény lesz, aminek a zárójelében nincs semmi :) Ez azért van, mert a bemenetét random módon generált értékek fogják szolgáltatni. Milyen gyakorisággal jönnek elő ezek az értékek? A ````var kocka1 = categorical({ps: [1/6, 1/6, 1/6, 1/6, 1/6, 1/6], vs: [1, 2, 3, 4, 5, 6]});```` például 1-től 6-ig ad értéket az "első kocka" dobása után leolvasott értéknek 1/6-1/6- stb. valószínűségekkel. A "categorical" azt jelenti, hogy "ps" valószínűségellek jönnek elő a "vs" értékek, véges sok. Amit a "dobás" függvény visszaad (return), az egy rendezett pár ````[kocka1,kocka2]````, ami két dobás eredményét tartalmazza. 
+
+```javascript
 // Két kocka
 
 var dobás = function () {
