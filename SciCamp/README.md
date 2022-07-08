@@ -211,8 +211,8 @@ Azért feltételes, mert ez nem a dugó valószínűségét adja meg, hanem azt 
 | **dugó == true**   | 0.25         | 0.125           | 0.375 |
 | **dugó == false**  | 0.25         | 0.375           | 0.625 |
 
-Ha ebből puszátán arra vagyunk kíváncsiak, hogy az esőtől függetlenül mennyi a valószínűsége a dugó kialakulásának, akkor úgy ejtjük ki az esőt, hogy soronként összeadjuk a valószínűségeket. Ezt hívjuk **marginálisnak** vagy **marginalizációnak**.
-
+Ha ebből puszátán arra vagyunk kíváncsiak, hogy az esőtől függetlenül mennyi a valószínűsége a dugó kialakulásának, akkor úgy ejtjük ki az esőt, hogy soronként összeadjuk a valószínűségeket. Ezt hívjuk **marginálisnak** vagy **marginalizációnak**. Vegyük észre, hogy P(dugó,eső) táblázat celláinak összege 1-et, azaz 100%-is valószínűséget ad, míg a  P(dugó|eső)-ben csak az oszlopok összege ad 1-et. Valóbn! P(dugó,eső) a (dugó,eső) kétváltozós valószínűségi változónak tényleg valószínűségi eloszlása, míg P(dugó|eső) csak akkor, ha "eső" rögzitetet és "dugó"-t válaszjuk valószínűségi változónak. ````viz.marginals(X);```` a (késés, eső, dugó) háromváltozós valószínűség marginálisait számítja ki.
+ 
 ## Monty Hall- (vos Savant-) paradoxon
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/The-Monty-Hall-Problem-e1623680322430.png" width=200>
