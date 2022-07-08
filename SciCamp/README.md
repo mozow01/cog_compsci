@@ -204,12 +204,14 @@ A fenti modell szerint 50% az esélye, hogy esik. Ha esik, 50% eséllyel lesz k�
 | **dugó == true**   | 0.5         | 0.25           |
 | **dugó == false**  | 0.5         | 0.75           |
 
-Azért feltételes, mert ez nem a késés valószínűségét adja meg, hanem azt a függvényt adja meg, amiból a késés valószínűségét ki tudjuk számítani, feltéve, hogy tudjuk a dugó valószínűségeit. 
+Azért feltételes, mert ez nem a dugó valószínűségét adja meg, hanem azt a függvényt adja meg, amiból a dugó valószínűségét ki tudjuk számítani, feltéve, hogy tudjuk az eső valószínűségét. Ha a konkrét esetekben ki a akarjuk számolni a valószínűségeket, akkor súlyoznunk kell a fenti táblázat értékeit az eső valószínűségével. Egy egy szorzás: P(dugó, eső) = P( dugó | eső ) * P( eső ) ezért ezt a (dugó,eső) kétváltozós valószínűség **faktorizációjának** hívjuk.
 
-| P(dugó, eső) = P( dugó \| eső ) * P( eső )   | eső == true | eső == false   |
+| P(dugó, eső) = P( dugó \| eső ) * P( eső )   | eső == true | eső == false   | P(dugó) marginális
 |--------------------| ------------|----------------|
-| **dugó == true**   | 0.5         | 0.25           |
-| **dugó == false**  | 0.5         | 0.75           |
+| **dugó == true**   | 0.25         | 0.125           | 0.375 |
+| **dugó == false**  | 0.25         | 0.375           | 0.625 |
+
+Ha ebből puszátán arra vagyunk kíváncsiak, hogy az esőtől függetlenül mennyi a valószínűsége a dugó kialakulásának, akkor úgy ejtjük ki az esőt, hogy soronként összeadjuk a valószínűségeket. Ezt hívjuk **marginálisnak** vagy **marginalizációnak**.
 
 ## Monty Hall- (vos Savant-) paradoxon
 
