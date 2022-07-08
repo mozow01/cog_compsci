@@ -208,16 +208,19 @@ Azért feltételes, mert ez nem a dugó valószínűségét adja meg, hanem azt 
 
 | P(dugó, eső) = P( dugó \| eső ) * P( eső )   | eső == true | eső == false   | P(dugó) marginális|
 |--------------------| ------------|----------------|-------|
-| **dugó == true**   | 0.25         | 0.125           | 0.375 |
-| **dugó == false**  | 0.25         | 0.375           | 0.625 |
+| **dugó == true**   | 0.1         | 0.2          | 0.3 |
+| **dugó == false**  | 0.1         | 0.6           | 0.7  |
 
 Ha ebből puszátán arra vagyunk kíváncsiak, hogy az esőtől függetlenül mennyi a valószínűsége a dugó kialakulásának, akkor úgy ejtjük ki az esőt, hogy soronként összeadjuk a valószínűségeket. Ezt hívjuk **marginálisnak** vagy **marginalizációnak**. Vegyük észre, hogy P(dugó,eső) táblázat celláinak összege 1-et, azaz 100%-is valószínűséget ad, míg a  P(dugó|eső)-ben csak az oszlopok összege ad 1-et. Valóbn! P(dugó,eső) a (dugó,eső) kétváltozós valószínűségi változónak tényleg valószínűségi eloszlása, míg P(dugó|eső) csak akkor, ha "eső" rögzitetet és "dugó"-t válaszjuk valószínűségi változónak. ````viz.marginals(X);```` a (késés, eső, dugó) háromváltozós valószínűség marginálisait számítja ki.
 
 Fontos fogalom a Bayes-inferenciában a **prior** valószínűség. Ebben a témakörben látens és megfigyelt változókról beszélünk: **látens,** aminek az eloszlását ki szeretnénk következetetni és **megfigyelt** változó vagy adat, amit mérni tundunk vagy fogunk. Jelen esetben az eső, és a dugó a látens változók és késés a megfigyelt: a főnök megfigyelte, hogy ma késtem. Prior a változók olyan eloszlása amit még a megfigyelés előtt ismerünk. Ezek vagy korábbi adatokból adódnak ("a tegnap poszteriorja a ma priorja" :) ) vagy egyszerűen valamilyen szakmai indokkal olyannak választjuk meg, amilyennek jónak látjuk. A **poszterior** valószínűség a látnes változók azon eloszlása, amit a megfigyelést követően a mért adatokkal frissítve, az inferencia után kapunk.
 
 A feladatban szereplő változók (marginális) prior valószínűségei:
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/ef382b.svg" height=200>
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/014cbb.svg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/873aa5.svg" height=200>
+
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/ef382b.svg" height=300>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/014cbb.svg" height=300><img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/873aa5.svg" height=300>
+
+A feladatban szereplő változók (marginális) poszterior valószínűségei:
  
 ## Monty Hall- (vos Savant-) paradoxon
 
