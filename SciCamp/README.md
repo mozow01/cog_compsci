@@ -184,17 +184,25 @@ Egy újabb példával: Tegyük fel, hogy az, hogy a munkából elkésem, függ a
 
 ````javascript
 var model = function () {
-    var eső = flip(1/5)
-    var dugó = (eső == true) ? flip(1/2) : flip(1/4)
-    var késés = (dugó == true) ?  flip(0.9) : flip(.05)
-    condition(késés == 1)
+    var eső = flip(1/5);
+    var dugó = (eső == true) ? flip(1/2) : flip(1/4);
+    var késés = (dugó == true) ?  flip(0.9) : flip(.05);
+    condition(késés == 1);
     return  {eső: eső, dugó: dugó, késés: késés}
 }
 
-var X = Infer({method: 'SMC', model: model})
+var X = Infer({method: 'MCMC', model: model});
 
-viz.marginals(X)
+viz.marginals(X);
 ````
+A fenti modell szerint 50% az esélye, hogy esik. Ha esik, 50% eséllyel lesz közlekedési dugó a városban, ha nem, akkor 25%-kal. A modell szerint én egy viszonylag rendes ember vagyok, és ugyan dugó esetén 90%-os valószínűséggel fogok késni, de ha nincs dugó, akkor csak 5% a valószínűsége, hogy kések. A modell függvény egy három változós éréket küld vissza: eső, dugó és késés. Az Infer parancsot most már kezdjük érteni: a feltételnek megfelelő esteket engedi csak át, majd ezekből készít egy gyakorisági táblázatot. Persze 1000 hatékony módja van annak, hogy az feltételnek megfelelő eseteket hatékonyan válogassuk ki, ezt most a ````method: 'MCMC'```` ami az egyik legnépszerűbb, a Markov Chain Monte Carlo módszer, de a webppl dokumentációban sok más, nagyjából ugyanerre az eredményre vezető inferálási módszert találunk. 
+
+````var dugó = (eső == true) ? flip(1/2) : flip(1/4);```` az úgy nevezett **feltételes valószínűséget** kódolja, amit P(dugó|eső) -vel jelölünk, a kódban szereplő számok a feltételes valószínűség eloszlása:
+
+| P(dugó|eső)   | eső == true | eső == false  |
+| ------------- | ------------|--- |
+| dugó == true  | 0.5 | 0.5 |
+| dugó == false | 0.9 | 0.05 |
 
 ## Monty Hall- (vos Savant-) paradoxon
 
