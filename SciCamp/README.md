@@ -216,8 +216,8 @@ Ha ebből puszátán arra vagyunk kíváncsiak, hogy az esőtől függetlenül m
 Fontos fogalom a Bayes-inferenciában a **prior** valószínűség. Ebben a témakörben látens és megfigyelt változókról beszélünk: **látens,** aminek az eloszlását ki szeretnénk következetetni és **megfigyelt** változó vagy adat, amit mérni tundunk vagy fogunk. Jelen esetben az eső, és a dugó a látens változók és késés a megfigyelt: a főnök megfigyelte, hogy ma késtem. Prior a változók olyan eloszlása amit még a megfigyelés előtt ismerünk. Ezek vagy korábbi adatokból adódnak ("a tegnap poszteriorja a ma priorja" :) ) vagy egyszerűen valamilyen szakmai indokkal olyannak választjuk meg, amilyennek jónak látjuk. A **poszterior** valószínűség a látnes változók azon eloszlása, amit a megfigyelést követően a mért adatokkal frissítve, az inferencia után kapunk.
 
 A feladatban szereplő változók (marginális) prior valószínűségei:
-
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/The-Monty-Hall-Problem-e1623680322430.png" height=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/ef382b.svg" height=200>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/014cbb.svg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/873aa5.svg" height=200>
  
 ## Monty Hall- (vos Savant-) paradoxon
 
