@@ -217,8 +217,7 @@ Fontos fogalom a Bayes-inferenciában a **prior** valószínűség. Ebben a tém
 
 A feladatban szereplő változók (marginális) prior valószínűségei:
 
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/ef382b.svg" height=250>
-<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/014cbb.svg" height=250><img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/873aa5.svg" height=250>
+<img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/ef382b.svg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/014cbb.svg" height=200><img src="https://github.com/mozow01/cog_compsci/blob/main/SciCamp/873aa5.svg" height=200>
 
 A feladatban szereplő változók (marginális) poszterior valószínűségei:
  
