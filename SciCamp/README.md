@@ -200,10 +200,10 @@ A fenti modell szerint 50% az esélye, hogy esik. Ha esik, 50% eséllyel lesz k�
 ````var dugó = (eső == true) ? flip(1/2) : flip(1/4);```` az úgy nevezett **feltételes valószínűséget** kódolja, amit P(dugó|eső) -vel jelölünk, a kódban szereplő számok a feltételes valószínűség eloszlása:
 
 
-| P(dugó\|eső)   | eső == true | eső == false  |
+| P( dugó \| eső )   | eső == true | eső == false  |
 | --------------| ------------|---------------|
-| dugó == true  | 0.5         | 0.5           |
-| dugó == false | 0.9         | 0.05          |
+| **dugó == true**  | 0.5         | 0.5           |
+| **dugó == false** | 0.9         | 0.05          |
 
 
 ## Monty Hall- (vos Savant-) paradoxon
