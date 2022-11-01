@@ -47,13 +47,11 @@ MUSCOND_SDT_jags <- jags.model(textConnection(hier_SDT_model),
 
 NATCOND_sim_hf <- coda.samples(model = NATCOND_SDT_jags, variable.names = c("muc","mud"), n.iter = 10000)
 MUSCOND_sim_hf <- coda.samples(model = MUSCOND_SDT_jags, variable.names = c("muc","mud"), n.iter = 10000)
-# MAXCOND_sim_hf <- coda.samples(model = MAXCOND_SDT_jags, variable.names = c("muc","mud"), n.iter = 10000)
 
 # PLOT the posterior
 
 NATCOND_stim_chains <- data.frame(NATCOND_sim_hf[[1]], iter = 1:10000)
 MUSCOND_stim_chains <- data.frame(MUSCOND_sim_hf[[1]], iter = 1:10000)
-# MAXCOND_stim_chains <- data.frame(MAXCOND_sim_hf[[1]], iter = 1:10000)
 
 COND_comp <- rbind(NATCOND_stim_chains, MUSCOND_stim_chains)
 COND_comp$Kondíció <- c(rep("NAT",10000),rep("MUS",10000))
