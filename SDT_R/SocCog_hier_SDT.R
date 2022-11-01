@@ -62,9 +62,6 @@ COND_comp_2$Kondíció <- c(rep("NAT",10000),rep("MAX",10000))
 ggplot(COND_comp, aes(x=mud, y=muc, colour=Kondíció))+
     geom_point()
 
-# ggplot(COND_comp_2, aes(x=mud, y=muc, colour=Kondíció))+
-#  geom_point()
-
 NAT_bias_mean <- mean(NATCOND_stim_chains[[1]])
 NAT_bias_sd <- sd(NATCOND_stim_chains[[1]])
 NAT_disc_mean <- mean(NATCOND_stim_chains[[2]])
