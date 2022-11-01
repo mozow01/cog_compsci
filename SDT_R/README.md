@@ -48,7 +48,6 @@ MUSCOND_SDT_jags <- jags.model(textConnection(hier_SDT_model),
 
 NATCOND_sim_hf <- coda.samples(model = NATCOND_SDT_jags, variable.names = c("muc","mud"), n.iter = 10000)
 MUSCOND_sim_hf <- coda.samples(model = MUSCOND_SDT_jags, variable.names = c("muc","mud"), n.iter = 10000)
-# MAXCOND_sim_hf <- coda.samples(model = MAXCOND_SDT_jags, variable.names = c("muc","mud"), n.iter = 10000)
 
 # PLOT the posterior
 
@@ -63,9 +62,6 @@ COND_comp_2$Kondíció <- c(rep("NAT",10000),rep("MAX",10000))
 
 ggplot(COND_comp, aes(x=mud, y=muc, colour=Kondíció))+
     geom_point()
-
-# ggplot(COND_comp_2, aes(x=mud, y=muc, colour=Kondíció))+
-#  geom_point()
 
 NAT_bias_mean <- mean(NATCOND_stim_chains[[1]])
 NAT_bias_sd <- sd(NATCOND_stim_chains[[1]])
