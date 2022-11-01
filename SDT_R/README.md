@@ -57,9 +57,6 @@ MUSCOND_stim_chains <- data.frame(MUSCOND_sim_hf[[1]], iter = 1:10000)
 COND_comp <- rbind(NATCOND_stim_chains, MUSCOND_stim_chains)
 COND_comp$Kondíció <- c(rep("NAT",10000),rep("MUS",10000))
 
-COND_comp_2 <- rbind(NATCOND_stim_chains, MAXCOND_stim_chains)
-COND_comp_2$Kondíció <- c(rep("NAT",10000),rep("MAX",10000))
-
 ggplot(COND_comp, aes(x=mud, y=muc, colour=Kondíció))+
     geom_point()
 
@@ -74,9 +71,6 @@ MUS_disc_mean <- mean(MUSCOND_stim_chains[[2]])
 MUS_disc_sd <- sd(MUSCOND_stim_chains[[2]])
 
 library(LaplacesDemon)
-
-# px <- dnorm(runif(100),0,1)
-# py <- dnorm(runif(100),0.1,0.9)
 
 py <- NATCOND_stim_chains[[2]]
 px <- dnorm(runif(10000),0,1)
