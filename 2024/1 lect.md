@@ -95,5 +95,37 @@ viz.marginals(output_1)
 |  Jelenségek modellezése              | Mintavételzési eljárásokkal dolgozik.  | Igazodik a természettudományos, valódi kísérletekhez, ezeket formalizálja, explicitté teszi.    |               
 | Interpretáció               | Gyakran konfidencia intervallumokkal és hipotézisvizsgálatal foglalkozik, amelyek értelmezése nehézkes, körmönfont.  | A valószínűségi értelmezés miatt könnyebb értelmezni a statisztikai eredményeket.                   |
 
+## Sample space vs. possibilities - tudománymódszertani-filozófiai kérdések
+
+Adott egy érme, amelyikről meg szeretnénk állapítani, hogy cinkelt-e. A frekventista megközelítésben legalább két módon tudjuk megállapítani, hogy ez fennáll-e.
+
+A) Dobunk N-szer és megszámoljuk a fejek számát (z). (Ez a binomiális elképzelés.) Ekkor a kimenetelek valószínűségére egy képletet feltételezhetünk (később bebizonyítjuk). Legyen pl. N=24 és z=7. 
+
+![Binom1](https://github.com/mozow01/cog_compsci/blob/main/2024/binom_1.jpg)
+
+Ez alapján kiszámolhatjuk a p értékét az adott adatra és a következőt találjuk:
+
+![Binom1](https://github.com/mozow01/cog_compsci/blob/main/2024/binom_2.jpg)
+
+alfa = 0.05-re ez még OK! 
+
+B) Annyiszor dobunk, hogy a fejek száma elérje a z-t. (Ez a negatív binomiális elképzelés.) Ekkor a kimenetelek valószínűségére egy képletet feltételezhetünk (ezt nem fogjuk bizonyítani :) ):
+
+![Binom1](https://github.com/mozow01/cog_compsci/blob/main/2024/negbin_1.jpg)
+
+Ez alapján kiszámolhatjuk a p értékét az adott adatra és a következőt találjuk:
+
+![Binom1](https://github.com/mozow01/cog_compsci/blob/main/2024/negbin_2.jpg)
+
+alfa = 0.05-re ez már nem OK! 
+
+PEDIG! Az adatok nem tudják, milyen SZÁNDÉKKAL dobtuk őket... Nem kell velük közölnünk... Az érme attól függően cinkelt vagy nem cinkelt, hogy mit GONDOLUNK arról, hogy mi minták tere... Ez abszurd!
+
+
+![Binom1](https://github.com/mozow01/cog_compsci/blob/main/2024/bin.jpg)
+
+
+
+
 
 
