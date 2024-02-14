@@ -40,7 +40,7 @@ Ezt a tesztstatisztikát hasonlítjuk össze a t-eloszlás kritikus értékével
 
 ### Összevetés 1.
 
-|                   | Frekentista statisztika                             | Bayesiánus statisztika                                 |
+|                   | Frekventista statisztika                             | Bayesiánus statisztika                                 |
 |-----------------------------|------------------------------------------------------|------------------------------------------------------|
 | Alapelvek                   | Egyetlen matematikailag kifundált mintatérből vesz mintákat és ezek alapján következtet. | Előzetes tudással (prior), adattal (megfigyelt változó) és adatfelvétel után levont (pszterior)  következtetésekkel dolgozik. |
 | Előzetes elvárások          | Nem utal előzetes tudásra, csak a mintavételezéskor keletkező mintára összpontosít. Az előzetes tudás tacit. | Bevezeti a prior elvárásokat, amelyek a kezdeti ismereteket és hozzáértést tükrözik. Explicit elpzetes tudással dolgozik.                |
