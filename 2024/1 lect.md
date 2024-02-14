@@ -12,7 +12,7 @@ A feladatunk, hogy eldöntsük, rendellenesen alacsony-e egy töpehörcsög súl
 
 #### Hipotézisrendszert alkotunk:
 
-- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis \( \mu = \mu_0 \) (ahol \( \mu_0 \) az elvárt átlagos súly).
+- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis $ \mu = \mu_0 $ (ahol \( \mu_0 \) az elvárt átlagos súly).
   
 - **Alternatív hipotézis (H1):** A töpehörcsög súlya rendellenesen alacsony, tehát \( \mu < \mu_0 \).
 
