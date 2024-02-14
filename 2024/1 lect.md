@@ -73,13 +73,13 @@ var output_1 = Infer(opts, Model)
 viz.marginals(output_1)
 ````
 
-![CsofiPosterior](https://github.com/mozow01/cog_compsci/blob/main/2024/98af7d.svg)
-
 ![CsofiPriorPred1](https://github.com/mozow01/cog_compsci/blob/main/2024/a43e23.svg)
 
 ![CsofiPriorPred2](https://github.com/mozow01/cog_compsci/blob/main/2024/ab9c7c.svg)
 
 ![CsofiProsteriorPred](https://github.com/mozow01/cog_compsci/blob/main/2024/b4c381.svg)
+
+![CsofiPosterior](https://github.com/mozow01/cog_compsci/blob/main/2024/98af7d.svg)
 
 
 ### Összevetés
