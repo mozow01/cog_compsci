@@ -21,7 +21,7 @@ A t-próba lenne megfelelő, mivel a populációs szórás ismeretlen, és a min
 [![\\ t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}](https://latex.codecogs.com/svg.latex?%5C%5C%20t%20%3D%20%5Cfrac%7B%5Cbar%7Bx%7D%20-%20%5Cmu_0%7D%7Bs%2F%5Csqrt%7Bn%7D%7D)](#_)
 
 ahol:
--  [![\\ \bar{x}](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cbar%7Bx%7D)](#_) a mintaátlag,
+- [![\\  \overline{x}](https://latex.codecogs.com/svg.latex?%5C%5C%20%20%5Coverline%7Bx%7D)](#_) a mintaátlag,
 - [![\\ \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu_0)](#_) az elvárt populációs átlag,
 - _s_ a mintaszórás,
 - _n_ a minta mérete (javasolt mérési szám: 10 mérés).
