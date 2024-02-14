@@ -6,16 +6,9 @@
 
 Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy. A súlya elméletileg egy 22 g közepű 3 g-os szórású normál eloszlás (haranggörbe). El kéne dönteni, hogy orvoshoz kell-e vinni.  
 
-### Statisztikai Hipotézisvizsgálat
+#### Klasszikus frekventista megközelítés
 
-A feladatunk, hogy eldöntsük, rendellenesen alacsony-e egy töpehörcsög súlya a táblázat alapján, ahol a súly 22 gramm, és a szórás 3 gramm.
-
-$ t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}} $
-
-
-#### Hipotézisrendszert alkotunk:
-
-- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis $ \mu = \mu_0 $ (ahol \( \mu_0 \) az elvárt átlagos súly).
+- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis [![\\ \mu = \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3D%20%5Cmu_0)](#_) (ahol \( \mu_0 \) az elvárt átlagos súly).
   
 - **Alternatív hipotézis (H1):** A töpehörcsög súlya rendellenesen alacsony, tehát \( \mu < \mu_0 \).
 
