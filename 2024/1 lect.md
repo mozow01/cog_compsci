@@ -4,7 +4,7 @@
 
 ### Mintapélda (törpehörcsi)
 
-Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy. A súlya (tömege :) ) elméletileg egy 22 g közepű 3 g-os szórású normál eloszlás (haranggörbe). El kéne dönteni, hogy orvoshoz kell-e vinni. 
+Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy. A súlya (tömege :) ) elméletileg egy 22 g közepű 1 g-os szórású normál eloszlás (haranggörbe). El kéne dönteni, hogy orvoshoz kell-e vinni. 
 
 ![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/horcsi.jpeg)
 
@@ -33,7 +33,7 @@ Ezt a tesztstatisztikát hasonlítjuk össze a t-eloszlás kritikus értékével
 #### Naiv, álnaiv kérdések
 
 1. Értem, hogy a súly haranggörbe, mert nem vagyok hülye, de akkor mi az a t statisztika? (Hogy kerül a csizma az asztalra?) 
-2. Mennyiben "betegesen" rendellenes egy [![\\ \mu < \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3C%20%5Cmu_0)](#_) érték? Miért ez az alternatív hipotézis? Miért nem mondjuk az, hogy 17 g +- 3 g ? 
+2. Mennyiben "betegesen" rendellenes egy [![\\ \mu < \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3C%20%5Cmu_0)](#_) érték? Miért ez az alternatív hipotézis? Miért nem mondjuk az, hogy 17 g +- 1 g ? 
 3. A próba alapján két választ kaphatok: A) nem vethető el a nullhipotézi B) elvethető a nullhipotézis. Egyik esetben sem a minket érdeklő "kérdésre" kapunk választ.
 4. Mi az a képlet? Jelent valamit vagy nem jelent semmit? (Miért kell statisztikusnak lennem?)
 5. Tudom, hogy a próba annál jobb, minél többször mérem a hörcsit. Miért kéne nyaggatni szegényt mondjuk 100 méréssel egy éretelmezhetetlen eredmény miatt?
