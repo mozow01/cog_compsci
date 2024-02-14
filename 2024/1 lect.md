@@ -8,9 +8,9 @@ Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy
 
 #### Klasszikus frekventista megközelítés
 
-- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis [![\\ \mu = \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3D%20%5Cmu_0)](#_) (ahol \( \mu_0 \) az elvárt átlagos súly).
+- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis [![\\ \mu = \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3D%20%5Cmu_0)](#_) (ahol [![\\ \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu_0)](#_) az elvárt átlagos súly).
   
-- **Alternatív hipotézis (H1):** A töpehörcsög súlya rendellenesen alacsony, tehát \( \mu < \mu_0 \).
+- **Alternatív hipotézis (H1):** A töpehörcsög súlya rendellenesen alacsony, tehát [![\\ \mu < \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3C%20%5Cmu_0)](#_).
 
 Ez egy egyoldalas teszt, mivel csak az érdekel bennünket, hogy a súly rendellenesen alacsony-e.
 
@@ -18,16 +18,15 @@ Ez egy egyoldalas teszt, mivel csak az érdekel bennünket, hogy a súly rendell
 
 A t-próba lenne megfelelő, mivel a populációs szórás ismeretlen, és a minta mérete kisebb, mint 30. A tesztstatisztika a következő lenne:
 
-\[ t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}} \]
+[![\\ t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}](https://latex.codecogs.com/svg.latex?%5C%5C%20t%20%3D%20%5Cfrac%7B%5Cbar%7Bx%7D%20-%20%5Cmu_0%7D%7Bs%2F%5Csqrt%7Bn%7D%7D)](#_)
 
 ahol:
-- \( \bar{x} \) a mintaátlag,
-- \( \mu_0 \) az elvárt populációs átlag,
-- \( s \) a mintaszórás,
-- \( n \) a minta mérete.
+-  [![\\ \bar{x}](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cbar%7Bx%7D)](#_) a mintaátlag,
+- [![\\ \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu_0)](#_) az elvárt populációs átlag,
+- _s_ a mintaszórás,
+- _n_ a minta mérete (javasolt mérési szám: 10 mérés).
 
 Ezt a tesztstatisztikát összehasonlítanánk a t-eloszlás kritikus értékével az alfa szignifikanciaszinten (0.05). Ha a t-eloszlás kritikus értéke alacsonyabb a számított t-értéknél, akkor elutasítjuk a nullhipotézist és elfogadjuk az alternatív hipotézist, tehát megállapítjuk, hogy a töpehörcsög súlya rendellenesen alacsony. Ellenkező esetben nem áll rendellenesség fenn a súlyával kapcsolatban.
-
 
 ### Összevetés 1.
 
