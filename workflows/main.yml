@@ -1,0 +1,25 @@
+name: LaTeX Rendering
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  render-latex:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up TeX
+      uses: xu-cheng/texlive-action@v2
+      with:
+        tex-packages: "full"
+
+    - name: Render LaTeX
+      run: |
+        pdflatex -interaction=nonstopmode -halt-on-error your_latex_file.tex
+        mv your_latex_file.pdf $GITHUB_WORKSPACE
+      env:
+        GITHUB_WORKSPACE: ${{ github.workspace }}
