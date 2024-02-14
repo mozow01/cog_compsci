@@ -2,7 +2,7 @@
 
 ## Előzetes összevetés
 
-### Mintapélda (aranyhörcsi)
+### Mintapélda (törpehörcsi)
 
 Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy. A súlya elméletileg egy 22 g közepű 3 g-os szórású normál eloszlás (haranggörbe). El kéne dönteni, hogy orvoshoz kell-e vinni.  
 
@@ -14,7 +14,7 @@ Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy
 
 Ez egy egyoldalas teszt, mivel csak az érdekel bennünket, hogy a súly rendellenesen alacsony-e.
 
-#### Statisztikai teszt típusa:
+- **Statisztikai teszt típusa:**
 
 A t-próba lenne megfelelő, mivel a populációs szórás ismeretlen, és a minta mérete kisebb, mint 30. A tesztstatisztika a következő lenne:
 
@@ -26,7 +26,15 @@ ahol:
 - _s_ a mintaszórás,
 - _n_ a minta mérete (javasolt mérési szám: 10 mérés).
 
-Ezt a tesztstatisztikát összehasonlítanánk a t-eloszlás kritikus értékével az alfa szignifikanciaszinten (0.05). Ha a t-eloszlás kritikus értéke alacsonyabb a számított t-értéknél (p<alfa), akkor elutasítjuk a nullhipotézist és elfogadjuk az alternatív hipotézist, tehát megállapítjuk, hogy a töpehörcsög súlya rendellenesen alacsony. Ellenkező esetben nem áll rendellenesség fenn a súlyával kapcsolatban.
+Ezt a tesztstatisztikát kellene összehasonlítanunk a t-eloszlás kritikus értékével az alfa szignifikanciaszinten (0.05). Ha a t-eloszlás kritikus értéke alacsonyabb a számított t-értéknél (p<alfa), akkor elutasítjuk a nullhipotézist és elfogadjuk az alternatív hipotézist, tehát megállapítjuk, hogy a töpehörcsög súlya rendellenesen alacsony. Ellenkező esetben nem áll fenn rendellenesség a súlyával kapcsolatban.
+
+#### Naiv, álnaiv kérdések
+
+1. Értem, hogy a súly haranggörbe, mert nem vagyok hülye, de akkor mi az a t statisztika? (hogy kerül a csizma az asztalra?) 
+2. Mennyiben "betegesen" rendellenes egy [![\\ \mu < \mu_0](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cmu%20%3C%20%5Cmu_0)](#_) érték? Miért ez az alternatív hipotézis?
+3. A próba alapján két választ kaphatok: A) nem vethető el a nullhipotézi B) elvethető a nullhipotézis. Egyik esetben sem a minket érdeklő "kérdésre" kapunk választ.
+4. Mi az a képlet? Jelent valamit vagy nem jelent semmit? (Miért kell statisztikusnak lennem?)
+5. Tudom, hogy a teszt annál jobb, minél többször mérem a hörcsit. Miért kéne nyaggatni szegényt mondjuk 100 méréssel egy éretelmezhetetlen eredmény miatt?
 
 ### Összevetés 1.
 
