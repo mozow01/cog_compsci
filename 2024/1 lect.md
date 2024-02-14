@@ -6,9 +6,7 @@
 
 Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy. A súlya (tömege :) ) elméletileg egy 22 g közepű 3 g-os szórású normál eloszlás (haranggörbe). El kéne dönteni, hogy orvoshoz kell-e vinni. 
 
-![Gimli](Indeed, we carefully design experiments to insulate the coins from the
-intentions of the experimenter.)
-
+![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/horcsi.jpeg)
 
 #### Klasszikus frekventista megközelítés
 
