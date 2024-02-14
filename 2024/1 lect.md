@@ -2,6 +2,39 @@
 
 ## Előzetes összevetés
 
+### Mintapélda (aranyhörcsi)
+
+Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy. A súlya elméletileg egy 22 g közepű 3 g-os szórású normál eloszlás (haranggörbe). El kéne dönteni, hogy orvoshoz kell-e vinni.  
+
+### Statisztikai Hipotézisvizsgálat
+
+A feladatunk, hogy eldöntsük, rendellenesen alacsony-e egy töpehörcsög súlya a táblázat alapján, ahol a súly 22 gramm, és a szórás 3 gramm.
+
+#### Hipotézisrendszert alkotunk:
+
+- **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis \( \mu = \mu_0 \) (ahol \( \mu_0 \) az elvárt átlagos súly).
+  
+- **Alternatív hipotézis (H1):** A töpehörcsög súlya rendellenesen alacsony, tehát \( \mu < \mu_0 \).
+
+Ez egy egyoldalas teszt, mivel csak az érdekel bennünket, hogy a súly rendellenesen alacsony-e.
+
+#### Statisztikai teszt típusa:
+
+A t-próba lenne megfelelő, mivel a populációs szórás ismeretlen, és a minta mérete kisebb, mint 30. A tesztstatisztika a következő lenne:
+
+\[ t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}} \]
+
+ahol:
+- \( \bar{x} \) a mintaátlag,
+- \( \mu_0 \) az elvárt populációs átlag,
+- \( s \) a mintaszórás,
+- \( n \) a minta mérete.
+
+Ezt a tesztstatisztikát összehasonlítanánk a t-eloszlás kritikus értékével az alfa szignifikanciaszinten (0.05). Ha a t-eloszlás kritikus értéke alacsonyabb a számított t-értéknél, akkor elutasítjuk a nullhipotézist és elfogadjuk az alternatív hipotézist, tehát megállapítjuk, hogy a töpehörcsög súlya rendellenesen alacsony. Ellenkező esetben nem áll rendellenesség fenn a súlyával kapcsolatban.
+
+
+### Összevetés 1.
+
 |                   | Frekentista statisztika                             | Bayesiánus statisztika                                 |
 |-----------------------------|------------------------------------------------------|------------------------------------------------------|
 | Alapelvek                   | Egy matematikailag felépített mintatérből vett minta valószínűségi eloszlásának alapján következtet. Az előzetes tudás és korábbi mérések eredményei rejtettek. | A priori (előzetes) és a posterior (adatfelvétel utáni) valószínűségi eloszlásokat használ. A priori eloszlás valóban explicit a priori tudás (meggyőződés), és a következtetés az adatokkal való ütköztetés utáni az a posteriori tudásból van levonva. |
