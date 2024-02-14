@@ -75,11 +75,11 @@ viz.marginals(output_1)
 
 ![CsofiPosterior](https://github.com/mozow01/cog_compsci/blob/main/2024/98af7d.svg)
 
-![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/a43e23.svg)
+![CsofiPriorPred1](https://github.com/mozow01/cog_compsci/blob/main/2024/a43e23.svg)
 
-![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/ab9c7c.svg)
+![CsofiPriorPred2](https://github.com/mozow01/cog_compsci/blob/main/2024/ab9c7c.svg)
 
-![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/b4c381.svg)
+![CsofiProsteriorPred](https://github.com/mozow01/cog_compsci/blob/main/2024/b4c381.svg)
 
 
 ### Összevetés
