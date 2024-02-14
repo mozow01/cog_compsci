@@ -121,11 +121,5 @@ alfa = 0.05-re ez már nem OK!
 
 PEDIG! Az adatok nem tudják, milyen SZÁNDÉKKAL dobtuk őket... Nem kell velük közölnünk... Az érme attól függően cinkelt vagy nem cinkelt, hogy mit GONDOLUNK arról, hogy mi minták tere... Ez abszurd!
 
-
 ![Binom1](https://github.com/mozow01/cog_compsci/blob/main/2024/bin.png)
-
-
-
-
-
 
