@@ -38,7 +38,51 @@ Ezt a tesztstatisztikát hasonlítjuk össze a t-eloszlás kritikus értékével
 4. Mi az a képlet? Jelent valamit vagy nem jelent semmit? (Miért kell statisztikusnak lennem?)
 5. Tudom, hogy a próba annál jobb, minél többször mérem a hörcsit. Miért kéne nyaggatni szegényt mondjuk 100 méréssel egy éretelmezhetetlen eredmény miatt?
 
-### Összevetés 1.
+### Bayes-féle megközelítés
+
+Csofi súlya egy bizonytalan érték és ezt komolyan kell venni. Két dolgot tudunk, hogy a Gauss(22,1) egy egészséges állat súlya, Gauss(17,1) egy betegé. Csofi a mérések alapján 19, 18, 18 g. Ez eléggé leszűkíti a lehetősőgeket. Ha kiszórjuk azokat a szcenáriókat, amelyekben ezek a számok nagyon pici valószínűségűek, akkor egy olyan eloszlást kapunk a súlyára, amelyik közel állhat a valósághoz. 
+
+````javascript
+var data = [{k: 19},
+            {k: 18},
+            {k: 18},
+           ]
+
+var Model = function() {
+  
+  var m = gaussian(22,10)
+  
+  map(function(d){observe(Gaussian({mu: m, sigma: 1}),d.k)},data);
+  
+  var PriorPredictive1 = gaussian(22,1);
+  var PriorPredictive2 = gaussian(17,1);
+  var PosteriorPredictive = gaussian(m,1);
+  
+  return { 
+          PriorPredictive1: PriorPredictive1, 
+          PriorPredictive2: PriorPredictive2, 
+          Posterior: m,
+          PosteriorPredictive: PosteriorPredictive
+         };
+}
+
+var opts = {method: 'SMC', particles: 1000, rejuvSteps: 5}
+
+var output_1 = Infer(opts, Model)
+
+viz.marginals(output_1)
+````
+
+![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/98af7d.svg)
+
+![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/horcsi.jpeg)
+
+![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/horcsi.jpeg)
+
+![Csofi](https://github.com/mozow01/cog_compsci/blob/main/2024/horcsi.jpeg)
+
+
+### Összevetés
 
 |                   | Frekventista statisztika                             | Bayesiánus statisztika                                 |
 |-----------------------------|------------------------------------------------------|------------------------------------------------------|
