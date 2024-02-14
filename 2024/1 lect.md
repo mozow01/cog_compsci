@@ -10,6 +10,9 @@ Van egy törpehörcsögünk, amelyikről azt gyanítjuk, hogy rendellenesen fogy
 
 A feladatunk, hogy eldöntsük, rendellenesen alacsony-e egy töpehörcsög súlya a táblázat alapján, ahol a súly 22 gramm, és a szórás 3 gramm.
 
+$ t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}} $
+
+
 #### Hipotézisrendszert alkotunk:
 
 - **Nullhipotézis (H0):** A töpehörcsög súlya normális, vagyis $ \mu = \mu_0 $ (ahol \( \mu_0 \) az elvárt átlagos súly).
