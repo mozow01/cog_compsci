@@ -2,7 +2,7 @@
 
 A gráfmodell alapjául szolgáló _G_ irányított körmentes gráf (DAG) egy spéci címkézett osztályba tarozik. A **bekarikázott** csúcsok valószínűségi változókat reprezentálnak (és elég ezeket feltüntetni, de nem kell csak ezeket), a **bekarikázatlanok** determinisztikus változókat. A **nyilak** a p(x<sub>0</sub>,...,x<sub>K</sub>) joint valószínűség alábbi alakú szorzattá bonthatóságát fejezi ki valamilyen értelemben:
 
-<img src="https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20%5Cmathrm%7Bp%7D(%5Cmathbf%7Bx%7D)%3D%5Cprod_%7Bk%3D1%7D%5E%7BK%7D%5Cmathrm%7Bp%7D(x_k%5Cmid%5Cmathrm%7Bpare%7D_k)">
+[![\\ \Pr(x_1,\ldots,x_K)=\prod_{i=1}^K \Pr(x_i\mid\text{pare}(x_i)) \\ ](https://latex.codecogs.com/svg.latex?%5C%5C%20%5CPr(x_1%2C%5Cldots%2Cx_K)%3D%5Cprod_%7Bi%3D1%7D%5EK%20%5CPr(x_i%5Cmid%5Ctext%7Bpare%7D(x_i))%20%5C%5C%20)](#_)
 
 ahol pa<sub>k</sub> az x<sub>k</sub> csúcs (közvetlen) szülei. A szorzatban pontosan akkor szerepel a p(x<sub>k</sub> | x<sub>i</sub>,...,x<sub>j</sub>) tényező, ha a G-ben van x<sub>i</sub>,...,x<sub>j</sub> pontjaiból x<sub>k</sub>-ba mutató nyíl. A **besatírozott** csúcsok olyan valószínűségi változók, amelyek a **megfigyelt változókat reprezentálják.** A **nem besatírozott** változók a **látens paraméterek.** Tehát G gráfmondellje a p(x<sub>0</sub>,...x<sub>K</sub>) joint valószínűségnek, ha a fenti faktorizációs tulajdonság teljesül.
 
