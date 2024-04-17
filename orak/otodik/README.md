@@ -4,13 +4,13 @@ A gráfmodell alapjául szolgáló _G_ irányított körmentes gráf (DAG) egy s
 
 <img src="https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20%5Cmathrm%7Bp%7D(%5Cmathbf%7Bx%7D)%3D%5Cprod_%7Bk%3D1%7D%5E%7BK%7D%5Cmathrm%7Bp%7D(x_k%5Cmid%5Cmathrm%7Bpare%7D_k)">
 
-ahol pare<sub>k</sub> az x<sub>k</sub> csúcs (közvetlen) szülei. A szorzatban pontosan akkor szerepel a p(x<sub>k</sub> | x<sub>i</sub>,...,x<sub>j</sub>) tényező, ha a G-ben van x<sub>i</sub>,...,x<sub>j</sub> pontjaiból x<sub>k</sub>-ba mutató nyíl. A **besatírozott** csúcsok olyan valószínűségi változók, amelyek a megfigyelt változókat reprezentálják. Tehát G gráfmondellje a p(x<sub>0</sub>,...x<sub>K</sub>) joint valószínűségnek, ha a fenti faktorizációs tulajdonság teljesül.
+ahol pa<sub>k</sub> az x<sub>k</sub> csúcs (közvetlen) szülei. A szorzatban pontosan akkor szerepel a p(x<sub>k</sub> | x<sub>i</sub>,...,x<sub>j</sub>) tényező, ha a G-ben van x<sub>i</sub>,...,x<sub>j</sub> pontjaiból x<sub>k</sub>-ba mutató nyíl. A **besatírozott** csúcsok olyan valószínűségi változók, amelyek a **megfigyelt változókat reprezentálják.** A **nem besatírozott** változók a **látens paraméterek.** Tehát G gráfmondellje a p(x<sub>0</sub>,...x<sub>K</sub>) joint valószínűségnek, ha a fenti faktorizációs tulajdonság teljesül.
 
-A faktoritációs tulajdoságot ténylegesen felezni tudjuk **faktorpontokkal.** Ekkor pontosan akkor köti össze egy faktor pont egy gyerekeket és
+A faktoritációs tulajdoságot ténylegesen jeleznii tudjuk a **faktorpontokkal.** Ekkor pontosan akkor köti össze egy faktorpont egy gyerekeket és szülőket, ha ezektől függ a gyerek.
 
 ## Diszkrét hierarchikus modell (évszak és vizes fű)
 
-A generatív modell (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "évszak" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
+A _generatív modell_ (azaz egy "randomoutput(randominput)" algoritmikus függvény) négy valószínűségi változóból áll elő, "évszak" (h) (tavasz/nyár/ősz/tél) , "felhős" (f) (derűs/enyhén felhős/erősen felhős), "locsolórendszer" (l) (megy/nem megy), "eső" (e) (esik/nem esik), "vizes a fű" (v) (vizes/nem vizes). Ezek az alábbi gráf alapján függnek egymástól (a faktorok valóban azt jelzik, hogy a joint valószínűség hogyan bomlik szorzatá).
 
 <img src="https://github.com/mozow01/cog_compsci/blob/main/orak/files/locsolo_1.png" width=600>
 
@@ -49,21 +49,7 @@ viz.marginals(vizesModel)
 
 Itt "évszak" előtt van egy konstans csúcs, ami a kategorikus változó eloszlásának adatait (hogy egyenletes) tartalmazza. Ezek a paraméterek azonban rögzítettek.
 
-A **Bayes-tétel** szerint
-
-<img src="https://render.githubusercontent.com/render/math?math=P(latens%5Cmid%20megfigyelt)%20%3D%20%5Cdfrac%7BP(megfigyelt%20%5Cmid%20latens%20)%5Ccdot%20P(latens)%7D%7BP(megfigyelt)%7D">
-
-Ill. itt: 
-
-<img src="https://render.githubusercontent.com/render/math?math=P(honap%5Cmid%20vizes)%20%3D%20%5Cdfrac%7BP(vizes%20%5Cmid%20honap%20)%5Ccdot%20P(honap)%7D%7BP(vizes)%7D">
-
-Rögzített inputtal (h) a generatív modell segítségével ki lehet számolni, mi a vizes fű változó feltételes eloszlása: 
-
-<img src="https://render.githubusercontent.com/render/math?math=vizes%5Cquad%20%5Cmapsto%20%5Cquad%20P(vizes%20%5Cmid%20honap%20)">
-
-(ez tehát egy előrejelzés).
-
-A generatív modell programozott verziója a fenti kódban ez:
+A generatív modell programozott verziója a fenti kódban ez (A pszeudokódját az ábrán látjuk.)
 
 ````javascript
 var évszak = categorical({ps:[0.25,0.25,0.25,0.25], vs: ['tavasz', 'nyár', 'ősz', 'tél'] });
@@ -81,15 +67,21 @@ var vizes = esik && locsoló
                         : flip(0.1);
 ````
 
-A pszeudokódját az ábrán látjuk.
+A joint eloszlás faktorizációja tehát a következő:
 
-Ha rögzítjük az outputot(v), akkor vagy mintavételezéssel vagy kimerítéssel, de ki lehet számolni, hogy az egyes inputok milyen valószínűséggel adják ezt a v-t:
+[![\\ \begin{align*} \\ p(h,f,l,e,v) &=p(v|f,l)\cdot p(l,f)= \qquad (\;p(h,l,f|v)\cdot p(v)\;)\\ \\ &= p(v|f,l)\cdot p(l,f|h)\cdot p(h)=\\ \\ &=p(v|f,l)\cdot p(l|h)\cdot p(f|h)\cdot p(h) \\ \end{alogn*}](https://latex.codecogs.com/svg.latex?%5C%5C%20%5Cbegin%7Balign*%7D%20%5C%5C%20p(h%2Cf%2Cl%2Ce%2Cv)%20%26%3Dp(v%7Cf%2Cl)%5Ccdot%20p(l%2Cf)%3D%20%5Cqquad%20(%5C%3Bp(h%2Cl%2Cf%7Cv)%5Ccdot%20p(v)%5C%3B)%5C%5C%20%5C%5C%20%26%3D%20p(v%7Cf%2Cl)%5Ccdot%20p(l%2Cf%7Ch)%5Ccdot%20p(h)%3D%5C%5C%20%5C%5C%20%26%3Dp(v%7Cf%2Cl)%5Ccdot%20p(l%7Ch)%5Ccdot%20p(f%7Ch)%5Ccdot%20p(h)%20%5C%5C%20%5Cend%7Balogn*%7D)](#_)
 
-<img src="https://render.githubusercontent.com/render/math?math=honap%5Cquad%20%5Cmapsto%20%5Cquad%20P(vizes%20%5Cmid%20honap%20)">
+A p(h,l,f) ----> p(h,l,f|v) Bayes-frissítés végeredménye, azaz a poszterior eloszlást a Bayes-tétel alapján kapjuk:
 
-ez a **likelihood függvény,** sajnos ez **nem eloszlás**. Ahhoz az évszak változó felett (a feltétel mellett) egy valószínűségi eloszlást kapjunk, még súlyozni kell a "évszak" marginális eloszlásával és 1-re normálni kell ezt a mennyiséget. Akkor a Bayes-tétel szerint ez az új mennyiség már eloszlás, ami a posterior. 
+[![\\ \;p(h,l,f|v)=\dfrac{p(v|f,l)\cdot p(l|h)\cdot p(f|h)\cdot p(h)}{p(v)} \\ ](https://latex.codecogs.com/svg.latex?%5C%5C%20%5C%3Bp(h%2Cl%2Cf%7Cv)%3D%5Cdfrac%7Bp(v%7Cf%2Cl)%5Ccdot%20p(l%7Ch)%5Ccdot%20p(f%7Ch)%5Ccdot%20p(h)%7D%7Bp(v)%7D%20%5C%5C%20)](#_)
 
-A Bayes-inferencia most "kimerítéssel" (enumerate) és "az adat feltételezésével" (condition) működik: a hónap változó marginális eloszlását számolja ki azzal a feltétellel, hogy adat = vizes, az összes eset végigszámolásával.
+vagy 
+
+[![\\  \\ p(h,l,f|v)=\dfrac{p(v|f,l)\cdot p(l|h)\cdot p(f|h)\cdot p(h)}{p(v)}=\dfrac{p(v|h,f,l)\cdot p(h,l,f)}{p(v)} \\ ](https://latex.codecogs.com/svg.latex?%5C%5C%20%20%5C%5C%20p(h%2Cl%2Cf%7Cv)%3D%5Cdfrac%7Bp(v%7Cf%2Cl)%5Ccdot%20p(l%7Ch)%5Ccdot%20p(f%7Ch)%5Ccdot%20p(h)%7D%7Bp(v)%7D%3D%5Cdfrac%7Bp(v%7Ch%2Cf%2Cl)%5Ccdot%20p(h%2Cl%2Cf)%7D%7Bp(v)%7D%20%5C%5C%20)](#_)
+
+Itt a **likelihood függvény,** p(v|f,l) p(l|h) p(f|h) (mondjuk), vagyis az a függvény, ami megadja a ez még a priorral való szorzás után sem lesz igazi valószínűségi eloszlás, de az adat rögzítésével (márpedig az adatok rögzítettek), arányos lesz ezzel és az arányossági tényező a p(v), ami az arányossági tényező, amivel normáljuk a likelihood-prior szorzatot, és az már eloszlás.
+
+(A Bayes-inferencia most "kimerítéssel" (enumerate) és "az adat feltételezésével" (condition) működik: a hónap változó marginális eloszlását számolja ki azzal a feltétellel, hogy adat = vizes, az összes eset végigszámolásával.)
 
 ## Konjugált prior
 
